@@ -1,0 +1,45 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --background-muted: #f7f5f2;
+  --foreground: #050505;
+  --foreground-muted: #2f2f2f;
+  --accent: #e30613;
+  --accent-foreground: #ffffff;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-background-muted: var(--background-muted);
+  --color-foreground: var(--foreground);
+  --color-foreground-muted: var(--foreground-muted);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --font-sans: var(--font-ibm-plex-sans);
+  --font-mono: var(--font-ibm-plex-mono);
+  --font-accent: var(--font-ibm-plex-mono);
+  --text-xs: 0.64rem;
+  --text-sm: 0.8rem;
+  --text-base: 1rem;
+  --text-lg: 1.25rem;
+  --text-xl: 1.563rem;
+  --text-2xl: 1.953rem;
+  --text-3xl: 2.441rem;
+  --text-4xl: 3.052rem;
+  --text-5xl: 3.815rem;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+@utility glass-card {
+  background: linear-gradient(
+    135deg,
+    rgba(248, 248, 248, 0.95),
+    rgba(248, 248, 248, 0.6)
+  );
+  backdrop-filter: blur(8px);
+}
