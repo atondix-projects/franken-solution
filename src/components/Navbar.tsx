@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { Button } from "./ui/Button";
 import { usePathname } from "next/navigation";
 
 const navLinks = [
@@ -72,6 +73,10 @@ export function Navbar() {
           </Link>
         </div>
 
+      <div className="flex w-[300px] shrink-0 justify-end">
+        <Button renderAs="link" href="/kontakt" variant="primary">
+          Beratung anfragen
+        </Button>
         {/* Mobile Toggle Button */}
         <button
           onClick={() => setIsOpen(!isOpen)}

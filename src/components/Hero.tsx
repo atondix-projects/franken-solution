@@ -1,6 +1,7 @@
 import { FeatureCard } from "./FeatureCard";
 import { FrankenMap } from "./FrankenMap";
 import { NetworkBackground } from "./NetworkBackground";
+import { Button } from "./ui/Button";
 
 export function Hero() {
   return (
@@ -80,18 +81,12 @@ export function Hero() {
           </p>
 
           <div className="mt-8 flex flex-wrap gap-2.5">
-            <a
-              href="/kontakt"
-              className="rounded-md bg-accent px-4 py-2 text-[20px] font-medium tracking-[0.4px] text-white shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] transition-colors hover:bg-[#c00510]"
-            >
+            <Button renderAs="link" href="/kontakt" variant="primary">
               Beratung anfragen
-            </a>
-            <a
-              href="/leistungen"
-              className="rounded-md border border-foreground/50 bg-white/10 px-4 py-2 text-[20px] font-medium tracking-[0.4px] text-foreground/80 shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] transition-colors hover:border-accent hover:text-accent"
-            >
+            </Button>
+            <Button renderAs="link" href="/leistungen" variant="secondary">
               Unsere Leistungen
-            </a>
+            </Button>
           </div>
         </div>
 
