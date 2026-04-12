@@ -5,7 +5,7 @@ import { Button } from "./ui/Button";
 
 export function Hero() {
   return (
-    <section className="relative min-h-[523px]">
+    <section className="relative min-h-200">
       {/* Animated network background layer */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         {/* Subtle gradient overlay — fades to accent at bottom */}
@@ -28,73 +28,53 @@ export function Hero() {
 
       {/* Zigzag bottom border with drop shadow — inline SVG */}
       <svg
-        className="pointer-events-none absolute bottom-0 left-0 z-[2] w-full"
-        viewBox="0 0 1928 54"
+        className="pointer-events-none absolute bottom-0 left-0 z-2 w-full"
+        viewBox="0 0 1928 100"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         preserveAspectRatio="none"
         aria-hidden="true"
         style={{ height: "48px", marginBottom: "-1px" }}
       >
+        <path
+          d="M0 100L0 48L333.219 20L647.878 48L965.561 20L1277.31 48L1600.81 20L1928 48V100H0Z"
+          fill="white"
+        />
         <defs>
-          <filter
-            id="zigzag-shadow"
-            x="-4"
-            y="0"
-            width="1936"
-            height="58"
-            filterUnits="userSpaceOnUse"
-            colorInterpolationFilters="sRGB"
-          >
-            <feFlood floodOpacity="0" result="BackgroundImageFix" />
-            <feColorMatrix
-              in="SourceAlpha"
-              type="matrix"
-              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-              result="hardAlpha"
-            />
-            <feOffset dy="-4" />
-            <feGaussianBlur stdDeviation="3" />
-            <feComposite in2="hardAlpha" operator="out" />
-            <feColorMatrix
-              type="matrix"
-              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.18 0"
-            />
-            <feBlend
-              mode="normal"
-              in2="BackgroundImageFix"
-              result="effect1_dropShadow"
-            />
-            <feBlend
-              mode="normal"
-              in="SourceGraphic"
-              in2="effect1_dropShadow"
-              result="shape"
-            />
+          <filter id="zigzag-blur">
+            <feGaussianBlur stdDeviation="15" />
           </filter>
+          <clipPath id="zigzag-clip">
+            <path d="M0 100L0 48L333.219 20L647.878 48L965.561 20L1277.31 48L1600.81 20L1928 48V100H0Z" />
+          </clipPath>
         </defs>
-        <g filter="url(#zigzag-shadow)">
+        <g
+          filter="url(#zigzag-blur)"
+          clipPath="url(#zigzag-clip)"
+        >
+          <path d="M0 100V0H1928V100H0Z" />
           <path
-            d="M0 54L0 20L333.219 48L647.878 20L965.561 48L1277.31 20L1600.81 48L1928 20V54H0Z"
-            fill="white"
+            d="M-8 49L333.219 20L647.878 48L965.561 20L1277.31 48L1600.81 20L1936 49"
+            stroke="black"
+            strokeWidth="10"
           />
         </g>
       </svg>
 
       {/* Franken map silhouette — inline SVG */}
-      <FrankenMap className="pointer-events-none absolute right-0 top-0 z-[1] hidden h-full w-auto lg:block" />
+      <FrankenMap className="pointer-events-none absolute right-0 top-0 z-1 hidden h-11/12 w-auto lg:block" />
 
       {/* Content layer */}
-      <div className="relative z-10 flex items-center px-6 py-16 md:px-16 md:py-20 xl:px-[250px]">
+      <div className="relative z-10 flex items-center justify-center w-full max-w-7xl mx-auto h-full min-h-200">
         {/* Left side - text content */}
-        <div className="min-w-0 shrink lg:max-w-[740px] lg:shrink-0">
+        <div className="min-w-0 shrink lg:max-w-185 lg:shrink-0">
           <h1 className="text-3xl font-semibold leading-[1.1] tracking-[-1.37px] text-[#010202] sm:text-4xl md:text-5xl xl:text-[68.66px]">
             Ihr{" "}
             <span className="font-accent text-accent">IT-Service</span>
             {" "}Partner aus Franken
           </h1>
 
-          <p className="mt-4 max-w-[740px] text-lg font-light leading-[1.5] text-[#010202]">
+          <p className="mt-4 max-w-185 text-lg font-light leading-normal text-[#010202]">
             Zephtor provides ongoing support and training to ensure you maximize
             the value of our software. Our experts are here to assist you at
             every step of your digital transformation journey.
