@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { Button } from "./ui/Button";
 
 const navLinks = [
   { label: "Start", href: "/", active: true },
@@ -35,12 +36,9 @@ export function Navbar() {
       </nav>
 
       <div className="flex w-[300px] shrink-0 justify-end">
-        <Link
-          href="/kontakt"
-          className="rounded-md bg-accent px-4 py-2 text-[20px] font-medium tracking-[0.4px] text-white shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] transition-colors hover:bg-[#c00510]"
-        >
+        <Button renderAs="link" href="/kontakt" variant="primary">
           Beratung anfragen
-        </Link>
+        </Button>
       </div>
     </header>
   );
