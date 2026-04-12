@@ -37,7 +37,7 @@ body {
 
 @utility glass-card {
   background: linear-gradient(
-    135deg,
+    90deg,
     rgba(248, 248, 248, 0.95),
     rgba(248, 248, 248, 0.6)
   );

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 const navLinks = [
@@ -9,19 +10,13 @@ const navLinks = [
 
 export function Navbar() {
   return (
-    <header
-      className="relative z-20 flex h-[100px] w-full items-center justify-between px-6 shadow-[0px_4px_11.8px_rgba(0,0,0,0.1)] backdrop-blur-[2px] md:px-16 xl:px-[100px]"
-      style={{
-        background:
-          "linear-gradient(180deg, rgba(255, 255, 255, 0.1) 90.87%, rgba(255, 255, 255, 0.08) 100%)",
-      }}
-    >
-      <div className="w-[300px] shrink-0">
-        <Link href="/">
-          <img
+    <header className="absolute z-20 flex h-25 w-full items-center justify-between px-25 gap-2.5 shadow-[0px_4px_11.8px_rgba(0,0,0,0.1)] backdrop-blur-[2px]">
+      <div className="w-75 shrink-0">
+        <Link href="/" className="relative h-22.5 w-auto">
+          <Image
+            fill
             src="/logo.svg"
             alt="FrankenSolution"
-            className="h-[90px] w-auto"
           />
         </Link>
       </div>
@@ -31,9 +26,8 @@ export function Navbar() {
           <Link
             key={link.label}
             href={link.href}
-            className={`text-[22.5px] leading-[1.2] text-foreground transition-colors hover:text-accent ${
-              link.active ? "font-medium" : "font-light"
-            }`}
+            className={`text-[22.5px] leading-[1.2] text-foreground transition-colors hover:text-accent ${link.active ? "font-medium" : "font-light"
+              }`}
           >
             {link.label}
           </Link>
