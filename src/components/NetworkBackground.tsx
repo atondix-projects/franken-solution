@@ -211,7 +211,6 @@ export function NetworkBackground({
     if (!canvas) return;
 
     animate();
-    animFrameRef.current = requestAnimationFrame(animationLoop);
   }, [animate]);
 
   useEffect(() => {
