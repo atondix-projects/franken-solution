@@ -1,14 +1,16 @@
 import { SiteFrame } from "@/components/SiteFrame";
-import { Navbar } from "@/components/Navbar";
+import { About } from "@/components/About";
 import { Hero } from "@/components/Hero";
-import { Footer } from "@/components/Footer";
+import { ProblemTriggers } from "@/components/ProblemTriggers";
+import { ServicePillars } from "@/components/ServicePillars";
 
 export default function Home() {
   return (
     <SiteFrame>
-      <Navbar />
       <Hero />
-      <Footer />
+      <About />
+      <ProblemTriggers />
+      <ServicePillars />
     </SiteFrame>
   );
 }

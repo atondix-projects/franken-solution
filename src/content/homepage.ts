@@ -142,13 +142,15 @@ export const homepageContent = {
         title: "Laufende Betreuung",
         description:
           "Monitoring, Wartung, Pruefungen und Weiterentwicklung bleiben Teil eines planbaren Managed Service.",
-        outcome: "Ihre IT wird stabiler, transparenter und langfristig betreut.",
+        outcome:
+          "Ihre IT wird stabiler, transparenter und langfristig betreut.",
       },
     ],
   },
   trust: {
     eyebrow: "Vertrauenssignale",
-    title: "Warum die Zusammenarbeit bewusst ruhig und strukturiert angelegt ist",
+    title:
+      "Warum die Zusammenarbeit bewusst ruhig und strukturiert angelegt ist",
     description:
       "Franken Solution positioniert sich nicht ueber Lautstaerke, sondern ueber klare Standards, persoenliche Betreuung und nachvollziehbare Entscheidungen.",
     items: [
@@ -174,6 +176,30 @@ export const homepageContent = {
       },
     ],
   },
+  about: {
+    eyebrow: "Ueber Franken Solution",
+    title: "Persoenlich. Strukturiert. Herstellerneutral.",
+    description:
+      "Franken Solution ist ein fokussierter B2B-Partner fuer IT-Sicherheit und sicheren IT-Betrieb. Wir betreuen hybride IT-Umgebungen mit klaren Standards, festen Ansprechpartnern und planbaren Managed Services.",
+    counters: [
+      {
+        value: "10+",
+        label: "Jahre IT-Erfahrung",
+      },
+      {
+        value: "150+",
+        label: "Betreute Arbeitsplaetze",
+      },
+      {
+        value: "100%",
+        label: "Persoenliche Betreuung",
+      },
+    ],
+    cta: {
+      label: "Mehr erfahren",
+      href: "/ueber-franken-solution",
+    },
+  },
   finalCta: {
     eyebrow: "Naechster Schritt",
     title: "Sichere hybride IT. Klar priorisiert. Langfristig betreut.",
@@ -197,3 +223,4 @@ export type ServicePillarsSectionContent = HomepageContent["services"];
 export type ProcessSectionContent = HomepageContent["process"];
 export type TrustSectionContent = HomepageContent["trust"];
 export type FinalCtaSectionContent = HomepageContent["finalCta"];
+export type AboutSectionContent = HomepageContent["about"];

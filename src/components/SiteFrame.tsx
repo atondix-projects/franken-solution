@@ -11,7 +11,7 @@ export function SiteFrame({ children }: SiteFrameProps) {
   return (
     <>
       <Navbar />
-      <main className="flex-1 overflow-x-hidden pt-24 sm:pt-28">{children}</main>
+      <main className="flex-1 overflow-x-hidden">{children}</main>
       <Footer />
     </>
   );
