@@ -1,6 +1,7 @@
 import { homepageContent } from "@/content/homepage";
 import type { ServicePillarsSectionContent } from "@/content/homepage";
 import { Button } from "./ui/Button";
+import { ScrollReveal } from "./ScrollReveal";
 
 const content = homepageContent.services;
 
@@ -46,9 +47,15 @@ type Card = ServicePillarsSectionContent["cards"][number];
 
 function ServiceCard({ card, index }: { card: Card; index: number }) {
   return (
-    <div className="flex h-full flex-col gap-4 rounded-xl bg-background p-6 shadow-sm ring-1 ring-foreground/6">
+    <div className="group premium-card relative flex h-full flex-col gap-4 rounded-xl bg-background p-6 shadow-sm ring-1 ring-foreground/6">
+      {/* Left accent border — reveals on hover, grows from top */}
+      <div
+        className="accent-border-left absolute inset-y-0 left-0 w-[3px] rounded-l-xl bg-accent"
+        aria-hidden="true"
+      />
+
       {/* Icon chip */}
-      <span className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-accent/8 text-accent">
+      <span className="icon-chip-glow flex size-11 shrink-0 items-center justify-center rounded-xl bg-accent/8 text-accent">
         {CARD_ICONS[index]}
       </span>
 
@@ -64,10 +71,21 @@ function ServiceCard({ card, index }: { card: Card; index: number }) {
 
 export function ServicePillars() {
   return (
-    <section className="bg-background-muted py-20 lg:py-28">
-      <div className="mx-auto max-w-7xl px-6">
+    <section className="relative overflow-hidden bg-background-muted py-20 lg:py-28">
+      {/* Subtle dot-grid texture overlay */}
+      <div
+        className="pointer-events-none absolute inset-0"
+        aria-hidden="true"
+        style={{
+          backgroundImage:
+            "radial-gradient(circle at 1px 1px, rgba(0,0,0,0.022) 1px, transparent 0)",
+          backgroundSize: "32px 32px",
+        }}
+      />
+
+      <div className="relative mx-auto max-w-7xl px-6">
         {/* Header */}
-        <div className="mx-auto max-w-2xl text-center">
+        <ScrollReveal direction="up" className="mx-auto max-w-2xl text-center">
           <p className="font-mono text-xs font-medium uppercase tracking-[0.18em] text-accent">
             {content.eyebrow}
           </p>
@@ -77,7 +95,7 @@ export function ServicePillars() {
           <p className="mt-4 text-base font-light leading-relaxed text-foreground-muted">
             {content.description}
           </p>
-        </div>
+        </ScrollReveal>
 
         {/*
           Cards grid — 5 cards:
@@ -98,22 +116,34 @@ export function ServicePillars() {
             if (i === 4) lgColClass = "lg:col-span-2 lg:col-start-4";
 
             return (
-              <li key={card.title} className={lgColClass}>
+              <ScrollReveal
+                key={card.title}
+                as="li"
+                direction="up"
+                stagger={100}
+                index={i}
+                delay={100}
+                className={lgColClass}
+              >
                 <ServiceCard card={card} index={i} />
-              </li>
+              </ScrollReveal>
             );
           })}
         </ul>
 
         {/* Supporting statement + CTA */}
-        <div className="mt-14 flex flex-col items-center gap-6 text-center">
+        <ScrollReveal
+          direction="up"
+          delay={300}
+          className="mt-14 flex flex-col items-center gap-6 text-center"
+        >
           <p className="max-w-xl text-sm font-light leading-relaxed text-foreground-muted">
             {content.supportingStatement}
           </p>
           <Button renderAs="link" href={content.cta.href} variant="primary">
             {content.cta.label}
           </Button>
-        </div>
+        </ScrollReveal>
       </div>
     </section>
   );

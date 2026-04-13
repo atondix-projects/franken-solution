@@ -283,6 +283,410 @@ body {
   }
 }
 
+/* ─────────────────────────────────────────────────────────────────────────
+   Scroll-reveal keyframes
+   ───────────────────────────────────────────────────────────────────────── */
+
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 32px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes reveal-left {
+  from {
+    opacity: 0;
+    transform: translate3d(-32px, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes reveal-right {
+  from {
+    opacity: 0;
+    transform: translate3d(32px, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes reveal-scale {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes reveal-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+[data-revealed="false"] {
+  opacity: 0;
+}
+
+[data-revealed="true"] {
+  animation-duration: 620ms;
+  animation-delay: var(--reveal-delay, 0ms);
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  animation-fill-mode: both;
+  will-change: opacity, transform;
+}
+
+[data-revealed="true"][data-reveal-direction="up"] {
+  animation-name: reveal-up;
+}
+[data-revealed="true"][data-reveal-direction="left"] {
+  animation-name: reveal-left;
+}
+[data-revealed="true"][data-reveal-direction="right"] {
+  animation-name: reveal-right;
+}
+[data-revealed="true"][data-reveal-direction="scale"] {
+  animation-name: reveal-scale;
+}
+[data-revealed="true"][data-reveal-direction="fade"] {
+  animation-name: reveal-fade;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   Glow & ambient animations
+   ───────────────────────────────────────────────────────────────────────── */
+
+@keyframes glow-pulse {
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.06);
+  }
+}
+
+@keyframes accent-glow-drift {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(14px, -10px) scale(1.05);
+  }
+  66% {
+    transform: translate(-10px, 8px) scale(0.96);
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   Premium card hover
+   ───────────────────────────────────────────────────────────────────────── */
+
+.premium-card {
+  transition:
+    transform 360ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 360ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 360ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .premium-card:hover {
+    transform: translateY(-4px);
+    box-shadow:
+      0 8px 30px rgba(0, 0, 0, 0.08),
+      0 0 0 1px rgba(227, 6, 19, 0.08);
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   Icon chip glow on group hover
+   ───────────────────────────────────────────────────────────────────────── */
+
+.icon-chip-glow {
+  transition:
+    background-color 300ms ease,
+    box-shadow 300ms ease,
+    transform 300ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .group:hover .icon-chip-glow {
+    background-color: rgba(227, 6, 19, 0.14);
+    box-shadow: 0 0 18px rgba(227, 6, 19, 0.15);
+    transform: scale(1.06);
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   Ambient section glow blobs
+   ───────────────────────────────────────────────────────────────────────── */
+
+.section-glow-blob {
+  position: absolute;
+  border-radius: 9999px;
+  pointer-events: none;
+  will-change: transform;
+  animation: accent-glow-drift 18s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   Button shimmer (one-shot on load)
+   ───────────────────────────────────────────────────────────────────────── */
+
+.btn-shimmer {
+  overflow: hidden;
+}
+
+.btn-shimmer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.28) 50%,
+    transparent 70%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 900ms cubic-bezier(0.22, 1, 0.36, 1) 1.5s both;
+  pointer-events: none;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   Connector animations (Process arrows, Trust lines)
+   ───────────────────────────────────────────────────────────────────────── */
+
+.connector-grow-x {
+  transform-origin: left center;
+  transition:
+    opacity 400ms ease,
+    transform 400ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--connector-delay, 0ms);
+}
+
+[data-revealed="false"] .connector-grow-x {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+[data-revealed="true"] .connector-grow-x {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+.connector-grow-y {
+  transform-origin: top center;
+  transition:
+    opacity 500ms ease,
+    transform 500ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--connector-delay, 80ms);
+}
+
+[data-revealed="false"] .connector-grow-y {
+  opacity: 0;
+  transform: scaleY(0);
+}
+
+[data-revealed="true"] .connector-grow-y {
+  opacity: 1;
+  transform: scaleY(1);
+}
+
+/* Accent top-border grow from center */
+.accent-bar-grow {
+  transform-origin: center;
+  transition:
+    opacity 250ms ease,
+    transform 350ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.group:not(:hover) .accent-bar-grow {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.group:hover .accent-bar-grow {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+/* Left accent border for service cards */
+.accent-border-left {
+  transform-origin: top center;
+  transition:
+    opacity 250ms ease,
+    transform 350ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.group:not(:hover) .accent-border-left {
+  opacity: 0;
+  transform: scaleY(0);
+}
+
+.group:hover .accent-border-left {
+  opacity: 1;
+  transform: scaleY(1);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   CTA glow ring (pulsing ring on primary CTA in FinalCta)
+   ───────────────────────────────────────────────────────────────────────── */
+
+.cta-glow-ring {
+  position: relative;
+}
+
+.cta-glow-ring::before {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: inherit;
+  box-shadow: 0 0 28px rgba(227, 6, 19, 0.35);
+  animation: glow-pulse 2.8s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+  pointer-events: none;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   Shield draw animation (Trust section)
+   ───────────────────────────────────────────────────────────────────────── */
+
+@keyframes shield-draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.shield-draw-path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+
+[data-shield-revealed="true"] .shield-draw-path {
+  animation: shield-draw 900ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+[data-shield-revealed="true"] .shield-draw-path--delay-1 {
+  animation-delay: 200ms;
+}
+
+[data-shield-revealed="true"] .shield-draw-path--delay-2 {
+  animation-delay: 450ms;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   Reduced motion — disable all new effects
+   ───────────────────────────────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  [data-revealed="false"] {
+    opacity: 1;
+  }
+
+  [data-revealed="true"] {
+    animation: none;
+    opacity: 1;
+    transform: none;
+    will-change: auto;
+  }
+
+  .section-glow-blob {
+    animation: none;
+  }
+
+  .premium-card {
+    transition: box-shadow 160ms ease;
+  }
+
+  .premium-card:hover {
+    transform: none;
+  }
+
+  .icon-chip-glow {
+    transition: background-color 160ms ease;
+  }
+
+  .group:hover .icon-chip-glow {
+    transform: none;
+  }
+
+  .btn-shimmer::after {
+    animation: none;
+  }
+
+  .connector-grow-x,
+  .connector-grow-y {
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  [data-revealed="false"] .connector-grow-x,
+  [data-revealed="false"] .connector-grow-y {
+    opacity: 1;
+    transform: none;
+  }
+
+  .accent-bar-grow {
+    transition: opacity 160ms ease;
+  }
+
+  .accent-border-left {
+    transition: opacity 160ms ease;
+  }
+
+  .cta-glow-ring::before {
+    animation: none;
+    opacity: 0.4;
+  }
+
+  .shield-draw-path {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+
+  [data-shield-revealed="true"] .shield-draw-path {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   Terminal caret blink
+   ───────────────────────────────────────────────────────────────────────── */
+
 @keyframes terminal-caret-blink {
 
   0%,

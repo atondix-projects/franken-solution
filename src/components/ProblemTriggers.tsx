@@ -1,5 +1,6 @@
 import { homepageContent } from "@/content/homepage";
 import type { ProblemSectionContent } from "@/content/homepage";
+import { ScrollReveal } from "./ScrollReveal";
 
 const content = homepageContent.problem;
 
@@ -45,15 +46,15 @@ type Item = ProblemSectionContent["items"][number];
 
 function TriggerCard({ item, index }: { item: Item; index: number }) {
   return (
-    <div className="group relative flex flex-col gap-3 rounded-xl border border-foreground/8 bg-background p-6 transition-shadow duration-200 hover:shadow-[0_4px_20px_rgba(0,0,0,0.08)]">
-      {/* Accent top-border reveal on hover */}
+    <div className="group premium-card relative flex h-full flex-col gap-3 rounded-xl border border-foreground/8 bg-background p-6">
+      {/* Accent top-border — grows from center on hover */}
       <div
-        className="absolute inset-x-0 top-0 h-0.5 rounded-t-xl bg-accent opacity-0 transition-opacity duration-200 group-hover:opacity-100"
+        className="accent-bar-grow absolute inset-x-0 top-0 h-0.5 rounded-t-xl bg-accent"
         aria-hidden="true"
       />
 
       {/* Icon */}
-      <span className="flex size-9 items-center justify-center rounded-lg bg-accent/8 text-accent">
+      <span className="icon-chip-glow flex size-9 items-center justify-center rounded-lg bg-accent/8 text-accent">
         {ITEM_ICONS[index]}
       </span>
 
@@ -69,10 +70,26 @@ function TriggerCard({ item, index }: { item: Item; index: number }) {
 
 export function ProblemTriggers() {
   return (
-    <section className="bg-background py-20 lg:py-28">
-      <div className="mx-auto max-w-7xl px-6">
+    <section className="relative overflow-hidden bg-background py-20 lg:py-28">
+      {/* Subtle ambient glow blobs */}
+      <div
+        className="section-glow-blob -left-24 -top-24 h-64 w-64 blur-[100px]"
+        aria-hidden="true"
+        style={{ background: "rgba(227,6,19,0.035)", animationDuration: "20s" }}
+      />
+      <div
+        className="section-glow-blob -bottom-24 -right-24 h-56 w-56 blur-[90px]"
+        aria-hidden="true"
+        style={{
+          background: "rgba(227,6,19,0.03)",
+          animationDuration: "26s",
+          animationDelay: "-9s",
+        }}
+      />
+
+      <div className="relative mx-auto max-w-7xl px-6">
         {/* Header */}
-        <div className="mx-auto max-w-2xl text-center">
+        <ScrollReveal direction="up" className="mx-auto max-w-2xl text-center">
           <p className="font-mono text-xs font-medium uppercase tracking-[0.18em] text-accent">
             {content.eyebrow}
           </p>
@@ -82,7 +99,7 @@ export function ProblemTriggers() {
           <p className="mt-4 text-base font-light leading-relaxed text-foreground-muted">
             {content.description}
           </p>
-        </div>
+        </ScrollReveal>
 
         {/* Cards grid */}
         <ul
@@ -90,9 +107,16 @@ export function ProblemTriggers() {
           role="list"
         >
           {content.items.map((item, i) => (
-            <li key={item.title}>
+            <ScrollReveal
+              key={item.title}
+              as="li"
+              direction="up"
+              stagger={80}
+              index={i}
+              delay={100}
+            >
               <TriggerCard item={item} index={i} />
-            </li>
+            </ScrollReveal>
           ))}
         </ul>
       </div>
