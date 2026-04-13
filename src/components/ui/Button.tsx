@@ -35,7 +35,7 @@ const shared =
 const variants: Record<ButtonVariant, string> = {
   primary: "bg-accent text-white hover:bg-[#c00510]",
   secondary:
-    "bg-white/10 text-foreground/80 hover:border-accent hover:text-accent",
+    "bg-white backdrop-blur-xl text-foreground/80 hover:border-accent hover:text-accent",
 };
 
 const textures: Record<ButtonVariant, string> = {
@@ -83,7 +83,7 @@ export function Button(props: ButtonProps) {
     );
   }
 
-  const { renderAs, variant: _, ...buttonProps } = rest as Omit<
+  const { renderAs, ...buttonProps } = rest as Omit<
     ButtonAsButton,
     keyof ButtonBase
   >;

@@ -1,13 +1,36 @@
+import type { CSSProperties } from "react";
+
 import { FeatureCard } from "./FeatureCard";
 import { FrankenMap } from "./FrankenMap";
-import { NetworkBackground } from "./NetworkBackground";
+import { InteractiveNetworkBackground } from "./InteractiveNetworkBackground";
+import { TypewriterAccent } from "./TypewriterAccent";
 import { Button } from "./ui/Button";
+
+const ACCENT_TEXTS = [
+  "IT-Service",
+  "Cloud-Lösungen",
+  "IT-Sicherheit",
+  "Support",
+] as const;
+
+function heroLoadStyle(delay: string, duration: string): CSSProperties {
+  return {
+    "--hero-load-delay": delay,
+    "--hero-load-duration": duration,
+  } as CSSProperties;
+}
 
 export function Hero() {
   return (
-    <section className="relative min-h-200">
+    <section
+      className="relative min-h-150 lg:min-h-175 overflow-hidden"
+      data-network-interaction-root
+    >
       {/* Animated network background layer */}
-      <div className="absolute inset-0 z-0 overflow-hidden">
+      <div
+        className="hero-load hero-load-scale absolute inset-0 z-0 overflow-hidden"
+        style={heroLoadStyle("60ms", "700ms")}
+      >
         {/* Subtle gradient overlay — fades to accent at bottom */}
         <div
           className="pointer-events-none absolute inset-0"
@@ -18,95 +41,125 @@ export function Hero() {
           aria-hidden="true"
         />
         {/* Interactive particle network */}
-        <NetworkBackground
+        <InteractiveNetworkBackground
           particleCount={70}
           connectionDistance={140}
           mouseRadius={180}
-          speed={0.35}
+          speed={0.25}
         />
       </div>
 
       {/* Zigzag bottom border with drop shadow — inline SVG */}
-      <svg
-        className="pointer-events-none absolute bottom-0 left-0 z-2 w-full"
-        viewBox="0 0 1928 100"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        preserveAspectRatio="none"
-        aria-hidden="true"
-        style={{ height: "48px", marginBottom: "-1px" }}
+      <div
+        className="hero-load hero-load-fade pointer-events-none absolute bottom-0 left-0 z-2 w-full"
+        style={heroLoadStyle("180ms", "420ms")}
       >
-        <path
-          d="M0 100L0 48L333.219 20L647.878 48L965.561 20L1277.31 48L1600.81 20L1928 48V100H0Z"
-          fill="white"
-        />
-        <defs>
-          <filter id="zigzag-blur">
-            <feGaussianBlur stdDeviation="15" />
-          </filter>
-          <clipPath id="zigzag-clip">
-            <path d="M0 100L0 48L333.219 20L647.878 48L965.561 20L1277.31 48L1600.81 20L1928 48V100H0Z" />
-          </clipPath>
-        </defs>
-        <g
-          filter="url(#zigzag-blur)"
-          clipPath="url(#zigzag-clip)"
+        <svg
+          className="w-full"
+          viewBox="0 0 1928 100"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="none"
+          aria-hidden="true"
+          style={{ height: "48px", marginBottom: "-1px" }}
         >
-          <path d="M0 100V0H1928V100H0Z" />
           <path
-            d="M-8 49L333.219 20L647.878 48L965.561 20L1277.31 48L1600.81 20L1936 49"
-            stroke="black"
-            strokeWidth="10"
+            d="M0 100L0 56L333.219 5L647.878 56L965.561 5L1277.31 56L1600.81 5L1928 56V100H0Z"
+            fill="white"
           />
-        </g>
-      </svg>
+          <defs>
+            <filter id="zigzag-blur">
+              <feGaussianBlur stdDeviation="15" />
+            </filter>
+            <clipPath id="zigzag-clip">
+              <path d="M0 100L0 56L333.219 5L647.878 56L965.561 5L1277.31 56L1600.81 5L1928 56V100H0Z" />
+            </clipPath>
+          </defs>
+          <g filter="url(#zigzag-blur)" clipPath="url(#zigzag-clip)">
+            <path d="M0 100V0H1928V100H0Z" />
+            <path
+              d="M-8 49L333.219 5L647.878 56L965.561 5L1277.31 56L1600.81 5L1936 49"
+              stroke="black"
+              strokeWidth="10"
+            />
+          </g>
+        </svg>
+      </div>
 
       {/* Franken map silhouette — inline SVG */}
-      <FrankenMap className="pointer-events-none absolute right-0 top-0 z-1 hidden h-11/12 w-auto lg:block" />
+      <div
+        className="hero-load hero-load-right pointer-events-none absolute right-0 top-0 z-1 h-11/12 max-w-full"
+        style={heroLoadStyle("220ms", "700ms")}
+      >
+        <FrankenMap className="h-full w-auto" />
+      </div>
 
       {/* Content layer */}
-      <div className="relative z-10 flex items-center justify-center w-full max-w-7xl mx-auto h-full min-h-200">
+      <div className="relative z-10 mx-auto flex h-full lg:min-h-175 w-full max-w-7xl items-center justify-center px-6">
         {/* Left side - text content */}
         <div className="min-w-0 shrink lg:max-w-185 lg:shrink-0">
-          <h1 className="text-3xl font-semibold leading-[1.1] tracking-[-1.37px] text-[#010202] sm:text-4xl md:text-5xl xl:text-[68.66px]">
-            Ihr{" "}
-            <span className="font-accent text-accent">IT-Service</span>
+          <h1
+            className="hero-load hero-load-up text-3xl font-semibold leading-[1.1] tracking-[-1.37px] text-[#010202] sm:text-4xl md:text-5xl xl:text-[68.66px]"
+            style={heroLoadStyle("140ms", "560ms")}
+          >
+            Ihr {" "}
+            <TypewriterAccent texts={ACCENT_TEXTS} />
             {" "}Partner aus Franken
           </h1>
 
-          <p className="mt-4 max-w-185 text-lg font-light leading-normal text-[#010202]">
-            Zephtor provides ongoing support and training to ensure you maximize
-            the value of our software. Our experts are here to assist you at
-            every step of your digital transformation journey.
+          <p
+            className="hero-load hero-load-up mt-4 max-w-185 text-lg font-light leading-normal text-[#010202]"
+            style={heroLoadStyle("240ms", "560ms")}
+          >
+            Wir betreuen die IT von Unternehmen in Franken: persönlich,
+            sicher und zuverlässig im Alltag.
           </p>
 
-          <div className="mt-8 flex flex-wrap gap-2.5">
+          <div
+            className="hero-load hero-load-up mt-8 flex flex-wrap gap-2.5"
+            style={heroLoadStyle("320ms", "560ms")}
+          >
             <Button renderAs="link" href="/kontakt" variant="primary">
-              Beratung anfragen
+              Beratung vereinbaren
             </Button>
             <Button renderAs="link" href="/leistungen" variant="secondary">
-              Unsere Leistungen
+              Leistungen ansehen
             </Button>
           </div>
         </div>
 
         {/* Right side - feature cards */}
-        <div className="relative ml-auto hidden h-150 w-185 shrink-0 lg:block">
-          <FeatureCard
-            title="Regional aus Nürnberg"
-            description="Sixty zippers were quickly picked from the woven jute bag"
-            className="absolute left-[40%] top-10 w-84"
-          />
-          <FeatureCard
-            title="Regional aus Nürnberg"
-            description="Sixty zippers were quickly picked from the woven jute bag"
-            className="absolute left-[20%] top-115 w-84"
-          />
-          <FeatureCard
-            title="Regional aus Nürnberg"
-            description="Sixty zippers were quickly picked from the woven jute bag"
-            className="absolute right-0 top-62.5 w-84"
-          />
+        <div className="relative ml-auto hidden h-150 lg:block">
+          <div
+            className="hero-load hero-load-up absolute right-[36%] top-45 w-84"
+            style={heroLoadStyle("300ms", "620ms")}
+          >
+            <FeatureCard
+              title="Direkt aus Nürnberg"
+              description="Kurze Wege. Schnelle Hilfe."
+              className="[--feature-duration:19s] [--feature-delay:-2s] [--feature-float-x:10px] [--feature-float-y:7px] [--feature-rotate:0.35deg]"
+            />
+          </div>
+          <div
+            className="hero-load hero-load-up absolute right-[25%] top-102 w-84"
+            style={heroLoadStyle("380ms", "620ms")}
+          >
+            <FeatureCard
+              title="Persönlicher Kontakt"
+              description="Ein Team, das Ihre IT kennt."
+              className="[--feature-duration:22s] [--feature-delay:-8s] [--feature-float-x:-8px] [--feature-float-y:9px] [--feature-rotate:0.45deg]"
+            />
+          </div>
+          <div
+            className="hero-load hero-load-up absolute right-20 top-76 w-84"
+            style={heroLoadStyle("460ms", "620ms")}
+          >
+            <FeatureCard
+              title="Stabil im Alltag"
+              description="Saubere Lösungen für den Alltag."
+              className="[--feature-duration:21s] [--feature-delay:-5s] [--feature-float-x:7px] [--feature-float-y:-8px] [--feature-rotate:0.3deg]"
+            />
+          </div>
         </div>
       </div>
     </section>

@@ -17,9 +17,9 @@ const ibmPlexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "FrankenSolution - Ihr IT-Service Partner aus Franken",
+  title: "Franken Solution | IT-Sicherheit und stabiler IT-Betrieb",
   description:
-    "FrankenSolution ist Ihr regionaler IT-Service Partner aus Franken. Wir bieten professionelle IT-Beratung und digitale Transformation.",
+    "Franken Solution sichert und betreibt hybride IT-Umgebungen fuer Unternehmen mit klaren Standards, festen Ansprechpartnern und planbaren Managed Services.",
 };
 
 export default function RootLayout({
@@ -29,7 +29,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
+      lang="de"
       className={`${ibmPlexSans.variable} ${ibmPlexMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col font-sans">{children}</body>
