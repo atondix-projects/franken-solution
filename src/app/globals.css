@@ -7,6 +7,12 @@
   --foreground-muted: #2f2f2f;
   --accent: #e30613;
   --accent-foreground: #ffffff;
+
+  /* ── Elevation system (4 tiers: ambient + key shadow + 1px hairline ring) */
+  --elev-0: 0 1px 1px rgba(15, 23, 42, 0.03);
+  --elev-1: 0 1px 2px rgba(15, 23, 42, 0.04), 0 4px 16px rgba(15, 23, 42, 0.06), inset 0 0 0 1px rgba(15, 23, 42, 0.04);
+  --elev-2: 0 1px 3px rgba(15, 23, 42, 0.06), 0 10px 28px rgba(15, 23, 42, 0.09), inset 0 0 0 1px rgba(15, 23, 42, 0.05);
+  --elev-3: 0 2px 4px rgba(15, 23, 42, 0.08), 0 18px 44px rgba(15, 23, 42, 0.13), inset 0 0 0 1px rgba(15, 23, 42, 0.07);
 }
 
 @theme inline {
@@ -47,6 +53,13 @@ body {
   backdrop-filter: blur(8px);
 }
 
+/* Skip rendering and layout for offscreen sections. Applied per-section below the fold. */
+@utility cv-auto-section {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 600px;
+}
+
+
 @keyframes feature-card-flow {
 
   0%,
@@ -85,6 +98,40 @@ body {
     box-shadow 320ms cubic-bezier(0.22, 1, 0.36, 1),
     background 320ms ease;
   will-change: transform;
+}
+
+.founder-card {
+  box-shadow: var(--elev-1);
+  transition:
+    box-shadow 320ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 320ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: box-shadow, transform;
+}
+
+@media (hover: hover) {
+  .founder-card:hover {
+    box-shadow: var(--elev-2);
+    transform: translateY(-3px);
+  }
+
+  .founder-card:hover .founder-accent-bar {
+    transform: scaleX(1);
+  }
+}
+
+.founder-accent-bar {
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 300ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .founder-card {
+    transition: box-shadow 160ms ease;
+  }
+  .founder-accent-bar {
+    transition: none;
+  }
 }
 
 @keyframes hero-load-up {
@@ -236,12 +283,7 @@ body {
   stroke-width: 2;
 }
 
-@media (hover: hover) and (pointer: fine) {
-  .feature-card-flow:hover .feature-card-surface {
-    transform: translateY(-4px) scale(1.012);
-    box-shadow: 0 12px 26px rgba(0, 0, 0, 0.14);
-  }
-}
+/* Shadow on hover is handled by .card-depth:hover; transform handled by useTilt */
 
 @media (prefers-reduced-motion: reduce) {
   html {
@@ -262,10 +304,6 @@ body {
 
   .feature-card-surface {
     transition: box-shadow 160ms ease;
-  }
-
-  .feature-card-flow:hover .feature-card-surface {
-    transform: none;
   }
 
   .brand-logo-reveal {
@@ -340,7 +378,33 @@ body {
   }
 }
 
+@keyframes reveal-premium {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 18px, 0) scale(0.978);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes icon-pop-in {
+  from {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 [data-revealed="false"] {
+  opacity: 0;
+}
+
+[data-revealed="false"] .icon-pop-in {
   opacity: 0;
 }
 
@@ -366,6 +430,16 @@ body {
 }
 [data-revealed="true"][data-reveal-direction="fade"] {
   animation-name: reveal-fade;
+}
+[data-revealed="true"][data-reveal-direction="premium"] {
+  animation-name: reveal-premium;
+  animation-duration: 700ms;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-revealed="true"] .icon-pop-in {
+  animation: icon-pop-in 500ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  animation-delay: calc(var(--reveal-delay, 0ms) + 80ms);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────
@@ -422,9 +496,7 @@ body {
 @media (hover: hover) and (pointer: fine) {
   .premium-card:hover {
     transform: translateY(-4px);
-    box-shadow:
-      0 8px 30px rgba(0, 0, 0, 0.08),
-      0 0 0 1px rgba(227, 6, 19, 0.08);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
   }
 }
 
@@ -433,6 +505,8 @@ body {
    ───────────────────────────────────────────────────────────────────────── */
 
 .icon-chip-glow {
+  --chip-hover-scale: 1;
+  transform: scale(var(--chip-hover-scale));
   transition:
     background-color 300ms ease,
     box-shadow 300ms ease,
@@ -443,7 +517,7 @@ body {
   .group:hover .icon-chip-glow {
     background-color: rgba(227, 6, 19, 0.14);
     box-shadow: 0 0 18px rgba(227, 6, 19, 0.15);
-    transform: scale(1.06);
+    --chip-hover-scale: 1.06;
   }
 }
 
@@ -611,11 +685,13 @@ body {
    ───────────────────────────────────────────────────────────────────────── */
 
 @media (prefers-reduced-motion: reduce) {
-  [data-revealed="false"] {
+  [data-revealed="false"],
+  [data-revealed="false"] .icon-pop-in {
     opacity: 1;
   }
 
-  [data-revealed="true"] {
+  [data-revealed="true"],
+  [data-revealed="true"] .icon-pop-in {
     animation: none;
     opacity: 1;
     transform: none;
@@ -703,4 +779,431 @@ body {
 .terminal-caret {
   height: 0.08em;
   animation: terminal-caret-blink 1.15s step-end infinite;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   Premium card & ambient effects
+   ───────────────────────────────────────────────────────────────────────── */
+
+@keyframes reveal-premium {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes icon-tilt-idle {
+  0% {
+    transform: perspective(120px) rotateY(0deg) rotateX(0deg);
+  }
+  30% {
+    transform: perspective(120px) rotateY(2deg) rotateX(0.5deg);
+  }
+  60% {
+    transform: perspective(120px) rotateY(-1.5deg) rotateX(-0.5deg);
+  }
+  100% {
+    transform: perspective(120px) rotateY(0deg) rotateX(0deg);
+  }
+}
+
+@keyframes count-up-underline {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes aurora-drift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes dash-flow {
+  from {
+    stroke-dashoffset: 20;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes subtle-breath {
+  0%,
+  100% {
+    box-shadow:
+      0 4px 16px rgba(0, 0, 0, 0.10),
+      0 0 0 1px rgba(227, 6, 19, 0.04);
+  }
+  50% {
+    box-shadow:
+      0 8px 28px rgba(0, 0, 0, 0.14),
+      0 0 0 1px rgba(227, 6, 19, 0.10);
+  }
+}
+
+@keyframes gradient-text-sweep {
+  from {
+    background-position: 0% center;
+  }
+  to {
+    background-position: 100% center;
+  }
+}
+
+/* ScrollReveal "premium" variant */
+
+[data-revealed="true"][data-reveal-direction="premium"] {
+  animation-name: reveal-premium;
+  animation-duration: 900ms;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   Card spotlight (cursor-tracked radial glow)
+   ───────────────────────────────────────────────────────────────────────── */
+
+.card-spotlight {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.card-spotlight::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    220px circle at var(--pointer-x, 50%) var(--pointer-y, 50%),
+    rgba(227, 6, 19, 0.04) 0%,
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 320ms ease;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .card-spotlight:hover::before {
+    opacity: 1;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   Card depth shadow
+   ───────────────────────────────────────────────────────────────────────── */
+
+.card-depth {
+  box-shadow:
+    0 1px 2px rgba(5, 5, 5, 0.04),
+    0 8px 24px rgba(5, 5, 5, 0.06),
+    0 24px 48px rgba(5, 5, 5, 0.04);
+  transition: box-shadow 360ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .card-depth:hover {
+    box-shadow:
+      0 1px 2px rgba(5, 5, 5, 0.05),
+      0 12px 32px rgba(5, 5, 5, 0.10),
+      0 32px 64px rgba(5, 5, 5, 0.07),
+      0 0 0 1px rgba(227, 6, 19, 0.06);
+  }
+}
+
+
+/* ─────────────────────────────────────────────────────────────────────────
+   Accent rail full-height (scroll-revealed left border for service cards)
+   ───────────────────────────────────────────────────────────────────────── */
+
+.accent-rail-full {
+  transform-origin: top center;
+  transition:
+    opacity 350ms ease,
+    transform 450ms cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 300ms ease;
+}
+
+[data-revealed="false"] .accent-rail-full {
+  opacity: 0;
+  transform: scaleY(0);
+}
+
+[data-revealed="true"] .accent-rail-full {
+  opacity: 1;
+  transform: scaleY(1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .group:hover .accent-rail-full {
+    background-color: rgba(227, 6, 19, 0.85) !important;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   Magnetic target (JS sets --magnetic-x/y CSS vars)
+   ───────────────────────────────────────────────────────────────────────── */
+
+.magnetic-target {
+  transform: translate(var(--magnetic-x, 0px), var(--magnetic-y, 0px));
+  transition: transform 160ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   Aurora band (ambient background gradient layer)
+   ───────────────────────────────────────────────────────────────────────── */
+
+.aurora-band {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 20% 50%, rgba(227, 6, 19, 0.08) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 80% at 80% 30%, rgba(5, 5, 5, 0.06) 0%, transparent 60%);
+  background-size: 200% 200%;
+  animation: aurora-drift 18s ease-in-out infinite;
+  will-change: background-position;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   Count-up underline (accent line under stat counters)
+   ───────────────────────────────────────────────────────────────────────── */
+
+.count-up-underline {
+  display: block;
+  height: 2px;
+  margin-top: 4px;
+  background: var(--accent);
+  transform-origin: left center;
+  transform: scaleX(0);
+  border-radius: 1px;
+}
+
+.count-up-underline.is-visible {
+  animation: count-up-underline 600ms cubic-bezier(0.22, 1, 0.36, 1) 800ms both;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   Counter card breath (pulsing glow for About counters while in view)
+   ───────────────────────────────────────────────────────────────────────── */
+
+.counter-card-breath {
+  animation: subtle-breath 5s ease-in-out infinite;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   Icon tilt idle (perpetual 3D tilt for icon chips)
+   ───────────────────────────────────────────────────────────────────────── */
+
+.icon-tilt-idle-active {
+  animation: icon-tilt-idle 8s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+  will-change: transform;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   Gradient text sweep (one-shot animated gradient on headings)
+   ───────────────────────────────────────────────────────────────────────── */
+
+.gradient-text-sweep-active {
+  background: linear-gradient(
+    90deg,
+    #ffffff 0%,
+    var(--accent) 42%,
+    #ffffff 80%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-text-sweep 1.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   Dash flow path (SVG connector elements with flowing dash)
+   ───────────────────────────────────────────────────────────────────────── */
+
+.dash-flow-path {
+  stroke-dasharray: 8 4;
+  stroke-dashoffset: 20;
+}
+
+[data-revealed="true"] .dash-flow-path {
+  animation: dash-flow 1.2s linear infinite;
+}
+
+/* Hub diagram animations */
+.hub-center-glow {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: glow-pulse 3.5s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+}
+
+.hub-orbit-ring {
+  stroke-dasharray: 18 8;
+  animation: hub-ring-rotate 14s linear infinite;
+}
+
+@keyframes hub-ring-rotate {
+  from { stroke-dashoffset: 0; }
+  to { stroke-dashoffset: -104; }
+}
+
+
+
+/* ─────────────────────────────────────────────────────────────────────────
+   Grain overlay (SVG fractal noise pseudo-element for tactile texture)
+   ───────────────────────────────────────────────────────────────────────── */
+
+.grain-overlay {
+  position: relative;
+  isolation: isolate;
+}
+
+.grain-overlay::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.04;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='256' height='256'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='256' height='256' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+  border-radius: inherit;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   Alt aurora layer (second drift layer for FinalCta depth)
+   ───────────────────────────────────────────────────────────────────────── */
+
+.aurora-band--alt {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse 60% 70% at 75% 40%, rgba(227, 6, 19, 0.05) 0%, transparent 60%),
+    radial-gradient(ellipse 80% 50% at 25% 70%, rgba(5, 5, 5, 0.04) 0%, transparent 60%);
+  background-size: 200% 200%;
+  animation: aurora-drift 26s ease-in-out infinite;
+  animation-delay: -13s;
+  will-change: background-position;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   Mono telemetry caption (IBM Plex Mono inline metric labels)
+   ───────────────────────────────────────────────────────────────────────── */
+
+.telemetry-caption {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--foreground);
+  opacity: 0.38;
+  line-height: 1;
+  user-select: none;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   Reduced motion — disable premium card & ambient effects
+   ───────────────────────────────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  .aurora-band {
+    animation: none;
+    background-size: 100% 100%;
+  }
+
+  .card-spotlight::before {
+    display: none;
+  }
+
+  .card-depth,
+  .card-depth:hover {
+    box-shadow: 0 1px 2px rgba(5, 5, 5, 0.06);
+    transition: none;
+  }
+
+.magnetic-target {
+    transform: none !important;
+    transition: none;
+    will-change: auto;
+  }
+
+  .icon-tilt-idle-active {
+    animation: none;
+  }
+
+  .counter-card-breath {
+    animation: none;
+  }
+
+  .count-up-underline.is-visible {
+    animation: none;
+    transform: scaleX(1);
+  }
+
+  .gradient-text-sweep-active {
+    animation: none;
+    /* Remove background-clip trick so the text color is rendered normally.
+       Without this reset the text would be transparent (#050505 on #050505)
+       on the dark FinalCta background, failing WCAG 1.4.3. */
+    background: none;
+    -webkit-background-clip: unset;
+    background-clip: unset;
+    -webkit-text-fill-color: currentColor;
+    color: inherit;
+  }
+
+  [data-revealed="true"][data-reveal-direction="premium"] {
+    animation: none;
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+
+  .dash-flow-path {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+
+  .hub-center-glow,
+  .hub-orbit-ring {
+    animation: none;
+  }
+
+  .accent-rail-full {
+    transition: background-color 200ms ease;
+  }
+
+  .grain-overlay::after {
+    opacity: 0.02;
+  }
+
+  .aurora-band--alt {
+    animation: none;
+    background-size: 100% 100%;
+  }
+
 }

@@ -69,6 +69,7 @@ export function InteractiveNetworkBackground({
   const animationFrameRef = useRef<number>(0);
   const lastFrameTimeRef = useRef<number>(0);
   const dimensionsRef = useRef({ width: 0, height: 0 });
+  const isInViewRef = useRef(true);
   const configRef = useRef({
     particleColor,
     lineColor,
@@ -324,12 +325,24 @@ export function InteractiveNetworkBackground({
       syncCanvasSize(rect.width, rect.height);
     };
 
+    // Self-pausing loop: exits without rescheduling when off-screen or tab hidden
     const loop = (time: number) => {
+      if (!isInViewRef.current || document.hidden) {
+        animationFrameRef.current = 0;
+        return;
+      }
+
       const previousTime = lastFrameTimeRef.current || time;
       const delta = time - previousTime;
       lastFrameTimeRef.current = time;
 
       drawFrame(delta);
+      animationFrameRef.current = window.requestAnimationFrame(loop);
+    };
+
+    const startLoop = () => {
+      if (animationFrameRef.current !== 0) return;
+      lastFrameTimeRef.current = 0;
       animationFrameRef.current = window.requestAnimationFrame(loop);
     };
 
@@ -363,10 +376,35 @@ export function InteractiveNetworkBackground({
     interactionRoot.addEventListener("pointerleave", resetPointer);
     interactionRoot.addEventListener("pointercancel", resetPointer);
 
+    // Gate RAF to viewport — large rootMargin avoids pop-in when scrolling quickly
+    const intersectionObserver = new IntersectionObserver(
+      ([entry]) => {
+        isInViewRef.current = entry.isIntersecting;
+        if (entry.isIntersecting && !document.hidden) {
+          startLoop();
+        }
+      },
+      { rootMargin: "200px 0px" },
+    );
+
+    intersectionObserver.observe(surface);
+
+    // Resume loop when user returns to the tab
+    const handleVisibilityChange = () => {
+      if (!document.hidden && isInViewRef.current) {
+        startLoop();
+      }
+    };
+
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+
+    // Start immediately (IO callback fires async; this ensures no blank frame on mount)
     animationFrameRef.current = window.requestAnimationFrame(loop);
 
     return () => {
       resizeObserver.disconnect();
+      intersectionObserver.disconnect();
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
       interactionRoot.removeEventListener("pointermove", handlePointerMove);
       interactionRoot.removeEventListener("pointerleave", resetPointer);
       interactionRoot.removeEventListener("pointercancel", resetPointer);
