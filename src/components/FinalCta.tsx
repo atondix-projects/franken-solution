@@ -102,7 +102,7 @@ export function FinalCta() {
         >
           <div
             ref={magneticRef}
-            className="cta-glow-ring magnetic-target rounded-md transition-[box-shadow] duration-200 active:shadow-none"
+            className="magnetic-target rounded-md"
           >
             <Button renderAs="link" href={content.primaryCta.href} variant="primary">
               <span className="flex items-center gap-2">
