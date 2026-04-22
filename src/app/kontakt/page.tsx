@@ -34,14 +34,36 @@ export const metadata: Metadata = {
   },
 };
 
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  name: "Franken Solution",
+  description:
+    "IT-Sicherheit und Managed Services für hybride IT-Umgebungen in der Metropolregion Nürnberg.",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://frankensolution.de",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Nürnberg",
+    addressRegion: "Bayern",
+    addressCountry: "DE",
+  },
+  areaServed: "Metropolregion Nürnberg",
+};
+
 export default function KontaktPage() {
   return (
-    <SiteFrame>
-      <KontaktHero />
-      <ContactMethodsGrid />
-      <DirectDrahtStrip />
-      <StandortMap />
-      <KontaktCta />
-    </SiteFrame>
+    <>
+      <SiteFrame>
+        <KontaktHero />
+        <ContactMethodsGrid />
+        <DirectDrahtStrip />
+        <StandortMap />
+        <KontaktCta />
+      </SiteFrame>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+      />
+    </>
   );
 }
