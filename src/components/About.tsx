@@ -1,45 +1,13 @@
+"use client";
+
 import { homepageContent } from "@/content/homepage";
+import { useCountUp } from "@/hooks/useCountUp";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { Button } from "./ui/Button";
 import { ScrollReveal } from "./ScrollReveal";
+import { Icon } from "./ui/Icon";
 
 const content = homepageContent.about;
-
-function ShieldCheckIcon() {
-  return (
-    <svg
-      width="48"
-      height="48"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-    >
-      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-      <polyline points="9 12 11 14 15 10" />
-    </svg>
-  );
-}
-
-function CheckmarkIcon() {
-  return (
-    <svg
-      width="18"
-      height="18"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-    >
-      <polyline points="20 6 9 17 4 12" />
-    </svg>
-  );
-}
 
 const differentiators = [
   "Klare Standards und nachvollziehbare Dokumentation",
@@ -47,12 +15,50 @@ const differentiators = [
   "Herstellerneutrale Empfehlungen",
 ] as const;
 
+interface CounterCardProps {
+  value: string;
+  label: string;
+  index: number;
+}
+
+function parseCounterValue(value: string): { num: number; suffix: string } {
+  const match = value.match(/^(\d+)(.*)$/);
+  if (!match) return { num: 0, suffix: value };
+  return { num: parseInt(match[1], 10), suffix: match[2] };
+}
+
+function CounterCard({ value, label }: CounterCardProps) {
+  const { num, suffix } = parseCounterValue(value);
+  const { ref, isVisible } = useScrollReveal({ threshold: 0.5 });
+  const animated = useCountUp(num, { durationMs: 1400, enabled: isVisible });
+
+  return (
+    <div
+      ref={ref as (node: HTMLDivElement | null) => void}
+      className="counter-card-breath card-depth premium-card glass-card flex flex-col items-center rounded-xl px-3 py-4 text-center"
+      style={{ boxShadow: "var(--elev-1)" }}
+    >
+      <span
+        className="font-mono text-xl font-bold leading-none text-accent sm:text-2xl"
+        aria-label={value}
+        aria-live="off"
+      >
+        {animated}{suffix}
+      </span>
+      <span className={`count-up-underline ${isVisible ? "is-visible" : ""}`} aria-hidden="true" />
+      <span className="mt-1.5 text-xs font-medium leading-tight text-foreground-muted">
+        {label}
+      </span>
+    </div>
+  );
+}
+
 export function About() {
   return (
     <section className="overflow-hidden py-20 lg:py-28">
       <div className="mx-auto max-w-7xl px-6">
         <div className="flex flex-col gap-12 lg:flex-row lg:items-center lg:gap-16">
-          {/* Left: image + counters */}
+          {/* Left: diorama + counters */}
           <ScrollReveal
             direction="left"
             className="relative w-full lg:w-[52%] lg:shrink-0"
@@ -67,46 +73,39 @@ export function About() {
               }}
             />
 
-            {/* Image area */}
+            {/* Image placeholder */}
             <div
-              className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-foreground/5"
-              aria-hidden="true"
+              className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-background-muted grain-overlay flex flex-col items-center justify-center gap-3"
+              style={{ boxShadow: "var(--elev-1)" }}
             >
-              {/* Placeholder visual — replace with <Image> once a real photo is available */}
-              <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 text-foreground/20">
-                <ShieldCheckIcon />
-                <span className="font-mono text-xs tracking-widest uppercase">
-                  Placeholder: Bild folgt
-                </span>
-              </div>
-              {/* Subtle accent gradient overlay */}
-              <div
-                className="pointer-events-none absolute inset-0"
-                style={{
-                  background:
-                    "linear-gradient(135deg, rgba(227,6,19,0.06) 0%, transparent 60%)",
-                }}
-              />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="size-16 text-foreground-muted/40"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={1}
+                aria-label="Bild folgt"
+                role="img"
+              >
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2" strokeLinecap="round" strokeLinejoin="round" />
+                <circle cx="8.5" cy="8.5" r="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                <polyline points="21 15 16 10 5 21" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+              <span className="font-mono text-xs uppercase tracking-widest text-foreground-muted/40">
+                Bild folgt
+              </span>
             </div>
 
-            {/* Counters — overlapping bottom edge of image */}
+            {/* Counters — overlapping bottom edge of diorama */}
             <div className="absolute -bottom-6 left-4 right-4 grid grid-cols-3 gap-3 sm:left-6 sm:right-6">
               {content.counters.map((counter, i) => (
-                <ScrollReveal
+                <CounterCard
                   key={counter.label}
-                  direction="up"
-                  stagger={80}
+                  value={counter.value}
+                  label={counter.label}
                   index={i}
-                  delay={200}
-                  className="premium-card glass-card flex flex-col items-center rounded-xl px-3 py-4 shadow-[0px_4px_16px_rgba(0,0,0,0.12)] text-center"
-                >
-                  <span className="font-mono text-xl font-bold leading-none text-accent sm:text-2xl">
-                    {counter.value}
-                  </span>
-                  <span className="mt-1.5 text-xs font-medium leading-tight text-foreground-muted">
-                    {counter.label}
-                  </span>
-                </ScrollReveal>
+                />
               ))}
             </div>
           </ScrollReveal>
@@ -130,7 +129,7 @@ export function About() {
               {differentiators.map((item) => (
                 <li key={item} className="group flex items-start gap-3">
                   <span className="icon-chip-glow mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-full bg-accent/10 text-accent">
-                    <CheckmarkIcon />
+                    <Icon name="check" className="size-3" />
                   </span>
                   <span className="text-sm font-medium leading-snug text-foreground">
                     {item}

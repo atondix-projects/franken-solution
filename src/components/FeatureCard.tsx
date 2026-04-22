@@ -1,29 +1,29 @@
-function LocationPinIcon() {
-  return (
-    <svg
-      width="32"
-      height="32"
-      viewBox="0 0 24 24"
-      fill="currentColor"
-      aria-hidden="true"
-    >
-      <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z" />
-    </svg>
-  );
-}
+"use client";
+
+import type { ReactNode } from "react";
+
+import { useCardSpotlight } from "@/hooks/useCardSpotlight";
 
 interface FeatureCardProps {
+  icon: ReactNode;
   title: string;
   description: string;
   className?: string;
 }
 
-export function FeatureCard({ title, description, className }: FeatureCardProps) {
+export function FeatureCard({ icon, title, description, className }: FeatureCardProps) {
+  const { ref, onMouseMove, onMouseLeave } = useCardSpotlight<HTMLDivElement>();
+
   return (
     <div className={`feature-card-flow ${className ?? ""}`}>
-      <div className="feature-card-surface glass-card flex w-full items-center gap-3 rounded-[18px] py-3 pl-3 pr-3.5 shadow-[0px_4px_8px_0px_rgba(0,0,0,0.25)]">
-        <div className="flex size-16 shrink-0 items-center justify-center rounded-md border border-[#343330] bg-[rgba(52,51,48,0.1)] text-[#343330] shadow-[0px_2px_2px_rgba(0,0,0,0.25)]">
-          <LocationPinIcon />
+      <div
+        ref={ref}
+        onMouseMove={onMouseMove}
+        onMouseLeave={onMouseLeave}
+        className="feature-card-surface glass-card card-spotlight card-depth flex w-full items-center gap-3 rounded-[18px] py-3 pl-3 pr-3.5"
+      >
+        <div className="flex size-16 shrink-0 items-center justify-center rounded-md border border-foreground/35 bg-foreground/10 text-foreground shadow-[0px_2px_2px_rgba(0,0,0,0.25)]">
+          {icon}
         </div>
         <div className="flex flex-col">
           <p className="text-[22.5px] font-medium leading-[1.2] text-[#010202]">

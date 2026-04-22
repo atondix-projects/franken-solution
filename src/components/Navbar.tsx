@@ -136,7 +136,7 @@ export function Navbar() {
               : FULL_BLEED_MAX_WIDTH,
           }}
           className={`mx-auto w-full border transition-[max-width,border-radius,box-shadow,background-color,border-color,backdrop-filter] duration-[580ms] ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none ${isShellCompact
-            ? "rounded-[1.75rem] border-black/10 bg-white/72 shadow-[0_18px_42px_rgba(5,5,5,0.14)] backdrop-blur-xl"
+            ? "rounded-[1.75rem] border-black/10 bg-white/72 shadow-[0_1px_3px_rgba(5,5,5,0.06),0_10px_28px_rgba(5,5,5,0.12),0_24px_48px_rgba(5,5,5,0.04)] backdrop-blur-xl"
             : "rounded-none border-x-0 border-t-0 border-b border-black/8 bg-white/20 shadow-none backdrop-blur-md"
             }`}
         >
@@ -185,13 +185,15 @@ export function Navbar() {
                       className={`group relative flex items-center font-medium uppercase transition-[font-size,letter-spacing,padding,color] duration-[460ms] ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none ${isContentCompact
                         ? "py-1.5 text-xs tracking-[0.18em]"
                         : "py-2 text-sm tracking-[0.14em]"
-                        } ${isActive ? "text-accent" : "text-foreground hover:text-accent"
+                        } ${isActive
+                          ? "text-accent bg-accent/[0.07] rounded-full px-2.5"
+                          : "text-foreground hover:text-accent"
                         }`}
                     >
                       <span className="relative z-10">{link.label}</span>
                       <span
                         className={`absolute -bottom-0.5 left-0 h-0.5 rounded-full bg-accent transition-all duration-300 ease-out ${isActive
-                          ? "w-full opacity-100"
+                          ? "w-0 opacity-0"
                           : "w-0 opacity-0 group-hover:w-full group-hover:opacity-100"
                           }`}
                       />
@@ -213,7 +215,7 @@ export function Navbar() {
                   onClick={() => setIsOpen(false)}
                   className="transition-[box-shadow] duration-[460ms] ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none"
                 >
-                  Kontaktiere uns
+                  Kontakt aufnehmen
                 </Button>
               </div>
 
@@ -226,7 +228,7 @@ export function Navbar() {
                     }`}
                   aria-expanded={isOpen}
                   aria-controls="mobile-nav"
-                  aria-label={isOpen ? "Menue schliessen" : "Menue oeffnen"}
+                  aria-label={isOpen ? "Menü schließen" : "Menü öffnen"}
                 >
                   <span
                     className={`h-[2px] rounded-full bg-foreground transition-all duration-300 ease-in-out ${isContentCompact ? "w-5" : "w-6"

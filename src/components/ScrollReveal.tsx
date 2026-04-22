@@ -3,7 +3,7 @@
 import { type ElementType, type ReactNode, CSSProperties } from "react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
-type RevealDirection = "up" | "left" | "right" | "fade" | "scale";
+type RevealDirection = "up" | "left" | "right" | "fade" | "scale" | "premium";
 
 interface ScrollRevealProps {
   children: ReactNode;

@@ -1,57 +1,60 @@
 import { homepageContent } from "@/content/homepage";
 import type { TrustSectionContent } from "@/content/homepage";
 import { ScrollReveal } from "./ScrollReveal";
-import { AnimatedShieldMark } from "./AnimatedShieldMark";
+import { Icon } from "./ui/Icon";
 
 const content = homepageContent.trust;
 
 type TrustItem = TrustSectionContent["items"][number];
 
-// One topic-matched icon per trust item
-const ITEM_ICONS = [
-  // Feste Ansprechpartner — person with headset
-  <svg key="0" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-    <circle cx="12" cy="7" r="4" />
-    <path d="M22 15.5c0 1.4-.6 2.6-1.5 3.5" strokeWidth="1.75" />
-    <path d="M22 12v3.5" strokeWidth="1.75" />
-  </svg>,
-  // Klare Standards und Dokumentation — clipboard check
-  <svg key="1" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-    <path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2" />
-    <rect x="9" y="3" width="6" height="4" rx="2" ry="2" />
-    <path d="m9 12 2 2 4-4" />
-  </svg>,
-  // Herstellerneutral — scales / balance
-  <svg key="2" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-    <line x1="12" y1="3" x2="12" y2="21" />
-    <path d="M5 7l7-4 7 4" />
-    <path d="M3 12l4 5H3l4-5z" />
-    <path d="M21 12l-4 5h4l-4-5z" />
-    <line x1="4" y1="19" x2="20" y2="19" />
-  </svg>,
-  // Franken lokal + remote — map pin + wifi
-  <svg key="3" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
-    <circle cx="12" cy="9" r="2.5" />
-  </svg>,
-] as const;
+function TrustConnector({ index }: { index: number }) {
+  const gradId = `trust-grad-${index}`;
+  return (
+    <svg
+      className="connector-grow-y mt-2 flex-1"
+      aria-hidden="true"
+      viewBox="0 0 8 100"
+      preserveAspectRatio="none"
+      fill="none"
+      style={{
+        ["--connector-delay" as string]: `${80 + index * 120}ms`,
+        minHeight: "3rem",
+        width: "2px",
+      }}
+    >
+      <defs>
+        <linearGradient id={gradId} x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="rgba(227,6,19,0.25)" />
+          <stop offset="50%" stopColor="rgba(5,5,5,0.10)" />
+          <stop offset="100%" stopColor="rgba(5,5,5,0.04)" />
+        </linearGradient>
+      </defs>
+      {/* Sinuous bezier path */}
+      <path
+        d="M 4 0 C 7 20, 1 40, 4 60 S 7 80, 4 100"
+        stroke={`url(#${gradId})`}
+        strokeWidth="1.5"
+        className="dash-flow-path"
+      />
+      {/* Pulsing node at midpoint */}
+      <circle cx="4" cy="50" r="2.5" fill="rgba(227,6,19,0.18)" />
+    </svg>
+  );
+}
 
 function TrustItemRow({ item, index }: { item: TrustItem; index: number }) {
   return (
     <div className="group flex gap-5">
-      {/* Left: icon + vertical line */}
+      {/* Left: icon + sinuous connector line */}
       <div className="flex flex-col items-center gap-0">
-        <span className="icon-chip-glow flex size-10 shrink-0 items-center justify-center rounded-xl bg-accent/8 text-accent">
-          {ITEM_ICONS[index]}
+        <span
+          className="icon-chip-glow flex size-10 shrink-0 items-center justify-center rounded-xl bg-accent/8 text-accent"
+          style={{ transitionDelay: `${index * 120}ms` }}
+        >
+          <Icon name={item.iconKey} className="size-5" />
         </span>
-        {/* connector line — hidden on last item, grows downward on reveal */}
         {index < content.items.length - 1 && (
-          <div
-            className="connector-grow-y mt-2 w-px flex-1 bg-foreground/8"
-            style={{ ["--connector-delay" as string]: `${80 + index * 120}ms` }}
-            aria-hidden="true"
-          />
+          <TrustConnector index={index} />
         )}
       </div>
 
@@ -76,7 +79,6 @@ export function Trust() {
 
           {/* ── Left column: section intro + decorative shield ── */}
           <ScrollReveal direction="left" className="lg:w-[42%] lg:shrink-0">
-            {/* Sticky on scroll for wide viewports so header stays in view while items scroll */}
             <div className="lg:sticky lg:top-28">
               <p className="font-mono text-xs font-medium uppercase tracking-[0.18em] text-accent">
                 {content.eyebrow}
@@ -88,17 +90,10 @@ export function Trust() {
                 {content.description}
               </p>
 
-              {/* Shield decoration — animated draw */}
-              <div className="mt-10 hidden lg:flex items-center gap-5">
-                <AnimatedShieldMark />
-                <p className="max-w-[18ch] text-xs font-medium leading-snug text-foreground/30 uppercase tracking-[0.12em]">
-                  Strukturiert.{"\n"}Nachvollziehbar.{"\n"}Persoenlich.
-                </p>
-              </div>
             </div>
           </ScrollReveal>
 
-          {/* ── Right column: trust items as connected rows ── */}
+          {/* ── Right column: trust items ── */}
           <div className="flex flex-col lg:flex-1">
             {/* Thin top accent rule */}
             <div

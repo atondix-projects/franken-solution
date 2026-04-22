@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Exclude worktree build artifacts created by Claude Code agents
+    ".claude/**",
   ]),
 ]);
 
