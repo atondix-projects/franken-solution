@@ -12,20 +12,20 @@ export const kontaktContent = {
       {
         iconKey: "phone" as const,
         title: "Telefon",
-        value: "Placeholder: +49 911 000 000",
-        helper: "Placeholder: werktags zu Kernzeiten erreichbar",
+        value: "0911 95898731",
+        helper: "Mo.–Fr. 09:00–17:00 erreichbar",
         action: {
-          href: "tel:+49911000000",
+          href: "tel:091195898731",
           ariaLabel: "Franken Solution anrufen",
         },
       },
       {
         iconKey: "mail" as const,
         title: "E-Mail",
-        value: "Placeholder: info@frankensolution.de",
+        value: "kontakt@franken-solution.de",
         helper: "Antwort in der Regel am selben Arbeitstag",
         action: {
-          href: "mailto:info@frankensolution.de",
+          href: "mailto:kontakt@franken-solution.de",
           ariaLabel: "E-Mail an Franken Solution senden",
         },
       },
@@ -35,7 +35,7 @@ export const kontaktContent = {
         value: "Nürnberg",
         helper: "Metropolregion Franken",
         action: {
-          href: "https://www.google.com/maps/search/?api=1&query=Franken+Solution+N%C3%BCrnberg",
+          href: "https://www.google.com/maps/search/?api=1&query=Winzelb%C3%BCrgstr.+9%2C+90491+N%C3%BCrnberg",
           ariaLabel: "Adresse in Google Maps öffnen",
         },
       },
@@ -53,16 +53,16 @@ export const kontaktContent = {
       "Unser Büro liegt in Nürnberg, mitten in der Metropolregion Franken. Kurze Wege zu unseren Kunden sind kein Versprechen — sie sind ein strukturelles Merkmal unserer Arbeitsweise.",
     address: {
       company: "Franken Solution",
-      street: "Placeholder: Musterstraße 1",
-      zip: "Placeholder: 90000",
+      street: "Winzelbürgstr. 9",
+      zip: "90491",
       city: "Nürnberg",
       region: "Metropolregion Franken",
     },
-    erreichbarkeit: "Placeholder: werktags zu Kernzeiten",
+    erreichbarkeit: "Mo.–Fr. 09:00–17:00",
     map: {
       alt: "Stilisierte Karte der Region Nürnberg",
       outboundUrl:
-        "https://www.google.com/maps/search/?api=1&query=Franken+Solution+N%C3%BCrnberg",
+        "https://www.google.com/maps/search/?api=1&query=Winzelb%C3%BCrgstr.+9%2C+90491+N%C3%BCrnberg",
       outboundLabel: "In Google Maps öffnen",
     },
   },
@@ -70,7 +70,7 @@ export const kontaktContent = {
     eyebrow: "Nächster Schritt",
     title: "Lieber mit Struktur einsteigen?",
     description:
-      "Placeholder: Kein Verkaufsdruck. Nur ein sachliches Erstgespräch — was Ihre IT heute kann, was fehlt, und wie eine Betreuung aussehen könnte.",
+      "Kein Verkaufsdruck. Nur ein sachliches Erstgespräch — was Ihre IT heute kann, was fehlt, und wie eine Betreuung aussehen könnte.",
     primaryCta: {
       label: "Sicherheitscheck besprechen",
       href: "/sicherheitscheck",

@@ -40,6 +40,24 @@ const organizationSchema = {
   areaServed: "Metropolregion Nürnberg",
   description:
     "IT-Sicherheit und Managed Services für hybride IT-Umgebungen in Franken.",
+  telephone: "091195898731",
+  email: "kontakt@franken-solution.de",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Winzelbürgstr. 9",
+    postalCode: "90491",
+    addressLocality: "Nürnberg",
+    addressRegion: "Bayern",
+    addressCountry: "DE",
+  },
+  contactPoint: {
+    "@type": "ContactPoint",
+    telephone: "091195898731",
+    email: "kontakt@franken-solution.de",
+    contactType: "customer support",
+    areaServed: "DE",
+    availableLanguage: ["German"],
+  },
 };
 
 export default function RootLayout({
