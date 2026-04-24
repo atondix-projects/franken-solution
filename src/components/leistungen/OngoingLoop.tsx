@@ -14,7 +14,7 @@ export function OngoingLoop() {
         aria-hidden="true"
         style={{
           backgroundImage:
-            "radial-gradient(circle at 1px 1px, rgba(0,0,0,0.022) 1px, transparent 0)",
+            "radial-gradient(circle at 1px 1px, rgba(255,255,255,0.04) 1px, transparent 0)",
           backgroundSize: "32px 32px",
         }}
       />
@@ -113,7 +113,7 @@ export function OngoingLoop() {
                   cx="150"
                   cy="40"
                   r="30"
-                  fill="rgba(255,255,255,0.97)"
+                  fill="rgba(255,255,255,0.88)"
                   stroke="rgba(227,6,19,0.5)"
                   strokeWidth="1.5"
                 />
@@ -138,7 +138,7 @@ export function OngoingLoop() {
                   fontSize="9.5"
                   fontFamily="IBM Plex Mono, monospace"
                   fontWeight="600"
-                  fill="rgba(5,5,5,0.82)"
+                  fill="rgba(255,255,255,0.72)"
                 >
                   Monitoring und
                 </text>
@@ -149,7 +149,7 @@ export function OngoingLoop() {
                   fontSize="9.5"
                   fontFamily="IBM Plex Mono, monospace"
                   fontWeight="600"
-                  fill="rgba(5,5,5,0.82)"
+                  fill="rgba(255,255,255,0.72)"
                 >
                   Erkennung
                 </text>
@@ -159,7 +159,7 @@ export function OngoingLoop() {
                   cx="260"
                   cy="150"
                   r="30"
-                  fill="rgba(255,255,255,0.97)"
+                  fill="rgba(255,255,255,0.88)"
                   stroke="rgba(227,6,19,0.5)"
                   strokeWidth="1.5"
                 />
@@ -183,7 +183,7 @@ export function OngoingLoop() {
                   fontSize="9.5"
                   fontFamily="IBM Plex Mono, monospace"
                   fontWeight="600"
-                  fill="rgba(5,5,5,0.82)"
+                  fill="rgba(255,255,255,0.72)"
                 >
                   Bewertung und
                 </text>
@@ -194,7 +194,7 @@ export function OngoingLoop() {
                   fontSize="9.5"
                   fontFamily="IBM Plex Mono, monospace"
                   fontWeight="600"
-                  fill="rgba(5,5,5,0.82)"
+                  fill="rgba(255,255,255,0.72)"
                 >
                   Priorisierung
                 </text>
@@ -204,7 +204,7 @@ export function OngoingLoop() {
                   cx="150"
                   cy="260"
                   r="30"
-                  fill="rgba(255,255,255,0.97)"
+                  fill="rgba(255,255,255,0.88)"
                   stroke="rgba(227,6,19,0.5)"
                   strokeWidth="1.5"
                 />
@@ -228,7 +228,7 @@ export function OngoingLoop() {
                   fontSize="9.5"
                   fontFamily="IBM Plex Mono, monospace"
                   fontWeight="600"
-                  fill="rgba(5,5,5,0.82)"
+                  fill="rgba(255,255,255,0.72)"
                 >
                   Umsetzung und
                 </text>
@@ -239,7 +239,7 @@ export function OngoingLoop() {
                   fontSize="9.5"
                   fontFamily="IBM Plex Mono, monospace"
                   fontWeight="600"
-                  fill="rgba(5,5,5,0.82)"
+                  fill="rgba(255,255,255,0.72)"
                 >
                   Anpassung
                 </text>
@@ -249,7 +249,7 @@ export function OngoingLoop() {
                   cx="40"
                   cy="150"
                   r="30"
-                  fill="rgba(255,255,255,0.97)"
+                  fill="rgba(255,255,255,0.88)"
                   stroke="rgba(227,6,19,0.5)"
                   strokeWidth="1.5"
                 />
@@ -273,7 +273,7 @@ export function OngoingLoop() {
                   fontSize="9.5"
                   fontFamily="IBM Plex Mono, monospace"
                   fontWeight="600"
-                  fill="rgba(5,5,5,0.82)"
+                  fill="rgba(255,255,255,0.72)"
                 >
                   Weiterent-
                 </text>
@@ -284,7 +284,7 @@ export function OngoingLoop() {
                   fontSize="9.5"
                   fontFamily="IBM Plex Mono, monospace"
                   fontWeight="600"
-                  fill="rgba(5,5,5,0.82)"
+                  fill="rgba(255,255,255,0.72)"
                 >
                   wicklung
                 </text>
@@ -298,10 +298,10 @@ export function OngoingLoop() {
               <p className="font-mono text-xs font-medium uppercase tracking-[0.18em] text-accent">
                 {content.eyebrow}
               </p>
-              <h2 className="mt-3 text-3xl font-semibold leading-[1.15] tracking-[-0.04em] text-foreground sm:text-4xl">
+              <h2 className="mt-3 text-3xl font-semibold leading-[1.15] tracking-[-0.04em] text-white/88 sm:text-4xl">
                 {content.headline}
               </h2>
-              <p className="mt-4 text-base font-light leading-relaxed text-foreground-muted">
+              <p className="mt-4 text-base font-light leading-relaxed text-white/55">
                 {content.description}
               </p>
             </ScrollReveal>
@@ -314,8 +314,8 @@ export function OngoingLoop() {
                       {i + 1}
                     </span>
                     <div>
-                      <p className="text-sm font-semibold text-foreground">{step.title}</p>
-                      <p className="mt-1 text-sm font-light leading-relaxed text-foreground-muted">
+                      <p className="text-sm font-semibold text-white/88">{step.title}</p>
+                      <p className="mt-1 text-sm font-light leading-relaxed text-white/55">
                         {step.body}
                       </p>
                     </div>
@@ -325,7 +325,7 @@ export function OngoingLoop() {
             </ol>
 
             <ScrollReveal direction="up" delay={400} className="mt-8">
-              <blockquote className="border-l-2 border-accent pl-4 text-sm font-light leading-relaxed text-foreground-muted">
+              <blockquote className="border-l-2 border-accent pl-4 text-sm font-light leading-relaxed text-white/55">
                 {content.callout}
               </blockquote>
             </ScrollReveal>

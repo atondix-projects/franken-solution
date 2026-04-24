@@ -21,7 +21,7 @@ export function ServiceCard({ slug, title, description }: ServiceCardProps) {
       href={`/leistungen#${slug}`}
       onMouseMove={onMouseMove}
       onMouseLeave={onMouseLeave}
-      className="group premium-card card-spotlight card-depth relative flex h-full flex-col gap-3 rounded-xl border border-foreground/6 bg-background p-6"
+      className="group premium-card card-spotlight card-depth relative flex h-full flex-col gap-3 rounded-xl border border-foreground/6 bg-white/90 p-6"
     >
       <span
         className="accent-bar-grow absolute inset-x-0 top-0 h-0.5 rounded-t-xl bg-accent"

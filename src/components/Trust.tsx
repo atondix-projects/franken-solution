@@ -25,8 +25,8 @@ function TrustConnector({ index }: { index: number }) {
       <defs>
         <linearGradient id={gradId} x1="0" y1="0" x2="0" y2="1">
           <stop offset="0%" stopColor="rgba(227,6,19,0.25)" />
-          <stop offset="50%" stopColor="rgba(5,5,5,0.10)" />
-          <stop offset="100%" stopColor="rgba(5,5,5,0.04)" />
+          <stop offset="50%" stopColor="rgba(255,255,255,0.12)" />
+          <stop offset="100%" stopColor="rgba(255,255,255,0.05)" />
         </linearGradient>
       </defs>
       {/* Sinuous bezier path */}
@@ -60,10 +60,10 @@ function TrustItemRow({ item, index }: { item: TrustItem; index: number }) {
 
       {/* Right: text */}
       <div className={index < content.items.length - 1 ? "pb-8" : "pb-0"}>
-        <h3 className="text-[1rem] font-semibold leading-snug tracking-[-0.02em] text-foreground">
+        <h3 className="text-[1rem] font-semibold leading-snug tracking-[-0.02em] text-white/88">
           {item.title}
         </h3>
-        <p className="mt-1.5 text-sm font-light leading-relaxed text-foreground-muted">
+        <p className="mt-1.5 text-sm font-light leading-relaxed text-white/55">
           {item.description}
         </p>
       </div>
@@ -83,10 +83,10 @@ export function Trust() {
               <p className="font-mono text-xs font-medium uppercase tracking-[0.18em] text-accent">
                 {content.eyebrow}
               </p>
-              <h2 className="mt-3 text-3xl font-semibold leading-[1.15] tracking-[-0.04em] text-foreground sm:text-4xl lg:text-[2.1rem] xl:text-4xl">
+              <h2 className="mt-3 text-3xl font-semibold leading-[1.15] tracking-[-0.04em] text-white/88 sm:text-4xl lg:text-[2.1rem] xl:text-4xl">
                 {content.title}
               </h2>
-              <p className="mt-4 text-base font-light leading-relaxed text-foreground-muted">
+              <p className="mt-4 text-base font-light leading-relaxed text-white/55">
                 {content.description}
               </p>
 

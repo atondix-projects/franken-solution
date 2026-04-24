@@ -17,42 +17,10 @@ export function KontaktCta() {
 
   return (
     <section
-      className="relative overflow-hidden bg-foreground py-24 lg:py-36"
+      className="grain-overlay relative bg-background py-24 lg:py-36 border-t border-foreground/6"
       aria-labelledby="kontakt-cta-heading"
     >
-      {/* Aurora band */}
-      <div className="aurora-band" aria-hidden="true" />
-
-      {/* Dot-grid texture */}
-      <div
-        className="pointer-events-none absolute inset-0"
-        aria-hidden="true"
-        style={{
-          backgroundImage:
-            "radial-gradient(circle at 1px 1px, rgba(255,255,255,0.045) 1px, transparent 0)",
-          backgroundSize: "28px 28px",
-        }}
-      />
-
-      {/* Glow — bottom-left */}
-      <div
-        className="section-glow-blob pointer-events-none absolute -bottom-32 -left-32 h-72 w-72 blur-[96px]"
-        aria-hidden="true"
-        style={{ background: "rgba(227,6,19,0.18)", animationDuration: "18s" }}
-      />
-
-      {/* Glow — top-right, softer */}
-      <div
-        className="section-glow-blob pointer-events-none absolute -right-20 -top-20 h-64 w-64 blur-[80px]"
-        aria-hidden="true"
-        style={{
-          background: "rgba(227,6,19,0.08)",
-          animationDuration: "24s",
-          animationDelay: "-8s",
-        }}
-      />
-
-      <div className="relative mx-auto max-w-4xl px-6 text-center">
+      <div className="relative z-10 mx-auto max-w-4xl px-6 text-center">
         <ScrollReveal direction="up" delay={0}>
           <p className="font-mono text-xs font-medium uppercase tracking-[0.18em] text-accent">
             {content.eyebrow}
@@ -73,10 +41,10 @@ export function KontaktCta() {
               delay={80}
               className={
                 i === 0
-                  ? "gradient-text-sweep-active"
+                  ? "text-accent"
                   : i === 1
-                    ? "text-white/50"
-                    : "text-white/75"
+                    ? "text-foreground/40"
+                    : "text-foreground/80"
               }
             >
               {phrase}
@@ -86,7 +54,7 @@ export function KontaktCta() {
         </h2>
 
         <ScrollReveal direction="up" delay={280}>
-          <p className="mx-auto mt-6 max-w-2xl text-base font-light leading-relaxed text-white/55">
+          <p className="mx-auto mt-6 max-w-2xl text-base font-light leading-relaxed text-foreground/65">
             {content.description}
           </p>
         </ScrollReveal>
@@ -96,7 +64,7 @@ export function KontaktCta() {
           delay={380}
           className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center sm:gap-4"
         >
-          <div ref={magneticRef} className="cta-glow-ring magnetic-target rounded-md">
+          <div ref={magneticRef} className="magnetic-target rounded-md">
             <Button renderAs="link" href={content.primaryCta.href} variant="primary">
               <span className="flex items-center gap-2">
                 {content.primaryCta.label}
@@ -110,7 +78,7 @@ export function KontaktCta() {
         </ScrollReveal>
 
         <ScrollReveal direction="fade" delay={600}>
-          <p className="mt-8 flex items-center justify-center gap-2 text-xs font-light text-white/30">
+          <p className="mt-8 flex items-center justify-center gap-2 text-xs font-light text-foreground/65">
             <Icon name="shieldCheck" className="size-3" />
             Kein Verkaufsdruck. Kein Aktionismus. Nur ein sachliches Erstgespräch.
           </p>

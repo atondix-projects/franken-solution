@@ -13,17 +13,7 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="grain-overlay relative overflow-hidden border-t border-white/10 bg-foreground">
-      {/* Top gradient fade — soft accent flush at top border */}
-      <div
-        className="pointer-events-none absolute inset-x-0 top-0 h-48"
-        style={{
-          background:
-            "linear-gradient(180deg, rgba(227, 6, 19, 0.18) 0%, rgba(255, 255, 255, 0) 100%)",
-        }}
-        aria-hidden="true"
-      />
-
+    <footer className="grain-overlay relative overflow-hidden border-t border-white/10 bg-background-muted">
       {/* Decorative network graph — echoes Hero topology, one red hub node */}
       <svg
         className="pointer-events-none absolute -right-24 top-10 hidden h-72 w-72 lg:block"
@@ -88,7 +78,7 @@ export function Footer() {
               <Link
                 key={link.label}
                 href={link.href}
-                className="transition-colors duration-200 hover:text-accent"
+                className="transition-colors duration-200 hover:text-accent focus-visible:text-accent focus-visible:outline-none"
               >
                 {link.label}
               </Link>

@@ -27,22 +27,23 @@ function FounderSilhouette({ label }: { label: string }) {
 
 function FounderStage({ item, index }: { item: FounderItem; index: number }) {
   return (
-    <article className="group">
-      {/* Backdrop stage */}
-      <div className="grain-overlay relative aspect-[4/5] w-full overflow-hidden rounded-2xl bg-gradient-to-b from-background-muted via-background-muted to-background">
-
+    <article className="group cursor-default">
+      {/* Card — full 4:5 frame, overflow-hidden so the portrait stays contained */}
+      <div
+        className="grain-overlay relative aspect-[4/5] w-full overflow-hidden rounded-2xl bg-gradient-to-b from-foreground/[0.06] via-foreground/[0.03] to-background shadow-[0_16px_56px_-20px_rgba(5,5,5,0.22)] transition-shadow duration-500 ease-out group-hover:shadow-[0_28px_72px_-16px_rgba(5,5,5,0.38)] motion-reduce:transition-none"
+      >
         {/* Ambient red glow behind the person */}
         <div
-          className="section-glow-blob pointer-events-none absolute -bottom-12 left-[10%] h-[70%] w-[80%] blur-[60px]"
+          className="section-glow-blob pointer-events-none absolute -bottom-10 left-[10%] h-[70%] w-[80%] blur-[60px]"
           aria-hidden="true"
           style={{
-            background: "rgba(227,6,19,0.06)",
+            background: "rgba(227,6,19,0.07)",
             animationDuration: `${18 + index * 4}s`,
             animationDelay: `${index * 3}s`,
           }}
         />
 
-        {/* Large watermark numeral — top-right */}
+        {/* Large watermark numeral — top-right of card */}
         <span
           className="pointer-events-none absolute -right-4 top-4 select-none font-mono text-[10rem] font-black leading-none text-foreground/[0.04] transition-colors duration-500 group-hover:text-foreground/[0.07] lg:text-[13rem] motion-reduce:transition-none"
           aria-hidden="true"
@@ -50,22 +51,26 @@ function FounderStage({ item, index }: { item: FounderItem; index: number }) {
           {item.number}
         </span>
 
-        {/* Cut-out photo or placeholder silhouette */}
+        {/* Portrait — inset inside card (framed look), with drop-shadow for depth and a contained hover lift */}
         {item.photoSrc ? (
-          <Image
-            src={item.photoSrc}
-            alt={item.photoAlt}
-            fill
-            sizes="(min-width: 1024px) 50vw, 100vw"
-            className="object-contain object-bottom"
-          />
+          <div
+            className="absolute inset-x-5 inset-y-8 transform-gpu transition duration-500 ease-out drop-shadow-[0_18px_24px_rgba(5,5,5,0.28)] group-hover:-translate-y-2 group-hover:scale-[1.035] group-hover:drop-shadow-[0_30px_38px_rgba(5,5,5,0.42)] motion-reduce:transform-none motion-reduce:transition-none"
+          >
+            <Image
+              src={item.photoSrc}
+              alt={item.photoAlt}
+              fill
+              sizes="(min-width: 1024px) 50vw, 100vw"
+              className="object-contain object-bottom"
+            />
+          </div>
         ) : (
           <FounderSilhouette label={item.photoAlt} />
         )}
 
-        {/* Floor accent line — extends on hover */}
+        {/* Floor accent line — sits above the portrait at the base of the card */}
         <div
-          className="absolute bottom-5 left-1/2 h-[2px] w-12 -translate-x-1/2 scale-x-75 bg-accent transition-transform duration-500 group-hover:scale-x-100 motion-reduce:transition-none"
+          className="absolute bottom-5 left-1/2 z-10 h-[2px] w-12 -translate-x-1/2 scale-x-75 bg-accent transition-transform duration-500 group-hover:scale-x-100 motion-reduce:transition-none"
           aria-hidden="true"
         />
       </div>

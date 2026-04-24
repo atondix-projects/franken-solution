@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { homepageContent } from "@/content/homepage";
 import { useCountUp } from "@/hooks/useCountUp";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
@@ -73,28 +74,19 @@ export function About() {
               }}
             />
 
-            {/* Image placeholder */}
+            {/* Founders photo */}
             <div
-              className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-background-muted grain-overlay flex flex-col items-center justify-center gap-3"
+              className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-background-muted grain-overlay"
               style={{ boxShadow: "var(--elev-1)" }}
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="size-16 text-foreground-muted/40"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth={1}
-                aria-label="Bild folgt"
-                role="img"
-              >
-                <rect x="3" y="3" width="18" height="18" rx="2" ry="2" strokeLinecap="round" strokeLinejoin="round" />
-                <circle cx="8.5" cy="8.5" r="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                <polyline points="21 15 16 10 5 21" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-              <span className="font-mono text-xs uppercase tracking-widest text-foreground-muted/40">
-                Bild folgt
-              </span>
+              <Image
+                src="/sergej-stasenko-und-markus-maenner-geschaeftsfuehrer-der-franken-solution-gbr.jpeg"
+                alt="Sergej Stasenko und Markus Männer, Geschäftsführer der Franken Solution GbR"
+                fill
+                sizes="(min-width: 1024px) 52vw, 100vw"
+                className="object-cover object-center"
+                priority
+              />
             </div>
 
             {/* Counters — overlapping bottom edge of diorama */}

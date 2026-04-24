@@ -7,10 +7,12 @@ This version has breaking changes — APIs, conventions, and file structure may 
 ## Project Snapshot
 
 - Stack: Next.js 16.2.3 App Router, React 19.2.4, TypeScript 5, Tailwind CSS 4
-- App entrypoints live in `src/app`
-- Shared UI components live in `src/components`
-- The current landing page is composed from `Navbar` and `Hero`
-- Global typography and metadata are configured in `src/app/layout.tsx`
+- App routes: `/` (homepage), `/leistungen` (services), `/kontakt` (contact)
+- Entrypoints in `src/app`; shared components in `src/components`
+- Content separated from components: page copy lives in `src/content/` (homepage.ts, leistungen.ts, kontakt.ts)
+- Key homepage sections: Hero, ServicePillars, Trust, About, Process, FinalCta
+- Key leistungen components: LeistungenHero, FeaturedPillarCard, SituationMatrix, OngoingLoop
+- Global typography and metadata configured in `src/app/layout.tsx`
 
 ## Commands
 

@@ -82,6 +82,10 @@ Follow these core principles. For detailed editing checks and word-by-word polis
 
 6. **Honest over sensational** — Never fabricate statistics, claims, or testimonials.
 
+7. **German typography (umlauts, not digraphs).** When writing German copy, always use native umlauts (`ä ö ü Ä Ö Ü`) and the eszett (`ß`). Never use ASCII digraphs (`ae oe ue Ae Oe Ue ss`) in body copy, headlines, meta descriptions, `alt` text, or `aria-label`. Exceptions: technical identifiers, URL slugs, email addresses.
+   - ❌ `"Loesungen fuer mittelstaendische Unternehmen"`
+   - ✅ `"Lösungen für mittelständische Unternehmen"`
+
 ### Quick Quality Check
 
 Before finalizing, scan for:
@@ -90,6 +94,7 @@ Before finalizing, scan for:
 - Passive voice constructions
 - Exclamation points (remove them)
 - Marketing buzzwords without substance
+- [ ] German typography: umlauts (`ä ö ü ß`) used, no `ae/oe/ue/ss` digraphs in rendered copy
 
 For a thorough line-by-line review, run the copy through the **copy-editing** skill's Seven Sweeps framework.
 

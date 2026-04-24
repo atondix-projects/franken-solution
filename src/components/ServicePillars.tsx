@@ -37,10 +37,10 @@ export function ServicePillars() {
           <p className="font-mono text-xs font-medium uppercase tracking-[0.18em] text-accent">
             {content.eyebrow}
           </p>
-          <h2 className="mt-3 text-3xl font-semibold leading-[1.15] tracking-[-0.04em] text-foreground sm:text-4xl">
+          <h2 className="mt-3 text-3xl font-semibold leading-[1.15] tracking-[-0.04em] text-white/88 sm:text-4xl">
             {content.title}
           </h2>
-          <p className="mt-4 text-base font-light leading-relaxed text-foreground-muted">
+          <p className="mt-4 text-base font-light leading-relaxed text-white/55">
             {content.description}
           </p>
         </ScrollReveal>
@@ -73,7 +73,7 @@ export function ServicePillars() {
           delay={300}
           className="mt-16 flex flex-col items-center gap-6 text-center"
         >
-          <p className="max-w-xl text-sm font-light leading-relaxed text-foreground-muted">
+          <p className="max-w-xl text-sm font-light leading-relaxed text-white/55">
             {content.supportingStatement}
           </p>
           <Button renderAs="link" href={content.cta.href} variant="primary">

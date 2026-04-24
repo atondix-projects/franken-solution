@@ -78,8 +78,8 @@ export function FrankenMap({ className = "" }: FrankenMapProps) {
           y2="584.554"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stopColor="#FFA3A8" stopOpacity="0.05" />
-          <stop offset="1" stopColor="#FFA3A8" stopOpacity="0.5" />
+          <stop stopColor="#96030c" stopOpacity="0.3" />
+          <stop offset="1" stopColor="#4b0206" stopOpacity="0.9" />
         </linearGradient>
       </defs>
     </svg>

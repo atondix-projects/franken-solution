@@ -16,8 +16,7 @@ const TOP_CONTENT_MAX_WIDTH = "96rem";
 const navLinks = [
   { label: "Start", href: "/" },
   { label: "Leistungen", href: "/leistungen" },
-  { label: "Portfolio", href: "/portfolio" },
-  { label: "Resourcen", href: "/resourcen" },
+  { label: "Ressourcen", href: "/ressourcen" },
 ] as const;
 
 export function Navbar() {
@@ -249,7 +248,7 @@ export function Navbar() {
 
                 <div
                   id="mobile-nav"
-                  className={`fixed inset-0 z-40 h-screen bg-[linear-gradient(180deg,#ffffff_0%,#f7f5f2_100%)] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] lg:hidden ${isOpen
+                  className={`fixed inset-0 z-40 h-screen bg-white transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] lg:hidden ${isOpen
                     ? "visible translate-x-0 opacity-100"
                     : "invisible translate-x-full opacity-0"
                     }`}

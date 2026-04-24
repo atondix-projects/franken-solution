@@ -190,7 +190,7 @@ export const homepageContent = {
         name: "Markus Maenner",
         role: "Geschäftsführer",
         credentials: ["Fachinformatiker Systemintegration", "IHK Nürnberg"],
-        photoSrc: undefined as string | undefined,
+        photoSrc: "/markus-maenner.png" as string | undefined,
         photoAlt: "Porträt Markus Maenner, Geschäftsführer Franken Solution",
       },
       {
@@ -199,7 +199,7 @@ export const homepageContent = {
         name: "Sergej Stasenko",
         role: "Geschäftsführer",
         credentials: ["Fachinformatiker Systemintegration", "IHK Nürnberg"],
-        photoSrc: undefined as string | undefined,
+        photoSrc: "/sergej-stasenko.png" as string | undefined,
         photoAlt: "Porträt Sergej Stasenko, Geschäftsführer Franken Solution",
       },
     ],

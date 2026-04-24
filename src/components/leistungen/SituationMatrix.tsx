@@ -12,7 +12,7 @@ export function SituationMatrix() {
         aria-hidden="true"
         style={{
           backgroundImage:
-            "radial-gradient(circle at 1px 1px, rgba(0,0,0,0.022) 1px, transparent 0)",
+            "radial-gradient(circle at 1px 1px, rgba(255,255,255,0.04) 1px, transparent 0)",
           backgroundSize: "32px 32px",
         }}
       />
@@ -22,19 +22,19 @@ export function SituationMatrix() {
           <p className="font-mono text-xs font-medium uppercase tracking-[0.18em] text-accent">
             {content.eyebrow}
           </p>
-          <h2 className="mt-3 text-3xl font-semibold leading-[1.15] tracking-[-0.04em] text-foreground sm:text-4xl">
+          <h2 className="mt-3 text-3xl font-semibold leading-[1.15] tracking-[-0.04em] text-white/88 sm:text-4xl">
             {content.headline}
           </h2>
-          <p className="mt-4 text-base font-light leading-relaxed text-foreground-muted">
+          <p className="mt-4 text-base font-light leading-relaxed text-white/55">
             {content.description}
           </p>
         </ScrollReveal>
 
         <ScrollReveal direction="up" delay={120} className="mt-12">
-          <div className="overflow-hidden rounded-xl border border-foreground/6 bg-background">
+          <div className="overflow-hidden rounded-xl border border-foreground/6 bg-white/90">
             <table className="w-full text-sm">
               <thead>
-                <tr className="border-b border-foreground/6 bg-background-muted/60">
+                <tr className="border-b border-foreground/6 bg-foreground/5">
                   <th
                     scope="col"
                     className="px-6 py-4 text-left font-mono text-xs font-medium uppercase tracking-[0.12em] text-foreground-muted"
@@ -53,7 +53,7 @@ export function SituationMatrix() {
                 {content.rows.map((row, i) => (
                   <tr
                     key={i}
-                    className="border-b border-foreground/5 transition-colors duration-300 last:border-0 hover:bg-background-muted/40"
+                    className="border-b border-foreground/5 transition-colors duration-300 last:border-0 hover:bg-foreground/[0.04]"
                   >
                     <td className="px-6 py-4 font-light leading-relaxed text-foreground-muted">
                       {row.situation}

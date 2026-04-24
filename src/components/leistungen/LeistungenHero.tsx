@@ -177,7 +177,7 @@ export function LeistungenHero() {
                 <a
                   key={chip.anchor}
                   href={chip.anchor}
-                  className="icon-chip-glow rounded-full border border-foreground/8 bg-background-muted px-3 py-1 font-mono text-xs font-medium text-foreground-muted transition-colors duration-200 hover:border-accent/30 hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+                  className="icon-chip-glow rounded-full border border-foreground/8 bg-foreground/[0.05] px-3 py-1 font-mono text-xs font-medium text-foreground-muted transition-colors duration-200 hover:border-accent/30 hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
                 >
                   {chip.label}
                 </a>

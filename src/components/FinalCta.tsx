@@ -17,41 +17,9 @@ export function FinalCta() {
 
   return (
     <section
-      className="grain-overlay relative overflow-hidden bg-background-muted py-24 lg:py-36"
+      className="grain-overlay relative bg-background py-24 lg:py-36 border-t border-foreground/6"
       aria-labelledby="final-cta-heading"
     >
-      {/* Subtle dot-grid texture */}
-      <div
-        className="pointer-events-none absolute inset-0"
-        aria-hidden="true"
-        style={{
-          backgroundImage:
-            "radial-gradient(circle at 1px 1px, rgba(5,5,5,0.05) 1px, transparent 0)",
-          backgroundSize: "28px 28px",
-        }}
-      />
-
-      {/* Accent glow — bottom-left corner */}
-      <div
-        className="section-glow-blob pointer-events-none absolute -bottom-32 -left-32 h-72 w-72 blur-[96px]"
-        aria-hidden="true"
-        style={{
-          background: "rgba(227,6,19,0.18)",
-          animationDuration: "18s",
-        }}
-      />
-
-      {/* Accent glow — top-right corner */}
-      <div
-        className="section-glow-blob pointer-events-none absolute -right-20 -top-20 h-64 w-64 blur-[80px]"
-        aria-hidden="true"
-        style={{
-          background: "rgba(227,6,19,0.08)",
-          animationDuration: "24s",
-          animationDelay: "-8s",
-        }}
-      />
-
       <div className="relative z-10 mx-auto max-w-4xl px-6 text-center">
         {/* Eyebrow */}
         <ScrollReveal direction="up" delay={0}>
@@ -77,8 +45,8 @@ export function FinalCta() {
                 i === 0
                   ? "text-accent"
                   : i === 1
-                    ? "text-foreground/45"
-                    : "text-foreground/75"
+                    ? "text-foreground/40"
+                    : "text-foreground/80"
               }
             >
               {phrase}
@@ -118,7 +86,7 @@ export function FinalCta() {
 
         {/* Reassurance line */}
         <ScrollReveal direction="fade" delay={600}>
-          <p className="mt-8 flex items-center justify-center gap-2 text-xs font-light text-foreground/50">
+          <p className="mt-8 flex items-center justify-center gap-2 text-xs font-light text-foreground/65">
             <Icon name="shieldCheck" className="size-3" />
             Kein Verkaufsdruck. Kein Aktionismus. Nur ein sachliches Erstgespräch.
           </p>
