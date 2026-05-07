@@ -29,7 +29,7 @@ export function RessourcenCta() {
 
         <h2
           id="ressourcen-cta-heading"
-          className="mt-4 text-3xl font-semibold leading-[1.1] tracking-[-0.04em] sm:text-4xl lg:text-[2.75rem]"
+          className="mt-4 text-3xl font-semibold leading-[1.1] tracking-[-0.04em] sm:text-4xl"
         >
           {TITLE_PHRASES.map((phrase, i) => (
             <ScrollReveal

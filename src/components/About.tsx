@@ -108,7 +108,7 @@ export function About() {
               {content.eyebrow}
             </p>
 
-            <h2 className="mt-3 text-3xl font-semibold leading-[1.15] tracking-[-0.04em] text-foreground sm:text-4xl xl:text-[2.75rem]">
+            <h2 className="mt-3 text-3xl font-semibold leading-[1.15] tracking-[-0.04em] text-foreground sm:text-4xl">
               {content.title}
             </h2>
 

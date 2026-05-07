@@ -26,10 +26,10 @@ export function FeatureCard({ icon, title, description, className }: FeatureCard
           {icon}
         </div>
         <div className="flex flex-col">
-          <p className="text-[22.5px] font-medium leading-[1.2] text-[#010202]">
+          <p className="text-xl font-medium leading-[1.2] text-[#010202]">
             {title}
           </p>
-          <p className="text-[15px] font-light leading-[1.55] text-[#010202]">
+          <p className="text-sm font-light leading-[1.55] text-[#010202]">
             {description}
           </p>
         </div>

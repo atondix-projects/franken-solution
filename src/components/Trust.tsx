@@ -60,7 +60,7 @@ function TrustItemRow({ item, index }: { item: TrustItem; index: number }) {
 
       {/* Right: text */}
       <div className={index < content.items.length - 1 ? "pb-8" : "pb-0"}>
-        <h3 className="text-[1rem] font-semibold leading-snug tracking-[-0.02em] text-white/88">
+        <h3 className="text-base font-semibold leading-snug tracking-[-0.02em] text-white/88">
           {item.title}
         </h3>
         <p className="mt-1.5 text-sm font-light leading-relaxed text-white/55">
@@ -83,7 +83,7 @@ export function Trust() {
               <p className="font-mono text-xs font-medium uppercase tracking-[0.18em] text-accent">
                 {content.eyebrow}
               </p>
-              <h2 className="mt-3 text-3xl font-semibold leading-[1.15] tracking-[-0.04em] text-white/88 sm:text-4xl lg:text-[2.1rem] xl:text-4xl">
+              <h2 className="mt-3 text-3xl font-semibold leading-[1.15] tracking-[-0.04em] text-white/88 sm:text-4xl">
                 {content.title}
               </h2>
               <p className="mt-4 text-base font-light leading-relaxed text-white/55">

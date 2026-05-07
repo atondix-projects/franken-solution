@@ -28,7 +28,7 @@ export default function Error({ error, reset }: ErrorPageProps) {
         <div className="mx-auto flex min-h-[calc(100vh-8rem)] w-full max-w-7xl flex-col justify-center px-6 py-16 sm:py-20">
           <div className="max-w-4xl rounded-[2rem] border border-black/10 bg-white/88 p-8 shadow-[0_24px_80px_rgba(5,5,5,0.08)] backdrop-blur-sm sm:p-12">
             <div
-              className="hero-load hero-load-up flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.24em] text-black/45"
+              className="hero-load hero-load-up flex items-center gap-3 font-mono text-xs uppercase tracking-[0.24em] text-black/45"
               style={{ "--hero-load-delay": "0ms", "--hero-load-duration": "480ms" } as CSSProperties}
             >
               <span className="size-2 rounded-full bg-accent" aria-hidden="true" />
@@ -36,7 +36,7 @@ export default function Error({ error, reset }: ErrorPageProps) {
             </div>
 
             <h1
-              className="hero-load hero-load-up mt-5 max-w-3xl text-4xl font-semibold leading-[1.05] tracking-[-0.04em] text-foreground sm:text-5xl"
+              className="hero-load hero-load-up mt-5 max-w-3xl text-3xl font-semibold leading-[1.1] tracking-[-0.025em] text-foreground sm:text-4xl lg:text-5xl"
               style={{ "--hero-load-delay": "100ms", "--hero-load-duration": "560ms" } as CSSProperties}
             >
               {content.title}

@@ -310,7 +310,7 @@ export function OngoingLoop() {
               {content.cycle.map((step, i) => (
                 <ScrollReveal key={step.title} direction="up" stagger={70} index={i} delay={120}>
                   <li className="flex gap-4">
-                    <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-accent/25 bg-accent/6 font-mono text-[11px] font-semibold text-accent">
+                    <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-accent/25 bg-accent/6 font-mono text-xs font-semibold text-accent">
                       {i + 1}
                     </span>
                     <div>

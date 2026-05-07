@@ -140,14 +140,14 @@ export function LeistungenHero() {
             </p>
 
             <h1
-              className="hero-load hero-load-up mt-3 text-3xl font-semibold leading-[1.1] tracking-[-0.04em] text-foreground sm:text-4xl lg:text-5xl"
+              className="hero-load hero-load-up mt-3 text-3xl font-semibold leading-[1.1] tracking-[-0.02em] text-foreground sm:text-4xl lg:text-5xl"
               style={heroLoadStyle("140ms", "560ms")}
             >
               {content.headline}
             </h1>
 
             <p
-              className="hero-load hero-load-up mt-5 max-w-lg text-base font-light leading-relaxed text-foreground-muted"
+              className="hero-load hero-load-up mt-5 max-w-lg text-base font-light leading-relaxed text-foreground-muted sm:text-lg"
               style={heroLoadStyle("220ms", "560ms")}
             >
               {content.lead}

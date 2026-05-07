@@ -18,7 +18,7 @@ function FounderSilhouette({ label }: { label: string }) {
         <circle cx="100" cy="75" r="52" />
         <path d="M 100 137 C 50 137, 18 183, 14 240 L 186 240 C 182 183, 150 137, 100 137 Z" />
       </svg>
-      <span className="mt-3 font-mono text-[0.6rem] uppercase tracking-widest text-foreground/20">
+      <span className="mt-3 font-mono text-xs uppercase tracking-widest text-foreground/20">
         Foto folgt
       </span>
     </div>
@@ -89,7 +89,7 @@ function FounderStage({ item, index }: { item: FounderItem; index: number }) {
                   aria-hidden="true"
                 />
               )}
-              <span className="font-mono text-[0.7rem] uppercase tracking-wide text-foreground-muted">
+              <span className="font-mono text-xs uppercase tracking-wide text-foreground-muted">
                 {cred}
               </span>
             </li>

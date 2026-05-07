@@ -38,7 +38,7 @@ export function ProjectTile({ index, title, body }: Props) {
         >
           <ProjectIcon index={index} className="h-4 w-4 text-foreground/50" />
         </div>
-        <span className="font-mono text-[10px] font-medium uppercase tracking-[0.16em] text-foreground-muted/70 transition-colors duration-300 group-hover:text-accent/70">
+        <span className="font-mono text-xs font-medium uppercase tracking-[0.16em] text-foreground-muted/70 transition-colors duration-300 group-hover:text-accent/70">
           Projekt {index}
         </span>
       </div>

@@ -111,7 +111,7 @@ export function Hero() {
         {/* Left side - text content */}
         <div className="min-w-0 shrink lg:max-w-185 lg:shrink-0">
           <h1
-            className="hero-load hero-load-up text-3xl font-semibold leading-[1.1] tracking-[-1.37px] text-[#010202] sm:text-4xl md:text-5xl xl:text-[68.66px]"
+            className="hero-load hero-load-up text-3xl font-semibold leading-[1.1] tracking-[-0.02em] text-[#010202] sm:text-4xl md:text-5xl"
             style={heroLoadStyle("140ms", "560ms")}
           >
             Ihr fränkischer Partner für {" "}

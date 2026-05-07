@@ -47,7 +47,7 @@ export function FeaturedPillarCard({ group }: FeaturedPillarCardProps) {
                 {group.title}
               </h3>
               <div>
-                <p className="font-mono text-[10px] font-medium uppercase tracking-[0.16em] text-foreground-muted">
+                <p className="font-mono text-xs font-medium uppercase tracking-[0.16em] text-foreground-muted">
                   Auslöser
                 </p>
                 <p className="mt-1 text-sm font-light leading-relaxed text-foreground-muted">
@@ -79,7 +79,7 @@ export function FeaturedPillarCard({ group }: FeaturedPillarCardProps) {
           <hr className="border-foreground/8" />
           <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
             <div className="flex flex-col gap-1">
-              <p className="font-mono text-[10px] font-medium uppercase tracking-[0.16em] text-foreground-muted">
+              <p className="font-mono text-xs font-medium uppercase tracking-[0.16em] text-foreground-muted">
                 Ergebnis
               </p>
               <p className="max-w-xl text-sm font-light leading-relaxed text-foreground-muted">

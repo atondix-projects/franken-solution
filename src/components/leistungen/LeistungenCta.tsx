@@ -30,7 +30,7 @@ export function LeistungenCta() {
 
         <h2
           id="leistungen-cta-heading"
-          className="mt-4 text-3xl font-semibold leading-[1.1] tracking-[-0.04em] sm:text-4xl lg:text-[2.75rem]"
+          className="mt-4 text-3xl font-semibold leading-[1.1] tracking-[-0.04em] sm:text-4xl"
         >
           {HEADLINE_PHRASES.map((phrase, i) => (
             <ScrollReveal

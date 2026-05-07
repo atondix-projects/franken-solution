@@ -45,7 +45,7 @@ export function DownloadCard({ label, name, description, helper, action }: Downl
       </div>
 
       <div className="mt-6 flex flex-1 flex-col">
-        <p className="font-mono text-[0.65rem] font-medium uppercase tracking-[0.18em] text-foreground/35">
+        <p className="font-mono text-xs font-medium uppercase tracking-[0.18em] text-foreground/35">
           {label}
         </p>
 

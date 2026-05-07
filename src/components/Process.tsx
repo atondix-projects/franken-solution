@@ -60,7 +60,7 @@ function ProcessStep({
           className="premium-card rounded-xl border border-foreground/10 bg-background px-6 py-5 transition-[transform,border-color] duration-300 hover:border-foreground/18"
           style={{ transform: `rotateY(${tiltDir}deg)` }}
         >
-          <h3 className="text-[1rem] font-semibold tracking-tight text-foreground">
+          <h3 className="text-base font-semibold tracking-tight text-foreground">
             {step.title}
           </h3>
           <p className="mt-2 text-sm font-light leading-relaxed text-foreground-muted">

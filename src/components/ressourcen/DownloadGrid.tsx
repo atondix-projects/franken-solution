@@ -24,7 +24,7 @@ function PlaceholderCard() {
       </div>
 
       <div className="mt-6 flex flex-1 flex-col">
-        <p className="font-mono text-[0.65rem] font-medium uppercase tracking-[0.18em] text-foreground/25">
+        <p className="font-mono text-xs font-medium uppercase tracking-[0.18em] text-foreground/25">
           In Vorbereitung
         </p>
 
@@ -38,7 +38,7 @@ function PlaceholderCard() {
       </div>
 
       <div className="mt-5 border-t border-foreground/[0.06] pt-4">
-        <span className="inline-flex items-center gap-1.5 rounded-full border border-foreground/10 bg-foreground/[0.03] px-3 py-1 font-mono text-[0.6rem] font-medium uppercase tracking-[0.12em] text-foreground/30">
+        <span className="inline-flex items-center gap-1.5 rounded-full border border-foreground/10 bg-foreground/[0.03] px-3 py-1 font-mono text-xs font-medium uppercase tracking-[0.12em] text-foreground/30">
           Bald verfügbar
         </span>
       </div>

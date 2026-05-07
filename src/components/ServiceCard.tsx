@@ -30,7 +30,7 @@ export function ServiceCard({ slug, title, description }: ServiceCardProps) {
       <span className="icon-chip-glow flex size-9 items-center justify-center rounded-lg bg-accent/8 text-accent">
         <PillarIcon slug={slug} className="size-5" />
       </span>
-      <h4 className="text-[1rem] font-semibold leading-snug text-foreground">
+      <h4 className="text-base font-semibold leading-snug text-foreground">
         {title}
       </h4>
       <p className="text-sm font-light leading-relaxed text-foreground-muted">

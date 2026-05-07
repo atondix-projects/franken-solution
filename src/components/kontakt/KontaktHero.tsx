@@ -80,7 +80,7 @@ export function KontaktHero() {
         {/* Main heading */}
         <h1
           id="kontakt-hero-heading"
-          className="hero-load hero-load-up mt-5 text-4xl font-semibold leading-[1.05] tracking-[-0.045em] text-foreground sm:text-5xl lg:text-[3.5rem]"
+          className="hero-load hero-load-up mt-5 text-3xl font-semibold leading-[1.1] tracking-[-0.025em] text-foreground sm:text-4xl lg:text-5xl"
           style={heroStyle("140ms", "620ms")}
         >
           {content.title}
@@ -88,7 +88,7 @@ export function KontaktHero() {
 
         {/* Lead */}
         <p
-          className="hero-load hero-load-up mx-auto mt-6 max-w-2xl text-base font-light leading-relaxed text-foreground/60"
+          className="hero-load hero-load-up mx-auto mt-6 max-w-2xl text-base font-light leading-relaxed text-foreground/60 sm:text-lg"
           style={heroStyle("240ms")}
         >
           {content.lead}

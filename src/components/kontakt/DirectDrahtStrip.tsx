@@ -66,7 +66,7 @@ export function DirectDrahtStrip() {
           {/* Right: What you won't need */}
           <ScrollReveal direction="up" delay={200}>
             <div className="rounded-[20px] border border-white/[0.07] bg-white/[0.04] p-8 backdrop-blur-sm">
-              <p className="font-mono text-[0.65rem] font-medium uppercase tracking-[0.2em] text-white/30">
+              <p className="font-mono text-xs font-medium uppercase tracking-[0.2em] text-white/30">
                 Was Sie bei uns nicht brauchen
               </p>
 

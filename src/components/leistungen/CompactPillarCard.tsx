@@ -42,7 +42,7 @@ export function CompactPillarCard({ group }: CompactPillarCardProps) {
 
       {/* Trigger */}
       <div className="mb-4">
-        <p className="font-mono text-[10px] font-medium uppercase tracking-[0.16em] text-foreground-muted">
+        <p className="font-mono text-xs font-medium uppercase tracking-[0.16em] text-foreground-muted">
           Auslöser
         </p>
         <p className="mt-1 text-sm font-light leading-relaxed text-foreground-muted">
@@ -65,7 +65,7 @@ export function CompactPillarCard({ group }: CompactPillarCardProps) {
 
       {/* Outcome */}
       <div className="mb-5 flex-1">
-        <p className="font-mono text-[10px] font-medium uppercase tracking-[0.16em] text-foreground-muted">
+        <p className="font-mono text-xs font-medium uppercase tracking-[0.16em] text-foreground-muted">
           Ergebnis
         </p>
         <p className="mt-1 text-sm font-light leading-relaxed text-foreground-muted">

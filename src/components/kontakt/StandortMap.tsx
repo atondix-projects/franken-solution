@@ -43,7 +43,7 @@ export function StandortMap() {
             <ScrollReveal direction="up" delay={240}>
               <address className="mt-6 not-italic">
                 <div className="glass-card card-depth rounded-2xl p-5">
-                  <p className="font-mono text-[0.65rem] font-medium uppercase tracking-[0.16em] text-foreground/35">
+                  <p className="font-mono text-xs font-medium uppercase tracking-[0.16em] text-foreground/35">
                     Geschäftsadresse
                   </p>
                   <p className="mt-3 text-base font-semibold text-foreground">
@@ -86,8 +86,8 @@ export function StandortMap() {
             </ScrollReveal>
           </div>
 
-          {/* Right: map */}
-          <ScrollReveal direction="premium" delay={100}>
+          {/* Right: map — hidden on mobile */}
+          <ScrollReveal direction="premium" delay={100} className="hidden lg:block">
             <a
               href={map.outboundUrl}
               target="_blank"
