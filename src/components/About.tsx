@@ -80,8 +80,8 @@ export function About() {
               style={{ boxShadow: "var(--elev-1)" }}
             >
               <Image
-                src="/sergej-stasenko-und-markus-maenner-geschaeftsfuehrer-der-franken-solution-gbr.jpeg"
-                alt="Sergej Stasenko und Markus Männer, Geschäftsführer der Franken Solution GbR"
+                src="/homepage-hero.jpg"
+                alt="Stadtansicht von Nürnberg — Heimat von Franken Solution"
                 fill
                 sizes="(min-width: 1024px) 52vw, 100vw"
                 className="object-cover object-center"
