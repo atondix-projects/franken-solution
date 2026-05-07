@@ -101,7 +101,7 @@ export function Hero() {
       <ParallaxLayer
         speed={0.08}
         enabledMediaQuery="(min-width: 1024px)"
-        className="hero-load hero-load-right pointer-events-none absolute right-0 top-0 z-1 h-11/12 max-w-full"
+        className="hero-load hero-load-right pointer-events-none absolute right-0 top-0 z-1 h-11/12 max-w-full hidden lg:block"
       >
         <FrankenMap className="h-full w-auto" />
       </ParallaxLayer>
