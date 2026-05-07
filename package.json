@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p 59092",
     "lint": "eslint",
     "analyze": "ANALYZE=true next build"
   },
