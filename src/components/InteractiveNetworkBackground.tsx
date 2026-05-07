@@ -58,6 +58,17 @@ export function InteractiveNetworkBackground({
       typeof window !== "undefined" &&
       window.matchMedia("(prefers-reduced-motion: reduce)").matches,
   );
+  const [isDesktop, setIsDesktop] = useState(
+    () =>
+      typeof window !== "undefined" &&
+      window.matchMedia("(min-width: 1024px)").matches,
+  );
+
+  const effectiveParticleCount = isDesktop ? particleCount : Math.round(particleCount * 0.45);
+  const effectiveConnectionDistance = isDesktop ? connectionDistance : connectionDistance * 0.7;
+  const effectiveMouseRadius = isDesktop ? mouseRadius : 0;
+  const effectiveSpeed = isDesktop ? speed : speed * 0.7;
+
   const pointerRef = useRef<Point>({
     x: OFFSCREEN_POSITION,
     y: OFFSCREEN_POSITION,
@@ -74,9 +85,9 @@ export function InteractiveNetworkBackground({
     particleColor,
     lineColor,
     accentColor,
-    speed,
-    connectionDistance,
-    mouseRadius,
+    speed: effectiveSpeed,
+    connectionDistance: effectiveConnectionDistance,
+    mouseRadius: effectiveMouseRadius,
   });
 
   useEffect(() => {
@@ -97,21 +108,30 @@ export function InteractiveNetworkBackground({
   }, []);
 
   useEffect(() => {
+    if (typeof window === "undefined") return;
+    const mq = window.matchMedia("(min-width: 1024px)");
+    const handleChange = (event: MediaQueryListEvent) =>
+      setIsDesktop(event.matches);
+    mq.addEventListener("change", handleChange);
+    return () => mq.removeEventListener("change", handleChange);
+  }, []);
+
+  useEffect(() => {
     configRef.current = {
       particleColor,
       lineColor,
       accentColor,
-      speed,
-      connectionDistance,
-      mouseRadius,
+      speed: effectiveSpeed,
+      connectionDistance: effectiveConnectionDistance,
+      mouseRadius: effectiveMouseRadius,
     };
   }, [
     particleColor,
     lineColor,
     accentColor,
-    speed,
-    connectionDistance,
-    mouseRadius,
+    effectiveSpeed,
+    effectiveConnectionDistance,
+    effectiveMouseRadius,
   ]);
 
   useEffect(() => {
@@ -142,7 +162,7 @@ export function InteractiveNetworkBackground({
     const initializeParticles = (width: number, height: number) => {
       const particles: Particle[] = [];
 
-      for (let index = 0; index < particleCount; index += 1) {
+      for (let index = 0; index < effectiveParticleCount; index += 1) {
         particles.push({
           x: Math.random() * width,
           y: Math.random() * height,
@@ -412,7 +432,7 @@ export function InteractiveNetworkBackground({
       lastFrameTimeRef.current = 0;
       window.cancelAnimationFrame(animationFrameRef.current);
     };
-  }, [particleCount, prefersReducedMotion]);
+  }, [effectiveParticleCount, prefersReducedMotion]);
 
   return (
     <canvas
