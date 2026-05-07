@@ -1,5 +1,6 @@
 import {
   ArrowRightIcon,
+  ArrowDownTrayIcon,
   CheckIcon,
   ShieldCheckIcon,
   SunIcon,
@@ -23,6 +24,7 @@ import type { ComponentProps } from "react";
 
 const REGISTRY = {
   arrowRight: ArrowRightIcon,
+  download: ArrowDownTrayIcon,
   check: CheckIcon,
   shieldCheck: ShieldCheckIcon,
   sun: SunIcon,
