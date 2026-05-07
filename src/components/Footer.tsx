@@ -1,5 +1,8 @@
 import Link from "next/link";
 import { Button } from "./ui/Button";
+import { ressourcenContent } from "@/content/ressourcen";
+
+const fernwartungAction = ressourcenContent.download.items[0].action;
 
 const footerLinks = [
   { label: "Leistungen", href: "/leistungen" },
@@ -63,6 +66,33 @@ export function Footer() {
               Beratung anfragen
             </Button>
           </div>
+        </div>
+
+        <div className="pb-8">
+          <a
+            href={fernwartungAction.href}
+            download={fernwartungAction.downloadFilename}
+            aria-label={fernwartungAction.ariaLabel}
+            className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.22em] text-white/55 transition-colors duration-200 hover:text-accent focus-visible:text-accent focus-visible:outline-none"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+              <polyline points="7 10 12 15 17 10" />
+              <line x1="12" y1="15" x2="12" y2="3" />
+            </svg>
+            Fernwartung herunterladen
+          </a>
         </div>
 
         <div className="mt-10 flex flex-col gap-4 border-t border-white/10 pt-6 text-sm text-white/55 lg:flex-row lg:items-center lg:justify-between">
