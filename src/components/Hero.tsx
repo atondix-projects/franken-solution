@@ -106,7 +106,7 @@ export function Hero() {
       </ParallaxLayer>
 
       {/* Content layer */}
-      <div className="relative z-10 mx-auto flex h-full lg:min-h-175 w-full max-w-7xl items-center justify-center px-6">
+      <div className="relative z-10 mx-auto flex h-full lg:min-h-175 w-full max-w-7xl items-start justify-center px-6 pt-24 sm:pt-28 lg:items-center lg:pt-0">
         {/* Left side - text content */}
         <div className="min-w-0 shrink lg:max-w-185 lg:shrink-0">
           <h1

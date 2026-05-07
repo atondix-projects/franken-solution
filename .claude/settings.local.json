@@ -5,7 +5,8 @@
       "mcp__figma-desktop__get_screenshot",
       "Bash(npm run:*)",
       "Bash(git log *)",
-      "Bash(git push *)"
+      "Bash(git push *)",
+      "Bash(npx tsc *)"
     ]
   },
   "hooks": {
