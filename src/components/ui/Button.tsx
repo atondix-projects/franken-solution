@@ -30,7 +30,7 @@ type ButtonAsLink = ButtonBase &
 export type ButtonProps = ButtonAsButton | ButtonAsAnchor | ButtonAsLink;
 
 const shared =
-  "relative overflow-hidden rounded-md border border-black/50 px-4 py-2 text-[20px] font-medium tracking-[0.4px] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] inline-flex items-center justify-center transition-all duration-300 active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent";
+  "relative overflow-hidden rounded-md border border-black/50 px-3 py-1.5 text-[14px] sm:px-3.5 sm:py-2 sm:text-[16px] md:px-4 md:py-2 md:text-[18px] lg:px-5 lg:py-2.5 lg:text-[20px] font-medium tracking-[0.4px] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] inline-flex items-center justify-center transition-all duration-300 active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent";
 
 const variants: Record<ButtonVariant, string> = {
   primary: "bg-accent text-white hover:bg-accent/10 hover:text-accent hover:border-accent btn-shimmer",
