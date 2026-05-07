@@ -43,14 +43,6 @@ function FounderStage({ item, index }: { item: FounderItem; index: number }) {
           }}
         />
 
-        {/* Large watermark numeral — top-right of card */}
-        <span
-          className="pointer-events-none absolute -right-4 top-4 select-none font-mono text-[10rem] font-black leading-none text-foreground/[0.04] transition-colors duration-500 group-hover:text-foreground/[0.07] lg:text-[13rem] motion-reduce:transition-none"
-          aria-hidden="true"
-        >
-          {item.number}
-        </span>
-
         {/* Portrait — inset inside card (framed look), with drop-shadow for depth and a contained hover lift */}
         {item.photoSrc ? (
           <div
