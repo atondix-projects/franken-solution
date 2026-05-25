@@ -86,8 +86,8 @@ export function StandortMap() {
             </ScrollReveal>
           </div>
 
-          {/* Right: map — hidden on mobile */}
-          <ScrollReveal direction="premium" delay={100} className="hidden lg:block">
+          {/* Right: map */}
+          <ScrollReveal direction="premium" delay={100}>
             <a
               href={map.outboundUrl}
               target="_blank"

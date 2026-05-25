@@ -164,7 +164,7 @@ export function FrankenMap({ className = "" }: FrankenMapProps) {
           y2="585.554"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stopColor="#343330" stopOpacity="0.06" />
+          <stop stopColor="#FAFAF8" stopOpacity="0.06" />
           <stop offset="1" stopColor="#260000" stopOpacity="0.85" />
         </linearGradient>
         <clipPath id="clip0_149_2">
