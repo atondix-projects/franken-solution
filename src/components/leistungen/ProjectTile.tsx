@@ -24,7 +24,7 @@ export function ProjectTile({ index, title, body }: Props) {
       />
       {/* Watermark number — dimensional depth layer */}
       <span
-        className="pointer-events-none absolute -right-1 -top-3 select-none font-mono text-[5.5rem] font-black leading-none text-foreground/[0.04] transition-colors duration-500 group-hover:text-foreground/[0.07]"
+        className="pointer-events-none absolute -right-1 -top-3 select-none font-mono text-5xl font-black leading-none text-foreground/[0.04] transition-colors duration-500 group-hover:text-foreground/[0.07]"
         aria-hidden="true"
       >
         {index}

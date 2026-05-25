@@ -39,13 +39,13 @@ export function SituationMatrix() {
                     scope="col"
                     className="px-6 py-4 text-left font-mono text-xs font-medium uppercase tracking-[0.12em] text-foreground-muted"
                   >
-                    Situation
+                    {content.tableHeaders.situation}
                   </th>
                   <th
                     scope="col"
                     className="px-6 py-4 text-left font-mono text-xs font-medium uppercase tracking-[0.12em] text-foreground-muted"
                   >
-                    Ansatz
+                    {content.tableHeaders.approach}
                   </th>
                 </tr>
               </thead>

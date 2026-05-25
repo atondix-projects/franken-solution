@@ -12,10 +12,10 @@ export function PillarDeepCards() {
       id="leistungsgruppen"
       className="relative overflow-hidden bg-background py-20 lg:py-28"
     >
-<div
+      <div
         className="section-glow-blob pointer-events-none absolute -right-32 top-32 h-72 w-72 blur-[100px]"
         aria-hidden="true"
-        style={{ background: "rgba(227,6,19,0.03)", animationDuration: "24s" }}
+        style={{ background: "var(--accent-glow)", animationDuration: "24s" }}
       />
 
       <div className="relative mx-auto max-w-7xl px-6">

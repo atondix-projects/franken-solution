@@ -12,10 +12,10 @@ export function ProjectBridgeStrip() {
     >
       {/* Ambient glow — matches PillarDeepCards section treatment */}
       <div
-        className="section-glow-blob pointer-events-none absolute -right-32 top-24 h-72 w-72 rounded-full bg-accent/30 blur-[100px]"
+        className="section-glow-blob pointer-events-none absolute -right-32 top-24 h-72 w-72 rounded-full bg-accent-glow blur-[100px]"
         aria-hidden="true"
       />
-<div className="relative mx-auto max-w-7xl px-6">
+      <div className="relative mx-auto max-w-7xl px-6">
         <ScrollReveal direction="up" className="mx-auto max-w-2xl text-center">
           <p className="font-mono text-xs font-medium uppercase tracking-[0.18em] text-accent">
             {content.eyebrow}
@@ -31,7 +31,7 @@ export function ProjectBridgeStrip() {
         <ScrollReveal direction="up" delay={100} className="relative mt-12">
           {/* Accent rail */}
           <div
-            className="accent-rail-full absolute left-0 top-0 h-full w-0.5 bg-accent/30"
+            className="accent-rail-full absolute left-0 top-0 h-full w-0.5 bg-accent-glow"
             aria-hidden="true"
           />
 
@@ -45,7 +45,11 @@ export function ProjectBridgeStrip() {
                 delay={160}
                 className="h-full"
               >
-                <ProjectTile index={tile.index} title={tile.title} body={tile.body} />
+                <ProjectTile
+                  index={tile.index}
+                  title={tile.title}
+                  body={tile.body}
+                />
               </ScrollReveal>
             ))}
           </div>

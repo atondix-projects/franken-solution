@@ -14,8 +14,15 @@ interface CompactPillarCardProps {
 }
 
 export function CompactPillarCard({ group }: CompactPillarCardProps) {
-  const { ref: cardRef, onMouseMove, onMouseLeave } = useCardSpotlight<HTMLDivElement>();
-  const { ref: magneticRef } = useMagnetic<HTMLDivElement>({ strength: 4, radius: 60 });
+  const {
+    ref: cardRef,
+    onMouseMove,
+    onMouseLeave,
+  } = useCardSpotlight<HTMLDivElement>();
+  const { ref: magneticRef } = useMagnetic<HTMLDivElement>({
+    strength: 4,
+    radius: 60,
+  });
 
   return (
     <div
@@ -33,7 +40,10 @@ export function CompactPillarCard({ group }: CompactPillarCardProps) {
       {/* Header: icon + title */}
       <div className="mb-5 flex items-start gap-3">
         <div className="icon-chip-glow mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-md border border-foreground/8 bg-foreground/4">
-          <PillarIcon slug={group.slug} className="h-4 w-4 text-foreground/50" />
+          <PillarIcon
+            slug={group.slug}
+            className="h-4 w-4 text-foreground/50"
+          />
         </div>
         <h3 className="text-sm font-semibold leading-snug tracking-[-0.02em] text-foreground">
           {group.title}

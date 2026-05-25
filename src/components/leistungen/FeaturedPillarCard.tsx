@@ -14,8 +14,15 @@ interface FeaturedPillarCardProps {
 }
 
 export function FeaturedPillarCard({ group }: FeaturedPillarCardProps) {
-  const { ref: cardRef, onMouseMove, onMouseLeave } = useCardSpotlight<HTMLDivElement>();
-  const { ref: magneticRef } = useMagnetic<HTMLDivElement>({ strength: 6, radius: 80 });
+  const {
+    ref: cardRef,
+    onMouseMove,
+    onMouseLeave,
+  } = useCardSpotlight<HTMLDivElement>();
+  const { ref: magneticRef } = useMagnetic<HTMLDivElement>({
+    strength: 6,
+    radius: 80,
+  });
 
   return (
     <div
@@ -34,7 +41,10 @@ export function FeaturedPillarCard({ group }: FeaturedPillarCardProps) {
         {/* Icon column */}
         <div className="shrink-0">
           <div className="icon-chip-glow flex h-14 w-14 items-center justify-center rounded-lg border border-foreground/8 bg-foreground/4 sm:h-20 sm:w-20">
-            <PillarIcon slug={group.slug} className="h-7 w-7 text-foreground/50 sm:h-10 sm:w-10" />
+            <PillarIcon
+              slug={group.slug}
+              className="h-7 w-7 text-foreground/50 sm:h-10 sm:w-10"
+            />
           </div>
         </div>
 
@@ -67,7 +77,10 @@ export function FeaturedPillarCard({ group }: FeaturedPillarCardProps) {
                     key={item}
                     className="flex items-start gap-2 text-sm font-light leading-relaxed text-foreground-muted"
                   >
-                    <Icon name="check" className="mt-0.5 size-3.5 shrink-0 text-accent" />
+                    <Icon
+                      name="check"
+                      className="mt-0.5 size-3.5 shrink-0 text-accent"
+                    />
                     {item}
                   </li>
                 ))}
