@@ -1,6 +1,22 @@
 "use client";
 
 import Link from "next/link";
+import { IBM_Plex_Mono, IBM_Plex_Sans } from "next/font/google";
+import "./globals.css";
+
+const ibmPlexSans = IBM_Plex_Sans({
+  variable: "--font-ibm-plex-sans",
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["300", "400", "500", "600", "700"],
+});
+
+const ibmPlexMono = IBM_Plex_Mono({
+  variable: "--font-ibm-plex-mono",
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["400", "500", "700"],
+});
 
 type GlobalErrorProps = {
   error: Error & { digest?: string };
@@ -9,124 +25,45 @@ type GlobalErrorProps = {
 
 export default function GlobalError({ error, reset }: GlobalErrorProps) {
   return (
-    <html lang="de">
-      <body
-        style={{
-          margin: 0,
-          minHeight: "100dvh",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          fontFamily:
-            "'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', sans-serif",
-          background: "#ffffff",
-          color: "#050505",
-          textAlign: "center",
-          padding: "1.5rem",
-        }}
-      >
-        <div style={{ maxWidth: "32rem", width: "100%" }}>
-          <p
-            style={{
-              fontFamily: "'IBM Plex Mono', ui-monospace, monospace",
-              fontSize: "0.72rem",
-              textTransform: "uppercase",
-              letterSpacing: "0.24em",
-              color: "#e30613",
-              margin: 0,
-            }}
-          >
+    <html
+      lang="de"
+      className={`${ibmPlexSans.variable} ${ibmPlexMono.variable} antialiased`}
+    >
+      <body className="m-0 flex min-h-dvh flex-col items-center justify-center bg-background px-6 text-center font-sans text-base text-foreground">
+        <div className="w-full max-w-lg">
+          <p className="m-0 font-mono text-xs uppercase tracking-[0.24em] text-accent">
             Fehler · Technischer Vorfall
           </p>
 
-          <h1
-            style={{
-              marginTop: "1.25rem",
-              marginBottom: 0,
-              fontSize: "clamp(1.75rem, 5vw, 2.75rem)",
-              fontWeight: 600,
-              letterSpacing: "-0.04em",
-              lineHeight: 1.05,
-              color: "#050505",
-            }}
-          >
+          <h1 className="mt-5 mb-0 text-3xl font-semibold leading-[1.05] tracking-[-0.04em] text-foreground sm:text-4xl">
             Kritischer Fehler
           </h1>
 
-          <p
-            style={{
-              marginTop: "1rem",
-              marginBottom: 0,
-              fontWeight: 300,
-              lineHeight: 1.6,
-              color: "#2f2f2f",
-            }}
-          >
+          <p className="mt-4 mb-0 font-light leading-relaxed text-foreground-muted">
             Die Anwendung konnte nicht geladen werden. Bitte laden Sie die Seite
             neu.
           </p>
 
           {error.digest && (
             <p
-              style={{
-                marginTop: "1rem",
-                marginBottom: 0,
-                fontFamily: "'IBM Plex Mono', ui-monospace, monospace",
-                fontSize: "0.72rem",
-                color: "rgba(5,5,5,0.45)",
-                letterSpacing: "0.08em",
-              }}
+              className="mt-4 mb-0 font-mono text-xs tracking-[0.08em] text-foreground/45"
               aria-label={`Fehlerreferenz: ${error.digest}`}
             >
               Referenz · {error.digest}
             </p>
           )}
 
-          <div
-            style={{
-              marginTop: "2rem",
-              display: "flex",
-              flexWrap: "wrap",
-              gap: "0.75rem",
-              justifyContent: "center",
-            }}
-          >
+          <div className="mt-8 flex flex-wrap justify-center gap-3">
             <button
+              type="button"
               onClick={reset}
-              style={{
-                padding: "0.625rem 1.5rem",
-                background: "#e30613",
-                color: "#ffffff",
-                border: "none",
-                borderRadius: "0.375rem",
-                fontSize: "0.875rem",
-                fontWeight: 500,
-                cursor: "pointer",
-                fontFamily:
-                  "'IBM Plex Sans', system-ui, -apple-system, sans-serif",
-              }}
+              className="cursor-pointer rounded-md border-none bg-accent px-6 py-2.5 text-sm font-medium text-white"
             >
               Seite neu laden
             </button>
             <Link
               href="/"
-              style={{
-                padding: "0.625rem 1.5rem",
-                background: "transparent",
-                color: "#050505",
-                border: "1px solid rgba(5,5,5,0.15)",
-                borderRadius: "0.375rem",
-                fontSize: "0.875rem",
-                fontWeight: 500,
-                cursor: "pointer",
-                fontFamily:
-                  "'IBM Plex Sans', system-ui, -apple-system, sans-serif",
-                textDecoration: "none",
-                display: "inline-flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
+              className="inline-flex cursor-pointer items-center justify-center rounded-md border border-foreground/15 bg-transparent px-6 py-2.5 text-sm font-medium text-foreground no-underline"
             >
               Zur Startseite
             </Link>
