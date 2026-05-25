@@ -8,12 +8,15 @@ import { Icon } from "@/components/ui/Icon";
 
 const content = kontaktContent.cta;
 
-const TITLE_PHRASES = content.title.split(". ").map((p) =>
-  p.endsWith(".") ? p : p + "."
-);
+const TITLE_PHRASES = content.title
+  .split(". ")
+  .map((p) => (p.endsWith(".") ? p : p + "."));
 
 export function KontaktCta() {
-  const { ref: magneticRef } = useMagnetic<HTMLDivElement>({ strength: 8, radius: 100 });
+  const { ref: magneticRef } = useMagnetic<HTMLDivElement>({
+    strength: 8,
+    radius: 100,
+  });
 
   return (
     <section
@@ -65,14 +68,22 @@ export function KontaktCta() {
           className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center sm:gap-4"
         >
           <div ref={magneticRef} className="magnetic-target rounded-md">
-            <Button renderAs="link" href={content.primaryCta.href} variant="primary">
+            <Button
+              renderAs="link"
+              href={content.primaryCta.href}
+              variant="primary"
+            >
               <span className="flex items-center gap-2">
                 {content.primaryCta.label}
                 <Icon name="arrowRight" className="size-4 shrink-0" />
               </span>
             </Button>
           </div>
-          <Button renderAs="link" href={content.secondaryCta.href} variant="secondary">
+          <Button
+            renderAs="link"
+            href={content.secondaryCta.href}
+            variant="secondary"
+          >
             {content.secondaryCta.label}
           </Button>
         </ScrollReveal>
@@ -80,7 +91,7 @@ export function KontaktCta() {
         <ScrollReveal direction="fade" delay={600}>
           <p className="mt-8 flex items-center justify-center gap-2 text-xs font-light text-foreground/65">
             <Icon name="shieldCheck" className="size-3" />
-            Kein Verkaufsdruck. Kein Aktionismus. Nur ein sachliches Erstgespräch.
+            {content.note}
           </p>
         </ScrollReveal>
       </div>

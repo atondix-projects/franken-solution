@@ -4,12 +4,6 @@ import { Icon } from "@/components/ui/Icon";
 
 const content = kontaktContent.directDraht;
 
-const CONTRAST_ROWS = [
-  { label: "Kein Formular auszufüllen" },
-  { label: "Kein Ticket abzuwarten" },
-  { label: "Kein wechselnder Ansprechpartner" },
-] as const;
-
 export function DirectDrahtStrip() {
   return (
     <section
@@ -34,7 +28,7 @@ export function DirectDrahtStrip() {
       <div
         className="section-glow-blob pointer-events-none absolute -left-24 top-1/3 h-72 w-72 blur-[100px]"
         aria-hidden="true"
-        style={{ background: "rgba(227,6,19,0.12)", animationDuration: "20s" }}
+        style={{ background: "var(--accent-tint-strong)", animationDuration: "20s" }}
       />
 
       <div className="relative mx-auto max-w-7xl px-6">
@@ -67,20 +61,20 @@ export function DirectDrahtStrip() {
           <ScrollReveal direction="up" delay={200}>
             <div className="rounded-[20px] border border-white/[0.07] bg-white/[0.04] p-8 backdrop-blur-sm">
               <p className="font-mono text-xs font-medium uppercase tracking-[0.2em] text-white/30">
-                Was Sie bei uns nicht brauchen
+                {content.contrastLabel}
               </p>
 
               <ul className="mt-6 space-y-4">
-                {CONTRAST_ROWS.map((row) => (
+                {content.contrastRows.map((label) => (
                   <li
-                    key={row.label}
+                    key={label}
                     className="flex items-center gap-4 border-b border-white/[0.06] pb-4 last:border-0 last:pb-0"
                   >
                     <span className="flex size-7 shrink-0 items-center justify-center rounded-full bg-white/[0.06] text-white/30">
                       <Icon name="x" className="size-3.5" />
                     </span>
                     <span className="text-sm font-light text-white/60">
-                      {row.label}
+                      {label}
                     </span>
                   </li>
                 ))}

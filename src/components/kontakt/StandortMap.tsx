@@ -95,7 +95,7 @@ export function StandortMap() {
               aria-label={map.alt}
               className="group block overflow-hidden rounded-[22px] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
             >
-              <div className="glass-card card-depth premium-card rounded-[22px] p-5 transition-all duration-500 group-hover:shadow-[0_16px_48px_rgba(227,6,19,0.10)]">
+              <div className="glass-card card-depth premium-card rounded-[22px] p-5 transition-all duration-500 group-hover:shadow-[0_16px_48px_var(--accent-glow)]">
                 <div className="relative flex aspect-[4/3] items-center justify-center">
                   <Icon
                     name="mapPin"
@@ -107,8 +107,8 @@ export function StandortMap() {
                     aria-hidden="true"
                   >
                     <span className="relative">
-                      <span className="absolute inset-0 -m-3 rounded-full bg-accent/[0.06]" />
-                      <span className="absolute inset-0 -m-1.5 rounded-full bg-accent/15" />
+                      <span className="absolute inset-0 -m-3 rounded-full bg-accent-tint" />
+                      <span className="absolute inset-0 -m-1.5 rounded-full bg-accent-glow" />
                       <span className="relative block size-3 rounded-full bg-accent/95" />
                     </span>
                   </span>
