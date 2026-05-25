@@ -10,12 +10,6 @@ import { Icon } from "./ui/Icon";
 
 const content = homepageContent.about;
 
-const differentiators = [
-  "Klare Standards und nachvollziehbare Dokumentation",
-  "Feste Ansprechpartner, die Ihre Umgebung kennen",
-  "Herstellerneutrale Empfehlungen",
-] as const;
-
 interface CounterCardProps {
   value: string;
   label: string;
@@ -44,9 +38,13 @@ function CounterCard({ value, label }: CounterCardProps) {
         aria-label={value}
         aria-live="off"
       >
-        {animated}{suffix}
+        {animated}
+        {suffix}
       </span>
-      <span className={`count-up-underline ${isVisible ? "is-visible" : ""}`} aria-hidden="true" />
+      <span
+        className={`count-up-underline ${isVisible ? "is-visible" : ""}`}
+        aria-hidden="true"
+      />
       <span className="mt-1.5 text-xs font-medium leading-tight text-foreground-muted">
         {label}
       </span>
@@ -69,7 +67,7 @@ export function About() {
               className="section-glow-blob pointer-events-none -right-16 -top-12 h-48 w-48 blur-[80px]"
               aria-hidden="true"
               style={{
-                background: "rgba(227,6,19,0.07)",
+                background: "var(--accent-glow)",
                 animationDuration: "22s",
               }}
             />
@@ -81,7 +79,7 @@ export function About() {
             >
               <Image
                 src="/homepage-hero.jpg"
-                alt="Stadtansicht von Nürnberg — Heimat von Franken Solution"
+                alt={content.imageAlt}
                 fill
                 sizes="(min-width: 1024px) 52vw, 100vw"
                 className="object-cover object-center"
@@ -118,7 +116,7 @@ export function About() {
 
             {/* Differentiator checklist */}
             <ul className="mt-7 space-y-3" role="list">
-              {differentiators.map((item) => (
+              {content.differentiators.map((item) => (
                 <li key={item} className="group flex items-start gap-3">
                   <span className="icon-chip-glow mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-full bg-accent/10 text-accent">
                     <Icon name="check" className="size-3" />
@@ -131,7 +129,11 @@ export function About() {
             </ul>
 
             <div className="mt-8">
-              <Button renderAs="link" href={content.cta.href} variant="secondary">
+              <Button
+                renderAs="link"
+                href={content.cta.href}
+                variant="secondary"
+              >
                 {content.cta.label}
               </Button>
             </div>

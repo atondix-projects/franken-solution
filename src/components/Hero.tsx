@@ -2,8 +2,13 @@ import type { CSSProperties } from "react";
 import { Suspense } from "react";
 import dynamic from "next/dynamic";
 
-import { MapPinIcon, ShieldCheckIcon, UsersIcon } from "@heroicons/react/24/solid";
+import {
+  MapPinIcon,
+  ShieldCheckIcon,
+  UsersIcon,
+} from "@heroicons/react/24/solid";
 
+import { homepageContent } from "@/content/homepage";
 import { FeatureCard } from "./FeatureCard";
 import { FrankenMap } from "./FrankenMap";
 import { ParallaxLayer } from "./ParallaxLayer";
@@ -16,11 +21,13 @@ const InteractiveNetworkBackground = dynamic(() =>
   ),
 );
 
-const ACCENT_TEXTS = [
-  "IT-Support",
-  "Cloud-Lösungen",
-  "IT-Sicherheit",
-] as const;
+const content = homepageContent.hero;
+
+const ICON_MAP = {
+  mapPin: MapPinIcon,
+  users: UsersIcon,
+  shieldCheck: ShieldCheckIcon,
+} as const;
 
 function heroLoadStyle(delay: string, duration: string): CSSProperties {
   return {
@@ -42,11 +49,7 @@ export function Hero() {
       >
         {/* Subtle gradient overlay — fades to accent at bottom */}
         <div
-          className="pointer-events-none absolute inset-0"
-          style={{
-            background:
-              "linear-gradient(to bottom, rgba(255,255,255,0.02) 76%, rgba(227,6,19,0.13) 100%)",
-          }}
+          className="hero-accent-wash pointer-events-none absolute inset-0"
           aria-hidden="true"
         />
         {/* Interactive particle network — lazy-loaded, ssr: false */}
@@ -99,11 +102,11 @@ export function Hero() {
 
       {/* Franken map silhouette — parallaxed background layer */}
       <ParallaxLayer
-        speed={0.08}
+        speed={0.06}
         enabledMediaQuery="(min-width: 1024px)"
-        className="hero-load hero-load-right pointer-events-none absolute right-0 top-0 z-1 h-11/12 max-w-full hidden lg:block"
+        className="hero-load hero-load-right pointer-events-none absolute -right-10 top-8 z-1 hidden h-[86%] w-[min(52vw,660px)] lg:block"
       >
-        <FrankenMap className="h-full w-auto" />
+        <FrankenMap className="h-full" />
       </ParallaxLayer>
 
       {/* Content layer */}
@@ -114,27 +117,26 @@ export function Hero() {
             className="hero-load hero-load-up text-3xl font-semibold leading-[1.1] tracking-[-0.02em] text-[#010202] sm:text-4xl md:text-5xl"
             style={heroLoadStyle("140ms", "560ms")}
           >
-            Ihr fränkischer Partner für {" "}
-            <TypewriterAccent texts={ACCENT_TEXTS} />
+            {content.headlinePrefix}{" "}
+            <TypewriterAccent texts={content.accentTexts} />
           </h1>
 
           <p
             className="hero-load hero-load-up mt-4 max-w-185 text-lg font-light leading-normal text-[#010202]"
             style={heroLoadStyle("240ms", "560ms")}
           >
-            Wir betreuen die IT von Unternehmen in Franken: persönlich,
-            sicher und zuverlässig im Alltag.
+            {content.subtitle}
           </p>
 
           <div
             className="hero-load hero-load-up mt-8 flex flex-wrap gap-2.5"
             style={heroLoadStyle("320ms", "560ms")}
           >
-            <Button renderAs="link" href="/kontakt" variant="primary">
-              Beratung vereinbaren
+            <Button renderAs="link" href={content.primaryCta.href} variant="primary">
+              {content.primaryCta.label}
             </Button>
-            <Button renderAs="link" href="/leistungen" variant="secondary">
-              Leistungen ansehen
+            <Button renderAs="link" href={content.secondaryCta.href} variant="secondary">
+              {content.secondaryCta.label}
             </Button>
           </div>
         </div>
@@ -144,39 +146,34 @@ export function Hero() {
           speed={0.18}
           className="ml-auto hidden h-150 lg:block relative"
         >
-          <div
-            className="hero-load hero-load-up absolute right-[36%] top-45 w-84"
-            style={heroLoadStyle("300ms", "620ms")}
-          >
-            <FeatureCard
-              icon={<MapPinIcon className="size-8" />}
-              title="Direkt aus Nürnberg"
-              description="Kurze Wege. Schnelle Hilfe."
-              className="[--feature-duration:19s] [--feature-delay:-2s] [--feature-float-x:10px] [--feature-float-y:7px] [--feature-rotate:0.35deg]"
-            />
-          </div>
-          <div
-            className="hero-load hero-load-up absolute right-[25%] top-102 w-84"
-            style={heroLoadStyle("380ms", "620ms")}
-          >
-            <FeatureCard
-              icon={<UsersIcon className="size-8" />}
-              title="Persönlicher Kontakt"
-              description="Ein Team, das Ihre IT kennt."
-              className="[--feature-duration:22s] [--feature-delay:-8s] [--feature-float-x:-8px] [--feature-float-y:9px] [--feature-rotate:0.45deg]"
-            />
-          </div>
-          <div
-            className="hero-load hero-load-up absolute right-20 top-76 w-84"
-            style={heroLoadStyle("460ms", "620ms")}
-          >
-            <FeatureCard
-              icon={<ShieldCheckIcon className="size-8" />}
-              title="Stabil im Alltag"
-              description="Saubere Lösungen für den Alltag."
-              className="[--feature-duration:21s] [--feature-delay:-5s] [--feature-float-x:7px] [--feature-float-y:-8px] [--feature-rotate:0.3deg]"
-            />
-          </div>
+          {content.featureCards.map((card, i) => {
+            const IconComponent = ICON_MAP[card.iconKey as keyof typeof ICON_MAP];
+            const positions = [
+              "hero-load hero-load-up absolute right-[36%] top-45 w-84",
+              "hero-load hero-load-up absolute right-[25%] top-102 w-84",
+              "hero-load hero-load-up absolute right-20 top-76 w-84",
+            ] as const;
+            const delays = ["300ms", "380ms", "460ms"] as const;
+            const animations = [
+              "[--feature-duration:19s] [--feature-delay:-2s] [--feature-float-x:10px] [--feature-float-y:7px] [--feature-rotate:0.35deg]",
+              "[--feature-duration:22s] [--feature-delay:-8s] [--feature-float-x:-8px] [--feature-float-y:9px] [--feature-rotate:0.45deg]",
+              "[--feature-duration:21s] [--feature-delay:-5s] [--feature-float-x:7px] [--feature-float-y:-8px] [--feature-rotate:0.3deg]",
+            ] as const;
+            return (
+              <div
+                key={card.iconKey}
+                className={positions[i]}
+                style={heroLoadStyle(delays[i], "620ms")}
+              >
+                <FeatureCard
+                  icon={<IconComponent className="size-8" />}
+                  title={card.title}
+                  description={card.description}
+                  className={animations[i]}
+                />
+              </div>
+            );
+          })}
         </ParallaxLayer>
       </div>
     </section>

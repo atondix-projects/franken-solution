@@ -28,7 +28,10 @@ export function PlaceholderPage({
       <div className="mx-auto flex min-h-[calc(100vh-8rem)] w-full max-w-7xl flex-col justify-center px-6 py-16 sm:py-20">
         <div className="max-w-4xl rounded-[2rem] border border-black/10 bg-white/88 p-8 shadow-[0_24px_80px_rgba(5,5,5,0.08)] backdrop-blur-sm sm:p-12">
           <div className="flex items-center gap-3 font-mono text-xs uppercase tracking-[0.24em] text-black/45">
-            <span className="size-2 rounded-full bg-accent" aria-hidden="true" />
+            <span
+              className="size-2 rounded-full bg-accent"
+              aria-hidden="true"
+            />
             <span>{eyebrow}</span>
           </div>
 
