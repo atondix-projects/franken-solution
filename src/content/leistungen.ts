@@ -2,14 +2,15 @@ export const leistungenContent = {
   hero: {
     eyebrow: "Leistungen",
     headline: "Sechs Bausteine. Ein verlässlicher IT-Betrieb.",
+    diagramTitle: "Managed Service mit sechs verlinkten Leistungsgruppen",
     lead: "Jede Leistungsgruppe lässt sich einzeln einsetzen – und zusammen ergeben sie einen Managed Service, der Sicherheit und stabilen Betrieb dauerhaft verbindet.",
     primaryCta: {
-      label: "Sicherheitscheck besprechen",
-      href: "/sicherheitscheck",
-    },
-    secondaryCta: {
       label: "Kontakt aufnehmen",
       href: "/kontakt",
+    },
+    secondaryCta: {
+      label: "Leistungen entdecken",
+      href: "#leistungsgruppen",
     },
     anchorChips: [
       { label: "Leistungsgruppen", anchor: "#leistungsgruppen" },
@@ -22,6 +23,10 @@ export const leistungenContent = {
   situations: {
     eyebrow: "Typische Auslöser",
     headline: "Welche Situation beschreibt Ihre aktuelle Lage?",
+    tableHeaders: {
+      situation: "Situation",
+      approach: "Ansatz",
+    },
     description:
       "Diese Situationen tauchen selten einzeln auf. Die Tabelle zeigt, welche Leistungsgruppe als erstes ansetzt.",
     rows: [
@@ -179,6 +184,7 @@ export const leistungenContent = {
   ongoing: {
     eyebrow: "Laufende Betreuung",
     headline: "Managed Service als fortlaufender Prozess",
+    diagramTitle: "Vier Schritte des fortlaufenden Managed-Service-Prozesses",
     description:
       "Einmalige Maßnahmen greifen zu kurz. Sicherheit und stabiler Betrieb entstehen durch einen strukturierten Zyklus, der kontinuierlich wiederkehrt.",
     cycle: [
@@ -235,16 +241,32 @@ export const leistungenContent = {
     eyebrow: "Nächster Schritt",
     headline: "Sicherheit und Betrieb. Klar aufgestellt.",
     description:
-      "Wenn Ihre IT professioneller und planbarer aufgestellt werden soll, ist ein Sicherheitscheck oder ein erstes Beratungsgespräch der saubere Einstieg.",
+      "Wenn Ihre IT professioneller und planbarer aufgestellt werden soll, ist ein erstes Beratungsgespräch der saubere Einstieg.",
     primaryCta: {
-      label: "Sicherheitscheck besprechen",
-      href: "/sicherheitscheck",
-    },
-    secondaryCta: {
       label: "Kontakt aufnehmen",
       href: "/kontakt",
     },
+    secondaryCta: {
+      label: "Leistungen ansehen",
+      href: "/leistungen",
+    },
     note: "Placeholder: Kein Verkaufsdruck. Kein Aktionismus. Nur ein sachliches Erstgespräch.",
+  },
+  pillarDetail: {
+    backLink: "Alle Leistungen",
+    eyebrowGroup: "Leistungsgruppe",
+    eyebrowTrigger: "Typischer Auslöser",
+    eyebrowBausteine: "Was wir konkret übernehmen",
+    bausteineHeading: "Vier Bausteine, klar verantwortet.",
+    eyebrowErgebnis: "Was Sie erreichen",
+    cta: {
+      eyebrow: "Nächster Schritt",
+      headingPrefix: "Soll",
+      headingSuffix: "bei Ihnen sauber aufgestellt werden?",
+      body: "Ein erstes Beratungsgespräch ist der saubere Einstieg – ohne Verkaufsdruck.",
+      primaryCta: { label: "Kontakt aufnehmen", href: "/kontakt" },
+      secondaryCta: { label: "Alle Leistungen", href: "/leistungen" },
+    },
   },
 } as const;
 
