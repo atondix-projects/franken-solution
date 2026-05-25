@@ -4,12 +4,6 @@ import { Icon } from "@/components/ui/Icon";
 
 const content = ressourcenContent.hero;
 
-const TRUST_CHIPS = [
-  "Direkt von Franken Solution",
-  "Windows-kompatibel",
-  "Kein Login erforderlich",
-] as const;
-
 function heroStyle(delay: string, duration = "560ms"): CSSProperties {
   return {
     "--hero-load-delay": delay,
@@ -26,13 +20,42 @@ function ConnectorLine() {
       className="mx-auto w-full max-w-sm opacity-30"
       aria-hidden="true"
     >
-      <line x1="0" y1="24" x2="480" y2="24" stroke="currentColor" strokeWidth="1" strokeDasharray="4 3" />
+      <line
+        x1="0"
+        y1="24"
+        x2="480"
+        y2="24"
+        stroke="currentColor"
+        strokeWidth="1"
+        strokeDasharray="4 3"
+      />
       <circle cx="60" cy="24" r="5" fill="currentColor" opacity="0.6" />
-      <circle cx="60" cy="24" r="9" stroke="currentColor" strokeWidth="1" opacity="0.25" />
-      <circle cx="240" cy="24" r="7" fill="rgba(227,6,19,0.9)" />
-      <circle cx="240" cy="24" r="13" stroke="rgba(227,6,19,0.4)" strokeWidth="1" />
+      <circle
+        cx="60"
+        cy="24"
+        r="9"
+        stroke="currentColor"
+        strokeWidth="1"
+        opacity="0.25"
+      />
+      <circle cx="240" cy="24" r="7" fill="var(--accent)" fillOpacity="0.9" />
+      <circle
+        cx="240"
+        cy="24"
+        r="13"
+        stroke="var(--accent)"
+        strokeOpacity="0.4"
+        strokeWidth="1"
+      />
       <circle cx="420" cy="24" r="5" fill="currentColor" opacity="0.6" />
-      <circle cx="420" cy="24" r="9" stroke="currentColor" strokeWidth="1" opacity="0.25" />
+      <circle
+        cx="420"
+        cy="24"
+        r="9"
+        stroke="currentColor"
+        strokeWidth="1"
+        opacity="0.25"
+      />
     </svg>
   );
 }
@@ -46,13 +69,13 @@ export function RessourcenHero() {
       <div
         className="section-glow-blob pointer-events-none absolute -right-32 -top-32 h-[480px] w-[480px] blur-[120px]"
         aria-hidden="true"
-        style={{ background: "rgba(227,6,19,0.06)", animationDuration: "22s" }}
+        style={{ background: "var(--accent-glow)", animationDuration: "22s" }}
       />
       <div
         className="section-glow-blob pointer-events-none absolute -bottom-20 -left-20 h-80 w-80 blur-[96px]"
         aria-hidden="true"
         style={{
-          background: "rgba(227,6,19,0.04)",
+          background: "var(--accent-glow)",
           animationDuration: "30s",
           animationDelay: "-12s",
         }}
@@ -96,7 +119,7 @@ export function RessourcenHero() {
           className="hero-load hero-load-up mt-6 flex flex-wrap items-center justify-center gap-3"
           style={heroStyle("400ms", "500ms")}
         >
-          {TRUST_CHIPS.map((chip) => (
+          {content.trustChips.map((chip) => (
             <span
               key={chip}
               className="inline-flex items-center gap-1.5 rounded-full border border-foreground/10 bg-foreground/[0.04] px-3.5 py-1.5 font-mono text-xs font-medium tracking-[0.08em] text-foreground/60"
