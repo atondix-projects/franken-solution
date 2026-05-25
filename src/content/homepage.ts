@@ -1,38 +1,34 @@
 export const homepageContent = {
   hero: {
-    eyebrow: "Franken Solution",
-    regionLabel:
-      "Aus Nürnberg für Unternehmen in Franken und darüber hinaus remote.",
-    title: "Sichere hybride IT für Unternehmen. Planbar betreut.",
-    description:
-      "Franken Solution verbindet IT-Sicherheit und stabilen IT-Betrieb zu einem klaren Managed-Service-Modell für kleine und mittelständische Unternehmen.",
-    supportingPoints: [
-      "IT-Sicherheit und Betrieb zusammen gedacht",
-      "Klare Standards und nachvollziehbare Betreuung",
-      "Feste Ansprechpartner statt wechselnder Ticketschleifen",
-    ],
-    highlights: [
-      {
-        title: "Sicherheitscheck als Einstieg",
-        description: "Erst Analyse – dann Maßnahmen.",
-      },
-      {
-        title: "Persönlich betreut",
-        description: "Feste Ansprechpartner, die Ihre IT kennen.",
-      },
-      {
-        title: "Herstellerneutral geplant",
-        description: "Technik nach Bedarf, nicht nach Katalog.",
-      },
-    ],
+    headlinePrefix: "Ihr fränkischer Partner für",
+    accentTexts: ["IT-Support", "Cloud-Lösungen", "IT-Sicherheit"],
+    subtitle:
+      "Wir betreuen die IT von Unternehmen in Franken: persönlich, sicher und zuverlässig im Alltag.",
     primaryCta: {
-      label: "Sicherheitscheck besprechen",
-      href: "/sicherheitscheck",
+      label: "Beratung vereinbaren",
+      href: "/kontakt",
     },
     secondaryCta: {
       label: "Leistungen ansehen",
       href: "/leistungen",
     },
+    featureCards: [
+      {
+        iconKey: "mapPin",
+        title: "Direkt aus Nürnberg",
+        description: "Kurze Wege. Schnelle Hilfe.",
+      },
+      {
+        iconKey: "users",
+        title: "Persönlicher Kontakt",
+        description: "Ein Team, das Ihre IT kennt.",
+      },
+      {
+        iconKey: "shieldCheck",
+        title: "Stabil im Alltag",
+        description: "Saubere Lösungen für den Alltag.",
+      },
+    ],
   },
   services: {
     eyebrow: "Leistungen",
@@ -78,10 +74,10 @@ export const homepageContent = {
       },
     ],
     supportingStatement:
-      "Je nach Ausgangslage starten wir mit einem Sicherheitscheck und entwickeln daraus einen priorisierten Maßnahmenplan.",
+      "Je nach Ausgangslage starten wir mit einer Bestandsaufnahme und entwickeln daraus einen priorisierten Maßnahmenplan.",
     cta: {
-      label: "Sicherheitscheck besprechen",
-      href: "/sicherheitscheck",
+      label: "Leistungen ansehen",
+      href: "/leistungen",
     },
   },
   process: {
@@ -92,7 +88,7 @@ export const homepageContent = {
     steps: [
       {
         iconKey: "magnifier",
-        title: "Bestandsaufnahme & Sicherheitscheck",
+        title: "Bestandsaufnahme",
         description:
           "Wir erfassen die aktuelle IT-Lage und machen Sicherheits- und Betriebsrisiken sichtbar.",
         outcome: "Sie bekommen ein klares Bild statt diffuser Vermutungen.",
@@ -159,6 +155,12 @@ export const homepageContent = {
     title: "Persönlich. Strukturiert. Herstellerneutral.",
     description:
       "Franken Solution ist ein fokussierter B2B-Partner für IT-Sicherheit und sicheren IT-Betrieb. Wir betreuen hybride IT-Umgebungen mit klaren Standards, festen Ansprechpartnern und planbaren Managed Services.",
+    imageAlt: "Stadtansicht von Nürnberg — Heimat von Franken Solution",
+    differentiators: [
+      "Klare Standards und nachvollziehbare Dokumentation",
+      "Feste Ansprechpartner, die Ihre Umgebung kennen",
+      "Herstellerneutrale Empfehlungen",
+    ],
     counters: [
       {
         value: "10+",
@@ -208,10 +210,11 @@ export const homepageContent = {
     eyebrow: "Nächster Schritt",
     title: "Sichere hybride IT. Klar priorisiert. Langfristig betreut.",
     description:
-      "Wenn Ihre IT professioneller, sicherer und planbarer aufgestellt werden soll, ist ein Sicherheitscheck oder ein erstes Beratungsgespräch der saubere Einstieg.",
+      "Wenn Ihre IT professioneller, sicherer und planbarer aufgestellt werden soll, ist ein erstes Beratungsgespräch der saubere Einstieg.",
+    note: "Kein Verkaufsdruck. Kein Aktionismus. Nur ein sachliches Erstgespräch.",
     primaryCta: {
-      label: "Sicherheitscheck besprechen",
-      href: "/sicherheitscheck",
+      label: "Kontakt aufnehmen",
+      href: "/kontakt",
     },
     secondaryCta: {
       label: "Kontakt aufnehmen",

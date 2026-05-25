@@ -4,6 +4,11 @@ export const kontaktContent = {
     title: "Direkter Draht statt Ticketformular.",
     lead: "Sie haben eine Frage, ein konkretes Problem oder wollen einfach wissen, wie Franken Solution zu Ihnen passt — sprechen Sie uns direkt an.",
     subtext: "Kein Formular. Keine Ticketnummer. Ein Anruf oder eine E-Mail reichen.",
+    trustChips: [
+      "Kein Formular",
+      "Keine Warteschleife",
+      "Direkter Ansprechpartner",
+    ],
   },
   methods: {
     eyebrow: "Erreichbarkeit",
@@ -45,6 +50,12 @@ export const kontaktContent = {
     eyebrow: "Warum kein Formular",
     title: "Weil Gespräche schneller tragen als Tickets.",
     body: "Viele IT-Dienstleister verstecken sich hinter Ticketsystemen. Wir nicht. Wenn Sie ein Problem haben oder etwas fragen wollen, wollen wir das direkt hören — nicht aufbereitet in einem Formular, das zuerst durch drei Queues läuft. Kurze Wege sind kein Zufall bei Franken Solution, sondern Modell.",
+    contrastLabel: "Was Sie bei uns nicht brauchen",
+    contrastRows: [
+      "Kein Formular auszufüllen",
+      "Kein Ticket abzuwarten",
+      "Kein wechselnder Ansprechpartner",
+    ],
   },
   standort: {
     eyebrow: "Standort",
@@ -69,15 +80,16 @@ export const kontaktContent = {
   cta: {
     eyebrow: "Nächster Schritt",
     title: "Lieber mit Struktur einsteigen?",
+    note: "Kein Verkaufsdruck. Kein Aktionismus. Nur ein sachliches Erstgespräch.",
     description:
       "Kein Verkaufsdruck. Nur ein sachliches Erstgespräch — was Ihre IT heute kann, was fehlt, und wie eine Betreuung aussehen könnte.",
     primaryCta: {
-      label: "Sicherheitscheck besprechen",
-      href: "/sicherheitscheck",
-    },
-    secondaryCta: {
       label: "Leistungen ansehen",
       href: "/leistungen",
+    },
+    secondaryCta: {
+      label: "Über uns",
+      href: "/ueber-franken-solution",
     },
   },
 } as const;

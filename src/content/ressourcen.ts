@@ -4,6 +4,11 @@ export const ressourcenContent = {
     title: "Werkzeuge, die wir Ihnen direkt zur Verfügung stellen.",
     lead: "Praktische Hilfsmittel für die Zusammenarbeit mit Franken Solution — vom Fernwartungs-Tool bis zu Informationsmaterialien, die Schritt für Schritt dazukommen.",
     subtext: "Alle Tools stammen direkt von Franken Solution und sind für Kunden und Partner bestimmt.",
+    trustChips: [
+      "Direkt von Franken Solution",
+      "Windows-kompatibel",
+      "Kein Login erforderlich",
+    ],
   },
   download: {
     eyebrow: "Fernwartung",
@@ -30,6 +35,7 @@ export const ressourcenContent = {
     eyebrow: "Direkter Draht",
     title: "Fragen zum Tool. Wir sind direkt erreichbar.",
     description: "Unser Support steht Ihnen werktags von 09:00 bis 17:00 Uhr zur Verfügung. Ein kurzer Anruf genügt, um direkt loszulegen.",
+    note: "Werktags von 09:00 bis 17:00 Uhr erreichbar. Kein Ticket. Kein Umweg.",
     primaryCta: { label: "Kontakt aufnehmen", href: "/kontakt" },
     secondaryCta: { label: "Leistungen ansehen", href: "/leistungen" },
   },
