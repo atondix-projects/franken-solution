@@ -1,7 +1,61 @@
 import { leistungenContent } from "@/content/leistungen";
 import { ScrollReveal } from "@/components/ScrollReveal";
+import {
+  diagramNodeRect,
+  ringPosition,
+  splitDiagramTitle,
+} from "./diagram-shared";
 
 const content = leistungenContent.ongoing;
+
+const CX = 250;
+const CY = 250;
+const NODE_HALF_W = 76;
+const NODE_HALF_H = 60;
+const NODE_SIZE_W = NODE_HALF_W * 2;
+const NODE_SIZE_H = NODE_HALF_H * 2;
+const NODE_RX = 12;
+const NODE_LABEL_PAD_X = 2;
+const NODE_LABEL_TOP = 30;
+const ORBIT_R = 168;
+const CONNECTOR_BULGE = 48;
+
+const DEPARTURE_OFFSETS = [
+  [NODE_HALF_W, 0],
+  [0, NODE_HALF_H],
+  [-NODE_HALF_W, 0],
+  [0, -NODE_HALF_H],
+] as const;
+
+const ARRIVAL_OFFSETS = [
+  [-NODE_HALF_W, 0],
+  [0, -NODE_HALF_H],
+  [NODE_HALF_W, 0],
+  [0, NODE_HALF_H],
+] as const;
+const HUB_INNER_R = 36;
+const HUB_MID_R = 46;
+const HUB_ORBIT_R = 54;
+const HUB_GLOW_R = 66;
+
+const LOOP_LABEL_OVERRIDES: Record<number, [string, string]> = {
+  4: ["Weiterent", "wicklung"],
+};
+
+function loopLabelLines(index: number, title: string): [string, string] {
+  return LOOP_LABEL_OVERRIDES[index + 1] ?? splitDiagramTitle(title);
+}
+
+const LOOP_NODES = content.cycle.map((step, index) => {
+  const pos = ringPosition(CX, CY, ORBIT_R, index, 4);
+  const [line1, line2] = loopLabelLines(index, step.title);
+  return {
+    ...pos,
+    index: index + 1,
+    title: step.title,
+    lines: [line1, line2] as [string, string],
+  };
+});
 
 export function OngoingLoop() {
   return (
@@ -21,16 +75,21 @@ export function OngoingLoop() {
 
       <div className="relative mx-auto max-w-7xl px-6">
         <div className="flex flex-col gap-16 lg:flex-row lg:items-center lg:gap-20">
-          {/* Diagram */}
+          {/* Diagram — same language as Leistungen hero hub */}
           <div className="flex shrink-0 justify-center lg:justify-start">
             <ScrollReveal direction="scale" threshold={0.15}>
               <svg
-                viewBox="0 0 300 300"
-                width="300"
-                height="300"
-                aria-hidden="true"
-                className="overflow-visible"
+                viewBox="0 0 500 500"
+                width={440}
+                height={440}
+                role="img"
+                aria-labelledby="ongoing-loop-diagram-title"
+                className="ongoing-loop-diagram overflow-visible"
               >
+                <title id="ongoing-loop-diagram-title">
+                  {content.diagramTitle}
+                </title>
+
                 <defs>
                   <marker
                     id="ongoing-loop-arrow"
@@ -40,254 +99,140 @@ export function OngoingLoop() {
                     refY="3.5"
                     orient="auto"
                   >
-                    <path d="M0,0.5 L6,3.5 L0,6.5 Z" fill="rgba(227,6,19,0.7)" />
+                    <path
+                      d="M0,0.5 L6,3.5 L0,6.5 Z"
+                      fill="rgba(227,6,19,0.55)"
+                    />
                   </marker>
                 </defs>
 
-                {/* Arcs — connect node surfaces, not centers */}
-                <path
-                  d="M150,40 Q260,40 260,120"
-                  fill="none"
-                  stroke="rgba(227,6,19,0.5)"
-                  strokeWidth="2"
-                  markerEnd="url(#ongoing-loop-arrow)"
-                  className="dash-flow-path"
-                />
-                <path
-                  d="M260,180 Q260,260 180,260"
-                  fill="none"
-                  stroke="rgba(227,6,19,0.5)"
-                  strokeWidth="2"
-                  markerEnd="url(#ongoing-loop-arrow)"
-                  className="dash-flow-path"
-                />
-                <path
-                  d="M120,260 Q40,260 40,180"
-                  fill="none"
-                  stroke="rgba(227,6,19,0.5)"
-                  strokeWidth="2"
-                  markerEnd="url(#ongoing-loop-arrow)"
-                  className="dash-flow-path"
-                />
-                <path
-                  d="M40,120 Q40,40 120,40"
-                  fill="none"
-                  stroke="rgba(227,6,19,0.5)"
-                  strokeWidth="2"
-                  markerEnd="url(#ongoing-loop-arrow)"
-                  className="dash-flow-path"
-                />
+                {/* Cycle connectors — outer edge-center to outer edge-center */}
+                {LOOP_NODES.map((node, i) => {
+                  const next = LOOP_NODES[(i + 1) % LOOP_NODES.length];
+                  const [dox, doy] = DEPARTURE_OFFSETS[i];
+                  const [aox, aoy] = ARRIVAL_OFFSETS[(i + 1) % 4];
+                  const sx = node.x + dox;
+                  const sy = node.y + doy;
+                  const ex = next.x + aox;
+                  const ey = next.y + aoy;
+                  const midX = (sx + ex) / 2;
+                  const midY = (sy + ey) / 2;
+                  const ddx = midX - CX;
+                  const ddy = midY - CY;
+                  const len = Math.hypot(ddx, ddy) || 1;
+                  const qx = midX + (ddx / len) * CONNECTOR_BULGE;
+                  const qy = midY + (ddy / len) * CONNECTOR_BULGE;
+                  return (
+                    <path
+                      key={`arc-${node.index}`}
+                      d={`M${sx},${sy} Q${qx},${qy} ${ex},${ey}`}
+                      fill="none"
+                      stroke="rgba(227,6,19,0.35)"
+                      strokeWidth="1.5"
+                      markerEnd="url(#ongoing-loop-arrow)"
+                      className="dash-flow-path"
+                    />
+                  );
+                })}
 
-                {/* Center hub — double ring */}
-                <circle
-                  cx="150"
-                  cy="150"
-                  r="52"
-                  fill="rgba(227,6,19,0.07)"
-                  stroke="rgba(227,6,19,0.3)"
-                  strokeWidth="1.5"
-                />
-                <circle
-                  cx="150"
-                  cy="150"
-                  r="42"
-                  fill="rgba(227,6,19,0.1)"
-                  stroke="rgba(227,6,19,0.5)"
-                  strokeWidth="1.5"
-                />
-                <text
-                  x="150"
-                  y="150"
-                  textAnchor="middle"
-                  dominantBaseline="middle"
-                  fontSize="13"
-                  fontFamily="IBM Plex Mono, monospace"
-                  fontWeight="700"
-                  fill="rgb(227,6,19)"
-                >
-                  {content.centerLabel}
-                </text>
+                {/* Center hub — readable on dark section */}
+                <g className="ongoing-loop-hub">
+                  <circle
+                    cx={CX}
+                    cy={CY}
+                    r={HUB_GLOW_R}
+                    fill="rgba(227,6,19,0.05)"
+                    className="ongoing-loop-hub-glow"
+                  />
+                  <circle
+                    cx={CX}
+                    cy={CY}
+                    r={HUB_ORBIT_R}
+                    fill="none"
+                    stroke="rgba(227,6,19,0.18)"
+                    strokeWidth="1"
+                    className="ongoing-loop-hub-ring"
+                  />
+                  <circle
+                    cx={CX}
+                    cy={CY}
+                    r={HUB_MID_R}
+                    fill="rgba(255,255,255,0.04)"
+                    stroke="rgba(255,255,255,0.12)"
+                    strokeWidth="1"
+                  />
+                  <circle
+                    cx={CX}
+                    cy={CY}
+                    r={HUB_INNER_R}
+                    fill="rgba(22,23,29,0.95)"
+                    stroke="rgba(227,6,19,0.4)"
+                    strokeWidth="1.5"
+                  />
+                  <text
+                    x={CX}
+                    y={CY}
+                    textAnchor="middle"
+                    dominantBaseline="middle"
+                    className="ongoing-loop-hub-label font-mono text-[15px] font-semibold"
+                    fill="rgba(255,255,255,0.92)"
+                  >
+                    {content.centerLabel}
+                  </text>
+                </g>
 
-                {/* Node 1 — Top (150, 40) */}
-                <circle
-                  cx="150"
-                  cy="40"
-                  r="30"
-                  fill="rgba(255,255,255,0.88)"
-                  stroke="rgba(227,6,19,0.5)"
-                  strokeWidth="1.5"
-                />
-                {/* Number */}
-                <text
-                  x="150"
-                  y="40"
-                  textAnchor="middle"
-                  dominantBaseline="middle"
-                  fontSize="16"
-                  fontFamily="IBM Plex Mono, monospace"
-                  fontWeight="700"
-                  fill="rgb(227,6,19)"
-                >
-                  1
-                </text>
-                {/* Label — above the circle */}
-                <text
-                  x="150"
-                  y="2"
-                  textAnchor="middle"
-                  fontSize="9.5"
-                  fontFamily="IBM Plex Mono, monospace"
-                  fontWeight="600"
-                  fill="rgba(255,255,255,0.72)"
-                >
-                  Monitoring und
-                </text>
-                <text
-                  x="150"
-                  y="13"
-                  textAnchor="middle"
-                  fontSize="9.5"
-                  fontFamily="IBM Plex Mono, monospace"
-                  fontWeight="600"
-                  fill="rgba(255,255,255,0.72)"
-                >
-                  Erkennung
-                </text>
+                {/* Process steps */}
+                {LOOP_NODES.map((node) => {
+                  const body = diagramNodeRect(
+                    node.x,
+                    node.y,
+                    NODE_HALF_W,
+                    NODE_HALF_H,
+                    NODE_RX,
+                  );
 
-                {/* Node 2 — Right (260, 150) */}
-                <circle
-                  cx="260"
-                  cy="150"
-                  r="30"
-                  fill="rgba(255,255,255,0.88)"
-                  stroke="rgba(227,6,19,0.5)"
-                  strokeWidth="1.5"
-                />
-                <text
-                  x="260"
-                  y="150"
-                  textAnchor="middle"
-                  dominantBaseline="middle"
-                  fontSize="16"
-                  fontFamily="IBM Plex Mono, monospace"
-                  fontWeight="700"
-                  fill="rgb(227,6,19)"
-                >
-                  2
-                </text>
-                {/* Label — right of circle, fits in flex gap between SVG and text column */}
-                <text
-                  x="294"
-                  y="144"
-                  textAnchor="start"
-                  fontSize="9.5"
-                  fontFamily="IBM Plex Mono, monospace"
-                  fontWeight="600"
-                  fill="rgba(255,255,255,0.72)"
-                >
-                  Bewertung und
-                </text>
-                <text
-                  x="294"
-                  y="156"
-                  textAnchor="start"
-                  fontSize="9.5"
-                  fontFamily="IBM Plex Mono, monospace"
-                  fontWeight="600"
-                  fill="rgba(255,255,255,0.72)"
-                >
-                  Priorisierung
-                </text>
+                  return (
+                    <g
+                      key={node.index}
+                      aria-label={`Schritt ${node.index}: ${node.title}`}
+                    >
+                      <rect
+                        {...body}
+                        fill="rgba(255,255,255,0.07)"
+                        stroke="rgba(255,255,255,0.14)"
+                        strokeWidth="1.5"
+                        className="hub-node-surface"
+                      />
 
-                {/* Node 3 — Bottom (150, 260) */}
-                <circle
-                  cx="150"
-                  cy="260"
-                  r="30"
-                  fill="rgba(255,255,255,0.88)"
-                  stroke="rgba(227,6,19,0.5)"
-                  strokeWidth="1.5"
-                />
-                <text
-                  x="150"
-                  y="260"
-                  textAnchor="middle"
-                  dominantBaseline="middle"
-                  fontSize="16"
-                  fontFamily="IBM Plex Mono, monospace"
-                  fontWeight="700"
-                  fill="rgb(227,6,19)"
-                >
-                  3
-                </text>
-                {/* Label — below the circle */}
-                <text
-                  x="150"
-                  y="296"
-                  textAnchor="middle"
-                  fontSize="9.5"
-                  fontFamily="IBM Plex Mono, monospace"
-                  fontWeight="600"
-                  fill="rgba(255,255,255,0.72)"
-                >
-                  Umsetzung und
-                </text>
-                <text
-                  x="150"
-                  y="307"
-                  textAnchor="middle"
-                  fontSize="9.5"
-                  fontFamily="IBM Plex Mono, monospace"
-                  fontWeight="600"
-                  fill="rgba(255,255,255,0.72)"
-                >
-                  Anpassung
-                </text>
+                      <text
+                        x={node.x}
+                        y={node.y - NODE_HALF_H + 18}
+                        textAnchor="middle"
+                        dominantBaseline="middle"
+                        className="font-mono text-[16px] font-semibold"
+                        fill="rgba(227,6,19,0.88)"
+                      >
+                        {node.index}
+                      </text>
 
-                {/* Node 4 — Left (40, 150) */}
-                <circle
-                  cx="40"
-                  cy="150"
-                  r="30"
-                  fill="rgba(255,255,255,0.88)"
-                  stroke="rgba(227,6,19,0.5)"
-                  strokeWidth="1.5"
-                />
-                <text
-                  x="40"
-                  y="150"
-                  textAnchor="middle"
-                  dominantBaseline="middle"
-                  fontSize="16"
-                  fontFamily="IBM Plex Mono, monospace"
-                  fontWeight="700"
-                  fill="rgb(227,6,19)"
-                >
-                  4
-                </text>
-                {/* Label — below the node; arc terminates at circle surface (y=180) so 6px gap */}
-                <text
-                  x="40"
-                  y="192"
-                  textAnchor="middle"
-                  fontSize="9.5"
-                  fontFamily="IBM Plex Mono, monospace"
-                  fontWeight="600"
-                  fill="rgba(255,255,255,0.72)"
-                >
-                  Weiterent-
-                </text>
-                <text
-                  x="40"
-                  y="203"
-                  textAnchor="middle"
-                  fontSize="9.5"
-                  fontFamily="IBM Plex Mono, monospace"
-                  fontWeight="600"
-                  fill="rgba(255,255,255,0.72)"
-                >
-                  wicklung
-                </text>
+                      <foreignObject
+                        x={node.x - NODE_HALF_W + NODE_LABEL_PAD_X}
+                        y={node.y - NODE_HALF_H + NODE_LABEL_TOP}
+                        width={NODE_SIZE_W - NODE_LABEL_PAD_X * 2}
+                        height={NODE_SIZE_H - NODE_LABEL_TOP - 6}
+                        className="overflow-hidden"
+                      >
+                        <div
+                          {...{ xmlns: "http://www.w3.org/1999/xhtml" }}
+                          className="ongoing-loop-label hub-node-label-html flex h-full flex-col items-center justify-center gap-px px-0.5 text-center font-mono text-[16px] leading-tight text-white/82"
+                        >
+                          <span>{node.lines[0]}</span>
+                          {node.lines[1] ? <span>{node.lines[1]}</span> : null}
+                        </div>
+                      </foreignObject>
+                    </g>
+                  );
+                })}
               </svg>
             </ScrollReveal>
           </div>
@@ -298,7 +243,7 @@ export function OngoingLoop() {
               <p className="font-mono text-xs font-medium uppercase tracking-[0.18em] text-accent">
                 {content.eyebrow}
               </p>
-              <h2 className="mt-3 text-3xl font-semibold leading-[1.15] tracking-[-0.04em] text-white/88 sm:text-4xl">
+              <h2 className="mt-3 text-3xl font-semibold leading-[1.15] tracking-[-0.04em] text-white/88 sm:text-3xl">
                 {content.headline}
               </h2>
               <p className="mt-4 text-base font-light leading-relaxed text-white/55">
@@ -308,13 +253,21 @@ export function OngoingLoop() {
 
             <ol className="mt-8 flex flex-col gap-6" role="list">
               {content.cycle.map((step, i) => (
-                <ScrollReveal key={step.title} direction="up" stagger={70} index={i} delay={120}>
+                <ScrollReveal
+                  key={step.title}
+                  direction="up"
+                  stagger={70}
+                  index={i}
+                  delay={120}
+                >
                   <li className="flex gap-4">
                     <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-accent/25 bg-accent/6 font-mono text-xs font-semibold text-accent">
                       {i + 1}
                     </span>
                     <div>
-                      <p className="text-sm font-semibold text-white/88">{step.title}</p>
+                      <p className="text-sm font-semibold text-white/88">
+                        {step.title}
+                      </p>
                       <p className="mt-1 text-sm font-light leading-relaxed text-white/55">
                         {step.body}
                       </p>
