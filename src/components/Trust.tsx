@@ -24,7 +24,7 @@ function TrustConnector({ index }: { index: number }) {
     >
       <defs>
         <linearGradient id={gradId} x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="rgba(227,6,19,0.25)" />
+          <stop offset="0%" stopColor="var(--accent-deep)" stopOpacity="0.25" />
           <stop offset="50%" stopColor="rgba(255,255,255,0.12)" />
           <stop offset="100%" stopColor="rgba(255,255,255,0.05)" />
         </linearGradient>
@@ -37,7 +37,7 @@ function TrustConnector({ index }: { index: number }) {
         className="dash-flow-path"
       />
       {/* Pulsing node at midpoint */}
-      <circle cx="4" cy="50" r="2.5" fill="rgba(227,6,19,0.18)" />
+      <circle cx="4" cy="50" r="2.5" fill="var(--accent-deep)" fillOpacity="0.18" />
     </svg>
   );
 }
@@ -53,9 +53,7 @@ function TrustItemRow({ item, index }: { item: TrustItem; index: number }) {
         >
           <Icon name={item.iconKey} className="size-5" />
         </span>
-        {index < content.items.length - 1 && (
-          <TrustConnector index={index} />
-        )}
+        {index < content.items.length - 1 && <TrustConnector index={index} />}
       </div>
 
       {/* Right: text */}
@@ -76,7 +74,6 @@ export function Trust() {
     <section className="bg-background-muted py-20 lg:py-28">
       <div className="mx-auto max-w-7xl px-6">
         <div className="flex flex-col gap-12 lg:flex-row lg:gap-20 xl:gap-28">
-
           {/* ── Left column: section intro + decorative shield ── */}
           <ScrollReveal direction="left" className="lg:w-[42%] lg:shrink-0">
             <div className="lg:sticky lg:top-28">
@@ -89,17 +86,13 @@ export function Trust() {
               <p className="mt-4 text-base font-light leading-relaxed text-white/55">
                 {content.description}
               </p>
-
             </div>
           </ScrollReveal>
 
           {/* ── Right column: trust items ── */}
           <div className="flex flex-col lg:flex-1">
             {/* Thin top accent rule */}
-            <div
-              className="mb-8 h-px w-12 bg-accent"
-              aria-hidden="true"
-            />
+            <div className="mb-8 h-px w-12 bg-accent" aria-hidden="true" />
 
             <div role="list" aria-label="Vertrauenssignale">
               {content.items.map((item, i) => (
@@ -118,7 +111,6 @@ export function Trust() {
               ))}
             </div>
           </div>
-
         </div>
       </div>
     </section>

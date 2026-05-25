@@ -11,13 +11,13 @@ export function ServicePillars() {
       <div
         className="section-glow-blob -left-24 -top-24 h-64 w-64 blur-[100px]"
         aria-hidden="true"
-        style={{ background: "rgba(227,6,19,0.035)", animationDuration: "20s" }}
+        style={{ background: "var(--accent-glow)", animationDuration: "20s" }}
       />
       <div
         className="section-glow-blob -bottom-24 -right-24 h-56 w-56 blur-[90px]"
         aria-hidden="true"
         style={{
-          background: "rgba(227,6,19,0.03)",
+          background: "var(--accent-glow)",
           animationDuration: "26s",
           animationDelay: "-9s",
         }}
@@ -26,7 +26,7 @@ export function ServicePillars() {
         className="section-glow-blob pointer-events-none absolute left-1/2 top-1/2 h-96 w-96 -translate-x-1/2 -translate-y-1/2 blur-[120px]"
         aria-hidden="true"
         style={{
-          background: "rgba(227,6,19,0.025)",
+          background: "var(--accent-glow)",
           animationDuration: "30s",
           animationDelay: "-14s",
         }}

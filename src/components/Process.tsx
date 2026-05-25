@@ -7,7 +7,12 @@ const content = homepageContent.process;
 
 type Step = ProcessSectionContent["steps"][number];
 
-function ProcessConnector({ connectorDelay }: { index: number; connectorDelay: number }) {
+function ProcessConnector({
+  connectorDelay,
+}: {
+  index: number;
+  connectorDelay: number;
+}) {
   return (
     <div
       className="connector-grow-y mt-3 flex-1 w-px"
@@ -16,7 +21,7 @@ function ProcessConnector({ connectorDelay }: { index: number; connectorDelay: n
         ["--connector-delay" as string]: `${connectorDelay}ms`,
         minHeight: "3rem",
         background:
-          "linear-gradient(to bottom, rgba(227,6,19,0.45) 0%, rgba(227,6,19,0.12) 75%, transparent 100%)",
+          "linear-gradient(to bottom, color-mix(in srgb, var(--accent) 45%, transparent) 0%, var(--accent-glow) 75%, transparent 100%)",
       }}
     />
   );
@@ -37,10 +42,13 @@ function ProcessStep({
   return (
     <div className="group flex gap-6 pb-12">
       {/* Left column: badge + icon + connecting line */}
-      <div className="flex w-14 shrink-0 flex-col items-center" aria-hidden="true">
+      <div
+        className="flex w-14 shrink-0 flex-col items-center"
+        aria-hidden="true"
+      >
         <div className="relative mt-1">
           {/* Step number badge */}
-          <span className="absolute -top-2.5 -left-2.5 z-10 flex size-[1.25rem] items-center justify-center rounded-full bg-accent font-mono text-[0.58rem] font-bold leading-none text-white ring-2 ring-background">
+          <span className="absolute -top-2.5 -left-2.5 z-10 flex size-7 items-center justify-center rounded-full bg-accent font-mono text-xs font-bold leading-none text-white ring-2 ring-background">
             {index + 1}
           </span>
           <div className="icon-chip-glow icon-pop-in flex size-12 shrink-0 items-center justify-center rounded-xl border border-accent/25 bg-accent/8 text-accent">

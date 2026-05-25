@@ -29,15 +29,13 @@ function FounderStage({ item, index }: { item: FounderItem; index: number }) {
   return (
     <article className="group cursor-default">
       {/* Card — full 4:5 frame, overflow-hidden so the portrait stays contained */}
-      <div
-        className="grain-overlay relative aspect-[4/5] w-full overflow-hidden rounded-2xl bg-gradient-to-b from-foreground/[0.06] via-foreground/[0.03] to-background shadow-[0_16px_56px_-20px_rgba(5,5,5,0.22)] transition-shadow duration-500 ease-out group-hover:shadow-[0_28px_72px_-16px_rgba(5,5,5,0.38)] motion-reduce:transition-none"
-      >
+      <div className="grain-overlay relative aspect-[4/5] w-full overflow-hidden rounded-2xl bg-gradient-to-b from-foreground/[0.06] via-foreground/[0.03] to-background shadow-[0_16px_56px_-20px_rgba(5,5,5,0.22)] transition-shadow duration-500 ease-out group-hover:shadow-[0_28px_72px_-16px_rgba(5,5,5,0.38)] motion-reduce:transition-none">
         {/* Ambient red glow behind the person */}
         <div
           className="section-glow-blob pointer-events-none absolute -bottom-10 left-[10%] h-[70%] w-[80%] blur-[60px]"
           aria-hidden="true"
           style={{
-            background: "rgba(227,6,19,0.07)",
+            background: "var(--accent-glow)",
             animationDuration: `${18 + index * 4}s`,
             animationDelay: `${index * 3}s`,
           }}
@@ -45,9 +43,7 @@ function FounderStage({ item, index }: { item: FounderItem; index: number }) {
 
         {/* Portrait — inset inside card (framed look), with drop-shadow for depth and a contained hover lift */}
         {item.photoSrc ? (
-          <div
-            className="absolute inset-x-5 inset-y-8 transform-gpu transition duration-500 ease-out drop-shadow-[0_18px_24px_rgba(5,5,5,0.28)] group-hover:-translate-y-2 group-hover:scale-[1.035] group-hover:drop-shadow-[0_30px_38px_rgba(5,5,5,0.42)] motion-reduce:transform-none motion-reduce:transition-none"
-          >
+          <div className="absolute inset-x-5 inset-y-8 transform-gpu transition duration-500 ease-out drop-shadow-[0_18px_24px_rgba(5,5,5,0.28)] group-hover:-translate-y-2 group-hover:scale-[1.035] group-hover:drop-shadow-[0_30px_38px_rgba(5,5,5,0.42)] motion-reduce:transform-none motion-reduce:transition-none">
             <Image
               src={item.photoSrc}
               alt={item.photoAlt}
@@ -80,7 +76,10 @@ function FounderStage({ item, index }: { item: FounderItem; index: number }) {
         </h3>
 
         {/* Credentials as inline metadata */}
-        <ul className="mt-3 flex flex-wrap items-center gap-x-0 gap-y-1" role="list">
+        <ul
+          className="mt-3 flex flex-wrap items-center gap-x-0 gap-y-1"
+          role="list"
+        >
           {item.credentials.map((cred, i) => (
             <li key={cred} className="flex items-center">
               {i > 0 && (
@@ -104,7 +103,6 @@ export function Founders() {
   return (
     <section className="overflow-hidden py-20 lg:py-28">
       <div className="mx-auto max-w-7xl px-6">
-
         {/* Section header */}
         <ScrollReveal direction="up" className="mb-14 max-w-xl">
           <p className="font-mono text-xs font-medium uppercase tracking-[0.18em] text-accent">
@@ -130,7 +128,6 @@ export function Founders() {
             </ScrollReveal>
           ))}
         </div>
-
       </div>
     </section>
   );
