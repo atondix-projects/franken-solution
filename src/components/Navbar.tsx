@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { BrandLogo } from "./BrandLogo";
 import { Button } from "./ui/Button";
+import { siteContent } from "@/content/site";
 
 const SCROLL_COMPACT_OFFSET = 24;
 const COMPACT_ENTRY_DELAY_MS = 110;
@@ -13,11 +14,7 @@ const FULL_BLEED_MAX_WIDTH = "100%";
 const COMPACT_SHELL_MAX_WIDTH = "80rem";
 const TOP_CONTENT_MAX_WIDTH = "96rem";
 
-const navLinks = [
-  { label: "Start", href: "/" },
-  { label: "Leistungen", href: "/leistungen" },
-  { label: "Ressourcen", href: "/ressourcen" },
-] as const;
+const navContent = siteContent.nav;
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -174,7 +171,7 @@ export function Navbar() {
                   }`}
                 aria-label="Primary navigation"
               >
-                {navLinks.map((link) => {
+                {navContent.links.map((link) => {
                   const isActive = isActiveLink(link.href);
                   return (
                     <Link
@@ -185,7 +182,7 @@ export function Navbar() {
                         ? "py-1.5 text-xs tracking-[0.18em]"
                         : "py-2 text-sm tracking-[0.14em]"
                         } ${isActive
-                          ? "text-accent bg-accent/[0.07] rounded-full px-2.5"
+                          ? "text-accent bg-accent-tint rounded-full px-2.5"
                           : "text-foreground hover:text-accent"
                         }`}
                     >
@@ -209,12 +206,12 @@ export function Navbar() {
               >
                 <Button
                   renderAs="link"
-                  href="/kontakt"
+                  href={navContent.desktopCta.href}
                   variant="primary"
                   onClick={() => setIsOpen(false)}
                   className="transition-[box-shadow] duration-[460ms] ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none"
                 >
-                  Kontakt aufnehmen
+                  {navContent.desktopCta.label}
                 </Button>
               </div>
 
@@ -227,7 +224,7 @@ export function Navbar() {
                     }`}
                   aria-expanded={isOpen}
                   aria-controls="mobile-nav"
-                  aria-label={isOpen ? "Menü schließen" : "Menü öffnen"}
+                  aria-label={isOpen ? navContent.menuAriaOpen : navContent.menuAriaClose}
                 >
                   <span
                     className={`h-[2px] rounded-full bg-foreground transition-all duration-300 ease-in-out ${isContentCompact ? "w-5" : "w-6"
@@ -255,7 +252,7 @@ export function Navbar() {
                 >
                   <div className="flex h-full flex-col p-8 pt-32">
                     <nav className="flex flex-col gap-6">
-                      {navLinks.map((link, i) => {
+                      {navContent.links.map((link, i) => {
                         const isActive = isActiveLink(link.href);
                         return (
                           <Link
@@ -285,12 +282,12 @@ export function Navbar() {
                     >
                       <Button
                         renderAs="link"
-                        href="/kontakt"
+                        href={navContent.mobileCta.href}
                         variant="primary"
                         onClick={() => setIsOpen(false)}
                         className="w-full"
                       >
-                        Beratung vereinbaren
+                        {navContent.mobileCta.label}
                       </Button>
                     </div>
 
@@ -299,7 +296,7 @@ export function Navbar() {
                         }`}
                     >
                       <p className="font-mono text-xs uppercase tracking-[0.2em] text-black/40">
-                        Franken Solution &copy; 2026
+                        {navContent.brandName} &copy; {new Date().getFullYear()}
                       </p>
                     </div>
                   </div>

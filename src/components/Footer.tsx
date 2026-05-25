@@ -1,16 +1,10 @@
 import Link from "next/link";
 import { Button } from "./ui/Button";
 import { ressourcenContent } from "@/content/ressourcen";
+import { siteContent } from "@/content/site";
 
 const fernwartungAction = ressourcenContent.download.items[0].action;
-
-const footerLinks = [
-  { label: "Leistungen", href: "/leistungen" },
-  { label: "Ressourcen", href: "/ressourcen" },
-  { label: "Kontakt", href: "/kontakt" },
-  { label: "Impressum", href: "/impressum" },
-  { label: "Datenschutz", href: "/datenschutz" },
-] as const;
+const content = siteContent.footer;
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -34,36 +28,41 @@ export function Footer() {
           strokeLinejoin="round"
         />
         {/* Peripheral nodes */}
-        <circle cx="58"  cy="68"  r="10" fill="rgba(255,255,255,0.08)" />
-        <circle cx="244" cy="64"  r="7"  fill="rgba(255,255,255,0.08)" />
-        <circle cx="248" cy="204" r="9"  fill="rgba(255,255,255,0.08)" />
-        <circle cx="104" cy="236" r="7"  fill="rgba(255,255,255,0.08)" />
+        <circle cx="58" cy="68" r="10" fill="rgba(255,255,255,0.08)" />
+        <circle cx="244" cy="64" r="7" fill="rgba(255,255,255,0.08)" />
+        <circle cx="248" cy="204" r="9" fill="rgba(255,255,255,0.08)" />
+        <circle cx="104" cy="236" r="7" fill="rgba(255,255,255,0.08)" />
         {/* Central hub node — red accent */}
-        <circle cx="166" cy="118" r="12" fill="rgba(227,6,19,0.10)" />
-        <circle cx="166" cy="118" r="7"  fill="#e30613" opacity="0.85" />
+        <circle cx="166" cy="118" r="12" fill="var(--accent-glow)" />
+        <circle cx="166" cy="118" r="7" fill="#e30613" opacity="0.85" />
         {/* Hub ring */}
-        <circle cx="166" cy="118" r="18" stroke="rgba(227,6,19,0.12)" strokeWidth="1.5" strokeDasharray="5 4" />
+        <circle
+          cx="166"
+          cy="118"
+          r="18"
+          stroke="var(--accent-glow)"
+          strokeWidth="1.5"
+          strokeDasharray="5 4"
+        />
       </svg>
 
       <div className="relative z-10 mx-auto w-full max-w-7xl px-6 py-16 sm:py-20">
         <div className="flex flex-col gap-8 pb-10 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-3xl">
             <p className="font-mono text-xs uppercase tracking-[0.24em] text-white/45">
-              Franken Solution
+              {content.brandName}
             </p>
             <h2 className="mt-4 max-w-2xl text-3xl font-semibold leading-[1.08] tracking-[-0.04em] text-white sm:text-4xl">
-              Sichere hybride IT, planbar betreut.
+              {content.tagline}
             </h2>
             <p className="mt-4 max-w-2xl text-base font-light leading-7 text-white/70 sm:text-lg">
-              Franken Solution unterstützt Unternehmen mit klaren Standards,
-              persönlicher Betreuung und laufender IT-Sicherheit für hybride
-              Umgebungen.
+              {content.description}
             </p>
           </div>
 
           <div className="shrink-0">
-            <Button renderAs="link" href="/kontakt" variant="primary">
-              Beratung anfragen
+            <Button renderAs="link" href={content.cta.href} variant="primary">
+              {content.cta.label}
             </Button>
           </div>
         </div>
@@ -91,20 +90,20 @@ export function Footer() {
               <polyline points="7 10 12 15 17 10" />
               <line x1="12" y1="15" x2="12" y2="3" />
             </svg>
-            Fernwartung herunterladen
+            {content.downloadLabel}
           </a>
         </div>
 
         <div className="mt-10 flex flex-col gap-4 border-t border-white/10 pt-6 text-sm text-white/55 lg:flex-row lg:items-center lg:justify-between">
           <p className="font-mono text-xs uppercase tracking-[0.22em]">
-            &copy; {currentYear} Franken Solution
+            &copy; {currentYear} {content.brandName}
           </p>
 
           <nav
             className="flex flex-wrap gap-x-5 gap-y-2"
             aria-label="Footer navigation"
           >
-            {footerLinks.map((link) => (
+            {content.links.map((link) => (
               <Link
                 key={link.label}
                 href={link.href}
