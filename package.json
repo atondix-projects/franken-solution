@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start -p 59092",
     "lint": "eslint",
+    "build:franken-map": "node scripts/build-franken-map.mjs",
     "analyze": "ANALYZE=true next build"
   },
   "dependencies": {

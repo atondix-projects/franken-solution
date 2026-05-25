@@ -7,6 +7,10 @@
   --foreground-muted: #2f2f2f;
   --accent: #e30613;
   --accent-foreground: #ffffff;
+  --accent-deep: #9a050e;
+  --accent-tint: color-mix(in srgb, var(--accent-deep) 7%, var(--background));
+  --accent-tint-strong: color-mix(in srgb, var(--accent-deep) 11%, var(--background));
+  --accent-glow: color-mix(in srgb, var(--accent-deep) 14%, transparent);
 
   /* ── Elevation system (4 tiers: ambient + key shadow + 1px hairline ring) */
   --elev-0: 0 1px 1px rgba(15, 23, 42, 0.03);
@@ -22,13 +26,17 @@
   --color-foreground-muted: var(--foreground-muted);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
+  --color-accent-deep: var(--accent-deep);
+  --color-accent-tint: var(--accent-tint);
+  --color-accent-tint-strong: var(--accent-tint-strong);
+  --color-accent-glow: var(--accent-glow);
   --font-sans: var(--font-ibm-plex-sans);
   --font-mono: var(--font-ibm-plex-mono);
   --font-accent: var(--font-ibm-plex-mono);
-  --text-xs: clamp(0.75rem, 0.6875rem + 0.185vw, 0.875rem);
-  --text-sm: clamp(0.875rem, 0.8125rem + 0.185vw, 1rem);
-  --text-base: clamp(1rem, 0.9375rem + 0.185vw, 1.125rem);
-  --text-lg: clamp(1.125rem, 1.0313rem + 0.278vw, 1.3125rem);
+  --text-xs: 0.875rem;
+  --text-sm: 0.9375rem;
+  --text-base: 1rem;
+  --text-lg: clamp(1.25rem, 1.125rem + 0.278vw, 1.375rem);
   --text-xl: clamp(1.25rem, 1.125rem + 0.37vw, 1.5rem);
   --text-2xl: clamp(1.5rem, 1.25rem + 0.74vw, 2rem);
   --text-3xl: clamp(1.75rem, 1.375rem + 1.111vw, 2.5rem);
@@ -42,7 +50,7 @@ body {
 }
 
 ::selection {
-  background: rgba(227, 6, 19, 0.16);
+  background: color-mix(in srgb, var(--accent-deep) 16%, transparent);
   color: var(--foreground);
 }
 
@@ -171,6 +179,43 @@ body {
 .hero-load-fade {
   animation-name: hero-load-fade;
   will-change: opacity;
+}
+
+.franken-map-shell {
+  -webkit-mask-image:
+    linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.4) 16%, #000 34%, #000 90%, transparent 100%),
+    linear-gradient(to bottom, #000 0%, #000 76%, transparent 100%);
+  mask-image:
+    linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.4) 16%, #000 34%, #000 90%, transparent 100%),
+    linear-gradient(to bottom, #000 0%, #000 76%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
+}
+
+.franken-map-glow {
+  background: radial-gradient(ellipse 70% 56% at 74% 44%,
+      var(--accent-glow) 0%,
+      color-mix(in srgb, var(--accent-deep) 4%, transparent) 45%,
+      transparent 72%);
+}
+
+.franken-map-artwork {
+  opacity: 0.94;
+}
+
+.hero-accent-wash {
+  background: linear-gradient(to bottom,
+      transparent 76%,
+      var(--accent-tint-strong) 100%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .franken-map-shell {
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 28%, #000 100%);
+    mask-image: linear-gradient(to right, transparent 0%, #000 28%, #000 100%);
+    -webkit-mask-composite: source-over;
+    mask-composite: add;
+  }
 }
 
 @keyframes brand-logo-draw {
@@ -500,8 +545,8 @@ body {
 
 @media (hover: hover) and (pointer: fine) {
   .group:hover .icon-chip-glow {
-    background-color: rgba(227, 6, 19, 0.14);
-    box-shadow: 0 0 18px rgba(227, 6, 19, 0.15);
+    background-color: color-mix(in srgb, var(--accent-deep) 14%, transparent);
+    box-shadow: 0 0 18px color-mix(in srgb, var(--accent-deep) 15%, transparent);
     --chip-hover-scale: 1.06;
   }
 }
@@ -628,7 +673,7 @@ body {
   position: absolute;
   inset: -4px;
   border-radius: inherit;
-  box-shadow: 0 0 28px rgba(227, 6, 19, 0.35);
+  box-shadow: 0 0 28px color-mix(in srgb, var(--accent-deep) 35%, transparent);
   animation: glow-pulse 2.8s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
   pointer-events: none;
 }
@@ -828,13 +873,13 @@ body {
   100% {
     box-shadow:
       0 4px 16px rgba(0, 0, 0, 0.10),
-      0 0 0 1px rgba(227, 6, 19, 0.04);
+      0 0 0 1px color-mix(in srgb, var(--accent-deep) 4%, transparent);
   }
 
   50% {
     box-shadow:
       0 8px 28px rgba(0, 0, 0, 0.14),
-      0 0 0 1px rgba(227, 6, 19, 0.10);
+      0 0 0 1px color-mix(in srgb, var(--accent-deep) 10%, transparent);
   }
 }
 
@@ -872,7 +917,7 @@ body {
   inset: 0;
   border-radius: inherit;
   background: radial-gradient(220px circle at var(--pointer-x, 50%) var(--pointer-y, 50%),
-      rgba(227, 6, 19, 0.04) 0%,
+      var(--accent-glow) 0%,
       transparent 70%);
   opacity: 0;
   transition: opacity 320ms ease;
@@ -904,7 +949,7 @@ body {
       0 1px 2px rgba(5, 5, 5, 0.05),
       0 12px 32px rgba(5, 5, 5, 0.10),
       0 32px 64px rgba(5, 5, 5, 0.07),
-      0 0 0 1px rgba(227, 6, 19, 0.06);
+      0 0 0 1px color-mix(in srgb, var(--accent-deep) 6%, transparent);
   }
 }
 
@@ -933,7 +978,7 @@ body {
 
 @media (hover: hover) and (pointer: fine) {
   .group:hover .accent-rail-full {
-    background-color: rgba(227, 6, 19, 0.85) !important;
+    background-color: color-mix(in srgb, var(--accent) 85%, transparent) !important;
   }
 }
 
@@ -957,7 +1002,7 @@ body {
   pointer-events: none;
   z-index: 0;
   background:
-    radial-gradient(ellipse 80% 60% at 20% 50%, rgba(227, 6, 19, 0.08) 0%, transparent 60%),
+    radial-gradient(ellipse 80% 60% at 20% 50%, var(--accent-glow) 0%, transparent 60%),
     radial-gradient(ellipse 60% 80% at 80% 30%, rgba(5, 5, 5, 0.06) 0%, transparent 60%);
   background-size: 200% 200%;
   animation: aurora-drift 18s ease-in-out infinite;
@@ -1050,6 +1095,87 @@ body {
   }
 }
 
+.hub-node-label,
+.hub-node-label-html {
+  font-size: 14px;
+}
+
+.hub-node-label-html {
+  hyphens: none;
+  word-break: normal;
+}
+
+.hub-node-label-html span {
+  display: block;
+  white-space: nowrap;
+}
+
+.hub-node-link:hover .hub-node-label-html,
+.hub-node-link:focus-visible .hub-node-label-html {
+  color: color-mix(in srgb, var(--accent) 82%, transparent);
+}
+
+.hub-node-link {
+  cursor: pointer;
+  outline: none;
+}
+
+.hub-node-link .hub-node-surface {
+  transition:
+    fill 0.2s ease,
+    stroke 0.2s ease,
+    filter 0.2s ease;
+}
+
+.hub-node-link:hover .hub-node-surface,
+.hub-node-link:focus-visible .hub-node-surface {
+  fill: #ffffff;
+  stroke: color-mix(in srgb, var(--accent) 40%, transparent);
+  filter: drop-shadow(0 4px 14px color-mix(in srgb, var(--accent-deep) 12%, transparent));
+}
+
+.hub-node-icon {
+  stroke: rgba(5, 5, 5, 0.32);
+}
+
+.hub-node-link:hover .hub-node-icon,
+.hub-node-link:focus-visible .hub-node-icon {
+  stroke: color-mix(in srgb, var(--accent) 50%, transparent);
+}
+
+.hub-node-link:hover .hub-node-label,
+.hub-node-link:focus-visible .hub-node-label {
+  fill: color-mix(in srgb, var(--accent) 82%, transparent);
+}
+
+.hub-node-link:focus-visible .hub-node-focus-ring {
+  opacity: 1;
+}
+
+.hub-node-focus-ring {
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  fill: none;
+  stroke: color-mix(in srgb, var(--accent) 55%, transparent);
+  stroke-width: 2;
+  pointer-events: none;
+}
+
+/* Ongoing loop diagram (dark section) — scoped overrides */
+.ongoing-loop-label span {
+  white-space: normal;
+  overflow-wrap: break-word;
+}
+
+.ongoing-loop-hub-glow,
+.ongoing-loop-hub-ring {
+  animation: none;
+}
+
+.ongoing-loop-hub-label {
+  font-size: 14px;
+}
+
 
 
 /* ─────────────────────────────────────────────────────────────────────────
@@ -1084,7 +1210,7 @@ body {
   pointer-events: none;
   z-index: 0;
   background:
-    radial-gradient(ellipse 60% 70% at 75% 40%, rgba(227, 6, 19, 0.05) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 70% at 75% 40%, color-mix(in srgb, var(--accent-deep) 5%, transparent) 0%, transparent 60%),
     radial-gradient(ellipse 80% 50% at 25% 70%, rgba(5, 5, 5, 0.04) 0%, transparent 60%);
   background-size: 200% 200%;
   animation: aurora-drift 26s ease-in-out infinite;
