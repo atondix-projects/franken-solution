@@ -46,11 +46,11 @@ export function IsoOpsDiorama({ className }: { className?: string }) {
       {/* Hub disc */}
       <circle cx="200" cy="155" r="28" fill="rgba(5,5,5,0.03)" stroke="rgba(5,5,5,0.11)" strokeWidth="1" />
       {/* Red accent glow halo */}
-      <circle cx="200" cy="155" r="14" fill="rgba(227,6,19,0.09)" />
+      <circle cx="200" cy="155" r="14" fill="var(--accent-glow)" />
       {/* Red accent centre node */}
       <circle cx="200" cy="155" r="6.5" fill="#e30613" opacity="0.92" />
       {/* Hub label */}
-      <text x="200" y="195" textAnchor="middle" fontFamily="var(--font-ibm-plex-mono,monospace)" fontSize="6.5" fontWeight="500" letterSpacing="2" fill="rgba(5,5,5,0.32)">MANAGED IT</text>
+      <text x="200" y="195" textAnchor="middle" className="font-mono text-xs font-medium tracking-[0.12em]" fill="rgba(5,5,5,0.32)">MANAGED IT</text>
 
       {/* ── Server node (top-left, x=85, y=80) ── */}
       <circle cx="85" cy="80" r="31" fill="rgba(5,5,5,0.03)" stroke="rgba(5,5,5,0.10)" strokeWidth="1" />
@@ -63,7 +63,7 @@ export function IsoOpsDiorama({ className }: { className?: string }) {
       <circle cx="97" cy="80.5" r="1.8" fill="rgba(5,5,5,0.22)" />
       <circle cx="97" cy="91.5" r="1.8" fill="rgba(5,5,5,0.22)" />
       {/* Label */}
-      <text x="85" y="123" textAnchor="middle" fontFamily="var(--font-ibm-plex-mono,monospace)" fontSize="6.5" fontWeight="500" letterSpacing="2" fill="rgba(5,5,5,0.30)">SERVER</text>
+      <text x="85" y="123" textAnchor="middle" className="font-mono text-xs font-medium tracking-[0.12em]" fill="rgba(5,5,5,0.30)">SERVER</text>
 
       {/* ── Backup / storage node (bottom-left, x=80, y=230) ── */}
       <circle cx="80" cy="228" r="27" fill="rgba(5,5,5,0.03)" stroke="rgba(5,5,5,0.10)" strokeWidth="1" />
@@ -75,7 +75,7 @@ export function IsoOpsDiorama({ className }: { className?: string }) {
       {/* Bottom ellipse */}
       <ellipse cx="80" cy="232" rx="13" ry="5" stroke="rgba(5,5,5,0.17)" strokeWidth="1" fill="rgba(5,5,5,0.04)" />
       {/* Label */}
-      <text x="80" y="265" textAnchor="middle" fontFamily="var(--font-ibm-plex-mono,monospace)" fontSize="6.5" fontWeight="500" letterSpacing="2" fill="rgba(5,5,5,0.30)">BACKUP</text>
+      <text x="80" y="265" textAnchor="middle" className="font-mono text-xs font-medium tracking-[0.12em]" fill="rgba(5,5,5,0.30)">BACKUP</text>
 
       {/* ── Cloud node (top-right, x=320, y=70) ── */}
       <circle cx="320" cy="70" r="31" fill="rgba(5,5,5,0.03)" stroke="rgba(5,5,5,0.10)" strokeWidth="1" />
@@ -87,7 +87,7 @@ export function IsoOpsDiorama({ className }: { className?: string }) {
       <rect x="303" y="74" width="34" height="6" fill="rgba(247,245,242,0.80)" stroke="none" />
       <line x1="302" y1="79" x2="338" y2="79" stroke="rgba(5,5,5,0.07)" strokeWidth="0.5" />
       {/* Label */}
-      <text x="320" y="113" textAnchor="middle" fontFamily="var(--font-ibm-plex-mono,monospace)" fontSize="6.5" fontWeight="500" letterSpacing="2" fill="rgba(5,5,5,0.30)">CLOUD</text>
+      <text x="320" y="113" textAnchor="middle" className="font-mono text-xs font-medium tracking-[0.12em]" fill="rgba(5,5,5,0.30)">CLOUD</text>
 
       {/* ── Security / shield node (bottom-right, x=315, y=240) ── */}
       <circle cx="315" cy="238" r="29" fill="rgba(5,5,5,0.03)" stroke="rgba(5,5,5,0.10)" strokeWidth="1" />
@@ -105,7 +105,7 @@ export function IsoOpsDiorama({ className }: { className?: string }) {
       {/* Keyhole dot */}
       <circle cx="315" cy="246" r="1.5" fill="rgba(5,5,5,0.22)" />
       {/* Label */}
-      <text x="315" y="276" textAnchor="middle" fontFamily="var(--font-ibm-plex-mono,monospace)" fontSize="6.5" fontWeight="500" letterSpacing="2" fill="rgba(5,5,5,0.30)">SECURITY</text>
+      <text x="315" y="276" textAnchor="middle" className="font-mono text-xs font-medium tracking-[0.12em]" fill="rgba(5,5,5,0.30)">SECURITY</text>
     </svg>
   );
 }
