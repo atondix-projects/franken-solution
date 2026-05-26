@@ -1,10 +1,10 @@
+import Image from "next/image";
 import { kontaktContent } from "@/content/kontakt";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { Button } from "@/components/ui/Button";
 import { Icon } from "@/components/ui/Icon";
 
 const content = kontaktContent.standort;
-
 
 export function StandortMap() {
   const { address, map, erreichbarkeit } = content;
@@ -88,36 +88,38 @@ export function StandortMap() {
 
           {/* Right: map */}
           <ScrollReveal direction="premium" delay={100}>
-            <a
-              href={map.outboundUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={map.alt}
-              className="group block overflow-hidden rounded-[22px] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
-            >
-              <div className="glass-card card-depth premium-card rounded-[22px] p-5 transition-all duration-500 group-hover:shadow-[0_16px_48px_var(--accent-glow)]">
-                <div className="relative flex aspect-[4/3] items-center justify-center">
-                  <Icon
-                    name="mapPin"
-                    className="size-40 text-accent/15 sm:size-56"
-                  />
-                  {/* Red pulse dot overlaid near the pin's tip */}
-                  <span
-                    className="pointer-events-none absolute inset-0 flex items-center justify-center"
-                    aria-hidden="true"
-                  >
-                    <span className="relative">
-                      <span className="absolute inset-0 -m-3 rounded-full bg-accent-tint" />
-                      <span className="absolute inset-0 -m-1.5 rounded-full bg-accent-glow" />
-                      <span className="relative block size-3 rounded-full bg-accent/95" />
-                    </span>
-                  </span>
-                </div>
+            <div className="glass-card card-depth premium-card group rounded-[22px] p-5 transition-all duration-500 hover:shadow-[0_16px_48px_var(--accent-glow)]">
+              <a
+                href={map.outboundUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={map.alt}
+                className="block overflow-hidden rounded-xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+              >
+                <Image
+                  src={map.imageSrc}
+                  alt={map.alt}
+                  width={map.imageWidth}
+                  height={map.imageHeight}
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  unoptimized
+                  className="aspect-[4/3] w-full rounded-xl border border-foreground/8 object-cover transition-transform duration-500 group-hover:scale-[1.01]"
+                />
                 <p className="mt-3 text-center font-mono text-xs text-foreground/30 transition-colors duration-200 group-hover:text-accent/60">
                   {map.outboundLabel} ↗
                 </p>
-              </div>
-            </a>
+              </a>
+              <p className="mt-2 text-center font-mono text-[10px] text-foreground/30">
+                <a
+                  href={map.attributionUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline-offset-2 hover:text-foreground/50 hover:underline"
+                >
+                  {map.attribution}
+                </a>
+              </p>
+            </div>
           </ScrollReveal>
         </div>
       </div>

@@ -8,11 +8,12 @@
     "start": "next start -p 59092",
     "lint": "eslint",
     "build:franken-map": "node scripts/build-franken-map.mjs",
+    "build:standort-map": "node scripts/build-standort-map.mjs",
     "analyze": "ANALYZE=true next build"
   },
   "dependencies": {
-    "@next/bundle-analyzer": "^16.2.4",
     "@heroicons/react": "^2.2.0",
+    "@next/bundle-analyzer": "^16.2.4",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
@@ -26,6 +27,7 @@
   },
   "devDependencies": {
     "eslint": "^9",
-    "eslint-config-next": "16.2.3"
+    "eslint-config-next": "16.2.3",
+    "sharp": "^0.34.5"
   }
 }

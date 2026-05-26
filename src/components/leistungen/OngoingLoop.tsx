@@ -5,6 +5,7 @@ import {
   ringPosition,
   splitDiagramTitle,
 } from "./diagram-shared";
+import { OngoingLoopMobile } from "./OngoingLoopMobile";
 
 const content = leistungenContent.ongoing;
 
@@ -74,17 +75,15 @@ export function OngoingLoop() {
       />
 
       <div className="relative mx-auto max-w-7xl px-6">
-        <div className="flex flex-col gap-16 lg:flex-row lg:items-center lg:gap-20">
-          {/* Diagram — same language as Leistungen hero hub */}
-          <div className="flex shrink-0 justify-center lg:justify-start">
+        <div className="flex flex-col gap-12 md:gap-16 lg:flex-row lg:items-center lg:gap-20">
+          {/* md+: ring diagram — same language as Leistungen hero hub */}
+          <div className="order-2 hidden w-full min-w-0 justify-center md:order-1 md:block md:max-w-[440px] lg:justify-start">
             <ScrollReveal direction="scale" threshold={0.15}>
               <svg
                 viewBox="0 0 500 500"
-                width={440}
-                height={440}
                 role="img"
                 aria-labelledby="ongoing-loop-diagram-title"
-                className="ongoing-loop-diagram overflow-visible"
+                className="ongoing-loop-diagram h-auto w-full overflow-visible"
               >
                 <title id="ongoing-loop-diagram-title">
                   {content.diagramTitle}
@@ -238,7 +237,7 @@ export function OngoingLoop() {
           </div>
 
           {/* Text content */}
-          <div className="flex-1">
+          <div className="order-1 flex flex-1 flex-col md:order-2">
             <ScrollReveal direction="up">
               <p className="font-mono text-xs font-medium uppercase tracking-[0.18em] text-accent">
                 {content.eyebrow}
@@ -251,7 +250,15 @@ export function OngoingLoop() {
               </p>
             </ScrollReveal>
 
-            <ol className="mt-8 flex flex-col gap-6" role="list">
+            <div className="mt-10 md:hidden">
+              <OngoingLoopMobile
+                steps={content.cycle}
+                centerLabel={content.centerLabel}
+                diagramTitle={content.diagramTitle}
+              />
+            </div>
+
+            <ol className="mt-8 hidden flex-col gap-6 md:flex" role="list">
               {content.cycle.map((step, i) => (
                 <ScrollReveal
                   key={step.title}

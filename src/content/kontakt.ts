@@ -71,7 +71,12 @@ export const kontaktContent = {
     },
     erreichbarkeit: "Mo.–Fr. 09:00–17:00",
     map: {
-      alt: "Stilisierte Karte der Region Nürnberg",
+      alt: "Karte: Standort Franken Solution, Winzelbürgstr. 9 in Nürnberg",
+      imageSrc: "/standort-map.webp",
+      imageWidth: 1200,
+      imageHeight: 900,
+      attribution: "© OpenStreetMap contributors",
+      attributionUrl: "https://www.openstreetmap.org/copyright",
       outboundUrl:
         "https://www.google.com/maps/search/?api=1&query=Winzelb%C3%BCrgstr.+9%2C+90491+N%C3%BCrnberg",
       outboundLabel: "In Google Maps öffnen",

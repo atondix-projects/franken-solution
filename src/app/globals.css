@@ -1176,6 +1176,15 @@ body {
   font-size: 14px;
 }
 
+.ongoing-loop-mobile-hub::before {
+  content: "";
+  position: absolute;
+  inset: -0.5rem;
+  border-radius: 9999px;
+  background: rgba(227, 6, 19, 0.05);
+  pointer-events: none;
+}
+
 
 
 /* ─────────────────────────────────────────────────────────────────────────

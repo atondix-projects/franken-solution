@@ -4,6 +4,25 @@ import { Icon } from "@/components/ui/Icon";
 
 const content = leistungenContent.situations;
 
+type SituationPillar = (typeof content.rows)[number]["pillars"][number];
+
+function SituationPillarLinks({ pillars }: { pillars: readonly SituationPillar[] }) {
+  return (
+    <div className="flex flex-wrap gap-2">
+      {pillars.map((pillar) => (
+        <a
+          key={pillar.anchor}
+          href={pillar.anchor}
+          className="inline-flex max-w-full items-center gap-1 rounded-full border border-accent/20 bg-accent/5 px-3 py-1 font-mono text-xs font-medium text-accent transition-colors duration-200 hover:border-accent/40 hover:bg-accent/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+        >
+          {pillar.label}
+          <Icon name="arrowRight" className="size-2.5 shrink-0" />
+        </a>
+      ))}
+    </div>
+  );
+}
+
 export function SituationMatrix() {
   return (
     <section className="relative overflow-hidden bg-background-muted py-20 lg:py-28">
@@ -31,8 +50,28 @@ export function SituationMatrix() {
         </ScrollReveal>
 
         <ScrollReveal direction="up" delay={120} className="mt-12">
-          <div className="overflow-hidden rounded-xl border border-foreground/6 bg-white/90">
-            <table className="w-full text-sm">
+          <div className="overflow-hidden rounded-xl border border-foreground/6 bg-white/90 text-sm">
+            <div className="divide-y divide-foreground/5 md:hidden">
+              {content.rows.map((row, i) => (
+                <article
+                  key={i}
+                  className="px-4 py-4"
+                  aria-label={`${row.situation}. ${content.tableHeaders.approach}: ${row.pillars.map((p) => p.label).join(", ")}`}
+                >
+                  <p className="font-light leading-relaxed text-foreground-muted">
+                    {row.situation}
+                  </p>
+                  <p className="mt-3 font-mono text-xs font-medium uppercase tracking-[0.12em] text-foreground-muted">
+                    {content.tableHeaders.approach}
+                  </p>
+                  <div className="mt-2">
+                    <SituationPillarLinks pillars={row.pillars} />
+                  </div>
+                </article>
+              ))}
+            </div>
+
+            <table className="hidden w-full md:table">
               <thead>
                 <tr className="border-b border-foreground/6 bg-foreground/5">
                   <th
@@ -59,18 +98,7 @@ export function SituationMatrix() {
                       {row.situation}
                     </td>
                     <td className="px-6 py-4">
-                      <div className="flex flex-wrap gap-2">
-                        {row.pillars.map((pillar) => (
-                          <a
-                            key={pillar.anchor}
-                            href={pillar.anchor}
-                            className="inline-flex items-center gap-1 rounded-full border border-accent/20 bg-accent/5 px-3 py-1 font-mono text-xs font-medium text-accent transition-colors duration-200 hover:border-accent/40 hover:bg-accent/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
-                          >
-                            {pillar.label}
-                            <Icon name="arrowRight" className="size-2.5" />
-                          </a>
-                        ))}
-                      </div>
+                      <SituationPillarLinks pillars={row.pillars} />
                     </td>
                   </tr>
                 ))}

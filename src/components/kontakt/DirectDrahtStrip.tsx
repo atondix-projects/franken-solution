@@ -10,9 +10,6 @@ export function DirectDrahtStrip() {
       className="relative overflow-hidden bg-foreground py-20 lg:py-28"
       aria-labelledby="direct-draht-heading"
     >
-      {/* Aurora band */}
-      <div className="aurora-band" aria-hidden="true" />
-
       {/* Dot grid texture */}
       <div
         className="pointer-events-none absolute inset-0"
@@ -22,13 +19,6 @@ export function DirectDrahtStrip() {
             "radial-gradient(circle at 1px 1px, rgba(255,255,255,0.03) 1px, transparent 0)",
           backgroundSize: "32px 32px",
         }}
-      />
-
-      {/* Accent glow */}
-      <div
-        className="section-glow-blob pointer-events-none absolute -left-24 top-1/3 h-72 w-72 blur-[100px]"
-        aria-hidden="true"
-        style={{ background: "var(--accent-tint-strong)", animationDuration: "20s" }}
       />
 
       <div className="relative mx-auto max-w-7xl px-6">

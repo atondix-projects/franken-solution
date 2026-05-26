@@ -5,6 +5,7 @@ import { useMagnetic } from "@/hooks/useMagnetic";
 import type { LeistungenPillarGroup } from "@/content/leistungen";
 import { leistungenContent } from "@/content/leistungen";
 import { PillarIcon } from "./pillar-icons";
+import { pillarCardTitleClass } from "./pillar-card-styles";
 import { Icon } from "@/components/ui/Icon";
 
 const detailLinkLabel = leistungenContent.pillars.detailLinkLabel;
@@ -37,17 +38,15 @@ export function CompactPillarCard({ group }: CompactPillarCardProps) {
         aria-hidden="true"
       />
 
-      {/* Header: icon + title */}
-      <div className="mb-5 flex items-start gap-3">
-        <div className="icon-chip-glow mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-md border border-foreground/8 bg-foreground/4">
+      {/* Header: icon above title */}
+      <div className="mb-5 flex flex-col gap-3">
+        <div className="icon-chip-glow flex h-10 w-10 shrink-0 items-center justify-center rounded-md border border-foreground/8 bg-foreground/4 sm:h-11 sm:w-11">
           <PillarIcon
             slug={group.slug}
-            className="h-4 w-4 text-foreground/50"
+            className="h-5 w-5 text-foreground/50"
           />
         </div>
-        <h3 className="text-sm font-semibold leading-snug tracking-[-0.02em] text-foreground">
-          {group.title}
-        </h3>
+        <h3 className={pillarCardTitleClass}>{group.title}</h3>
       </div>
 
       {/* Trigger */}

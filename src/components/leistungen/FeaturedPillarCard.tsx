@@ -5,6 +5,7 @@ import { useMagnetic } from "@/hooks/useMagnetic";
 import type { LeistungenPillarGroup } from "@/content/leistungen";
 import { leistungenContent } from "@/content/leistungen";
 import { PillarIcon } from "./pillar-icons";
+import { pillarCardTitleClass } from "./pillar-card-styles";
 import { Icon } from "@/components/ui/Icon";
 
 const detailLinkLabel = leistungenContent.pillars.detailLinkLabel;
@@ -53,9 +54,7 @@ export function FeaturedPillarCard({ group }: FeaturedPillarCardProps) {
           {/* Title + Trigger */}
           <div className="grid gap-5 lg:grid-cols-2">
             <div className="flex flex-col gap-2">
-              <h3 className="text-lg font-semibold leading-snug tracking-[-0.03em] text-foreground sm:text-xl">
-                {group.title}
-              </h3>
+              <h3 className={pillarCardTitleClass}>{group.title}</h3>
               <div>
                 <p className="font-mono text-xs font-medium uppercase tracking-[0.16em] text-foreground-muted">
                   Auslöser
