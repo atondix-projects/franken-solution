@@ -7,7 +7,7 @@ import {
 } from "./diagram-shared";
 import { OngoingLoopMobile } from "./OngoingLoopMobile";
 
-const content = leistungenContent.ongoing;
+const content = leistungenContent.laufendeBetreuung;
 
 const CX = 250;
 const CY = 250;
@@ -47,13 +47,13 @@ function loopLabelLines(index: number, title: string): [string, string] {
   return LOOP_LABEL_OVERRIDES[index + 1] ?? splitDiagramTitle(title);
 }
 
-const LOOP_NODES = content.cycle.map((step, index) => {
+const LOOP_NODES = content.zyklus.map((step, index) => {
   const pos = ringPosition(CX, CY, ORBIT_R, index, 4);
-  const [line1, line2] = loopLabelLines(index, step.title);
+  const [line1, line2] = loopLabelLines(index, step.überschrift);
   return {
     ...pos,
     index: index + 1,
-    title: step.title,
+    title: step.überschrift,
     lines: [line1, line2] as [string, string],
   };
 });
@@ -86,7 +86,7 @@ export function OngoingLoop() {
                 className="ongoing-loop-diagram h-auto w-full overflow-visible"
               >
                 <title id="ongoing-loop-diagram-title">
-                  {content.diagramTitle}
+                  {content.diagrammTitel}
                 </title>
 
                 <defs>
@@ -176,7 +176,7 @@ export function OngoingLoop() {
                     className="ongoing-loop-hub-label font-mono text-[15px] font-semibold"
                     fill="rgba(255,255,255,0.92)"
                   >
-                    {content.centerLabel}
+                    {content.mittelbeschriftung}
                   </text>
                 </g>
 
@@ -240,28 +240,28 @@ export function OngoingLoop() {
           <div className="order-1 flex flex-1 flex-col md:order-2">
             <ScrollReveal direction="up">
               <p className="font-mono text-xs font-medium uppercase tracking-[0.18em] text-accent">
-                {content.eyebrow}
+                {content.vorzeile}
               </p>
               <h2 className="mt-3 text-3xl font-semibold leading-[1.15] tracking-[-0.04em] text-white/88 sm:text-3xl">
-                {content.headline}
+                {content.überschrift}
               </h2>
               <p className="mt-4 text-base font-light leading-relaxed text-white/55">
-                {content.description}
+                {content.beschreibung}
               </p>
             </ScrollReveal>
 
             <div className="mt-10 md:hidden">
               <OngoingLoopMobile
-                steps={content.cycle}
-                centerLabel={content.centerLabel}
-                diagramTitle={content.diagramTitle}
+                steps={content.zyklus}
+                centerLabel={content.mittelbeschriftung}
+                diagramTitle={content.diagrammTitel}
               />
             </div>
 
             <ol className="mt-8 hidden flex-col gap-6 md:flex" role="list">
-              {content.cycle.map((step, i) => (
+              {content.zyklus.map((step, i) => (
                 <ScrollReveal
-                  key={step.title}
+                  key={step.überschrift}
                   direction="up"
                   stagger={70}
                   index={i}
@@ -273,10 +273,10 @@ export function OngoingLoop() {
                     </span>
                     <div>
                       <p className="text-sm font-semibold text-white/88">
-                        {step.title}
+                        {step.überschrift}
                       </p>
                       <p className="mt-1 text-sm font-light leading-relaxed text-white/55">
-                        {step.body}
+                        {step.fließtext}
                       </p>
                     </div>
                   </li>
@@ -286,7 +286,7 @@ export function OngoingLoop() {
 
             <ScrollReveal direction="up" delay={400} className="mt-8">
               <blockquote className="border-l-2 border-accent pl-4 text-sm font-light leading-relaxed text-white/55">
-                {content.callout}
+                {content.hervorhebung}
               </blockquote>
             </ScrollReveal>
           </div>

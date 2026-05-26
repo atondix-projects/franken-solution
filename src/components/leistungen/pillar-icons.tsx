@@ -9,7 +9,7 @@ import {
 import type { ComponentProps, ComponentType } from "react";
 import type { LeistungenPillarGroup } from "@/content/leistungen";
 
-type Slug = LeistungenPillarGroup["slug"];
+type Slug = LeistungenPillarGroup["pfadKennung"];
 
 const iconMap: Record<Slug, ComponentType<ComponentProps<"svg">>> = {
   "identitaet-und-zugriffsschutz": KeyIcon,

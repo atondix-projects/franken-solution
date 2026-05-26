@@ -1,8 +1,8 @@
 import { ScrollReveal } from "@/components/ScrollReveal";
 
 type OngoingCycleStep = {
-  readonly title: string;
-  readonly body: string;
+  readonly überschrift: string;
+  readonly fließtext: string;
 };
 
 type OngoingLoopMobileProps = {
@@ -57,7 +57,7 @@ export function OngoingLoopMobile({
           const isLast = i === steps.length - 1;
 
           return (
-            <li key={step.title} className="flex flex-col items-stretch">
+            <li key={step.überschrift} className="flex flex-col items-stretch">
               {i > 0 ? (
                 <MobileStepConnector connectorDelay={connectorDelay} />
               ) : (
@@ -86,10 +86,10 @@ export function OngoingLoopMobile({
                     </span>
                     <div className="min-w-0 flex-1">
                       <p className="text-sm font-semibold text-white/88">
-                        {step.title}
+                        {step.überschrift}
                       </p>
                       <p className="mt-1 text-sm font-light leading-relaxed text-white/55">
-                        {step.body}
+                        {step.fließtext}
                       </p>
                     </div>
                   </div>

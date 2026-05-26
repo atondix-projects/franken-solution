@@ -2,7 +2,7 @@ import { kontaktContent } from "@/content/kontakt";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { ContactMethodCard } from "./ContactMethodCard";
 
-const content = kontaktContent.methods;
+const content = kontaktContent.kontaktwege;
 
 export function ContactMethodsGrid() {
   return (
@@ -16,7 +16,7 @@ export function ContactMethodsGrid() {
           <div>
             <ScrollReveal direction="up" delay={0}>
               <p className="font-mono text-xs font-medium uppercase tracking-[0.18em] text-accent">
-                {content.eyebrow}
+                {content.vorzeile}
               </p>
             </ScrollReveal>
             <ScrollReveal direction="up" delay={80}>
@@ -24,7 +24,7 @@ export function ContactMethodsGrid() {
                 id="contact-methods-heading"
                 className="mt-3 text-2xl font-semibold leading-[1.15] tracking-[-0.03em] text-foreground sm:text-3xl"
               >
-                {content.title}
+                {content.überschrift}
               </h2>
             </ScrollReveal>
           </div>
@@ -39,20 +39,20 @@ export function ContactMethodsGrid() {
 
         {/* Cards grid */}
         <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
-          {content.items.map((item, i) => (
+          {content.einträge.map((item, i) => (
             <ScrollReveal
-              key={item.iconKey}
+              key={item.symbolName}
               direction="premium"
               stagger={100}
               index={i}
               delay={80}
             >
               <ContactMethodCard
-                iconKey={item.iconKey}
-                title={item.title}
-                value={item.value}
-                helper={item.helper}
-                action={item.action}
+                iconKey={item.symbolName}
+                title={item.überschrift}
+                value={item.wert}
+                helper={item.hilfetext}
+                action={{ href: item.aktion.verlinkung, ariaLabel: item.aktion.barriereBeschriftung }}
               />
             </ScrollReveal>
           ))}

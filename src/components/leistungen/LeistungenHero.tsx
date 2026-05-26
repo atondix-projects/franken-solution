@@ -5,8 +5,8 @@ import { Button } from "@/components/ui/Button";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { Icon } from "@/components/ui/Icon";
 
-const content = leistungenContent.hero;
-const pillarGroups = leistungenContent.pillars.groups;
+const content = leistungenContent.kopfbereich;
+const pillarGroups = leistungenContent.leistungsgruppen.gruppen;
 
 function heroLoadStyle(delay: string, duration: string): CSSProperties {
   return {
@@ -35,7 +35,7 @@ const ICON_SCALE = 0.38;
 const ICON_HALF = 24 * ICON_SCALE;
 const ICON_TOP_OFFSET = 14;
 
-type Slug = LeistungenPillarGroup["slug"];
+type Slug = LeistungenPillarGroup["pfadKennung"];
 
 function nodeRect(
   cx: number,
@@ -77,7 +77,7 @@ function spokePoint(
 }
 
 /** Short two-line labels for diagram cells (full title stays in aria-label) */
-const DIAGRAM_LABEL_OVERRIDES: Partial<Record<Slug, [string, string]>> = {
+const DIAGRAM_LABEL_OVERRIDES: Partial<Record<string, [string, string]>> = {
   "email-sicherheit-und-archivierung": ["E-Mail-Schutz", "Archivierung"],
   "backup-und-wiederherstellung": ["Backup", "Wiederherst."],
 };
@@ -156,13 +156,13 @@ const NODE_ICON_PATHS: ReactNode[] = [
 
 const DIAGRAM_NODES = pillarGroups.map((group, index) => {
   const { x, y } = orbitPosition(index);
-  const [line1, line2] = diagramLabelLines(group.slug as Slug, group.title);
+  const [line1, line2] = diagramLabelLines(group.pfadKennung as Slug, group.überschrift);
   return {
     x,
     y,
-    slug: group.slug as Slug,
-    title: group.title,
-    href: `#${group.slug}`,
+    slug: group.pfadKennung as Slug,
+    title: group.überschrift,
+    href: `#${group.pfadKennung}`,
     lines: [line1, line2] as [string, string],
     iconPaths: NODE_ICON_PATHS[index],
   };
@@ -194,21 +194,21 @@ export function LeistungenHero() {
               className="hero-load hero-load-up font-mono text-xs font-medium uppercase tracking-[0.18em] text-accent"
               style={heroLoadStyle("80ms", "480ms")}
             >
-              {content.eyebrow}
+              {content.vorzeile}
             </p>
 
             <h1
               className="hero-load hero-load-up mt-3 text-3xl font-semibold leading-[1.1] tracking-[-0.02em] text-foreground sm:text-4xl"
               style={heroLoadStyle("140ms", "560ms")}
             >
-              {content.headline}
+              {content.überschrift}
             </h1>
 
             <p
               className="hero-load hero-load-up mt-5 max-w-lg text-base font-light leading-relaxed text-foreground-muted sm:text-lg"
               style={heroLoadStyle("220ms", "560ms")}
             >
-              {content.lead}
+              {content.einleitung}
             </p>
 
             <div
@@ -217,20 +217,20 @@ export function LeistungenHero() {
             >
               <Button
                 renderAs="link"
-                href={content.primaryCta.href}
+                href={content.primärerAufruf.verlinkung}
                 variant="primary"
               >
                 <span className="flex items-center gap-2">
-                  {content.primaryCta.label}
+                  {content.primärerAufruf.beschriftung}
                   <Icon name="arrowRight" className="size-4 shrink-0" />
                 </span>
               </Button>
               <Button
                 renderAs="link"
-                href={content.secondaryCta.href}
+                href={content.sekundärerAufruf.verlinkung}
                 variant="secondary"
               >
-                {content.secondaryCta.label}
+                {content.sekundärerAufruf.beschriftung}
               </Button>
             </div>
 
@@ -239,13 +239,13 @@ export function LeistungenHero() {
               className="hero-load hero-load-up mt-8 flex flex-wrap gap-2"
               style={heroLoadStyle("380ms", "560ms")}
             >
-              {content.anchorChips.map((chip) => (
+              {content.sprungMarken.map((chip) => (
                 <a
-                  key={chip.anchor}
-                  href={chip.anchor}
+                  key={chip.sprungZiel}
+                  href={chip.sprungZiel}
                   className="icon-chip-glow rounded-full border border-foreground/8 bg-foreground/[0.05] px-3 py-1 font-mono text-xs font-medium text-foreground-muted transition-colors duration-200 hover:border-accent/30 hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
                 >
-                  {chip.label}
+                  {chip.beschriftung}
                 </a>
               ))}
             </div>
@@ -263,7 +263,7 @@ export function LeistungenHero() {
                 className="overflow-visible"
               >
                 <title id="leistungen-hub-diagram-title">
-                  {content.diagramTitle}
+                  {content.diagrammTitel}
                 </title>
 
                 {/* Center ambient glow — pulses with glow-pulse keyframe */}
@@ -354,7 +354,7 @@ export function LeistungenHero() {
                   fill="var(--accent)"
                   fillOpacity="0.88"
                 >
-                  {content.diagramCenterLabel.split(" ")[0]}
+                  {content.diagrammMittelbeschriftung.split(" ")[0]}
                 </text>
                 <text
                   x={CX}
@@ -365,7 +365,7 @@ export function LeistungenHero() {
                   fill="var(--accent)"
                   fillOpacity="0.88"
                 >
-                  {content.diagramCenterLabel.split(" ")[1]}
+                  {content.diagrammMittelbeschriftung.split(" ")[1]}
                 </text>
 
                 {/* Outer nodes — each links to the matching detail card */}

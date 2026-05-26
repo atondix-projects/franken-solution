@@ -3,9 +3,9 @@ import type { TrustSectionContent } from "@/content/homepage";
 import { ScrollReveal } from "./ScrollReveal";
 import { Icon } from "./ui/Icon";
 
-const content = homepageContent.trust;
+const content = homepageContent.vertrauen;
 
-type TrustItem = TrustSectionContent["items"][number];
+type TrustItem = TrustSectionContent["einträge"][number];
 
 function TrustConnector({ index }: { index: number }) {
   const gradId = `trust-grad-${index}`;
@@ -51,18 +51,18 @@ function TrustItemRow({ item, index }: { item: TrustItem; index: number }) {
           className="icon-chip-glow flex size-10 shrink-0 items-center justify-center rounded-xl bg-accent/8 text-accent"
           style={{ transitionDelay: `${index * 120}ms` }}
         >
-          <Icon name={item.iconKey} className="size-5" />
+          <Icon name={item.symbolName} className="size-5" />
         </span>
-        {index < content.items.length - 1 && <TrustConnector index={index} />}
+        {index < content.einträge.length - 1 && <TrustConnector index={index} />}
       </div>
 
       {/* Right: text */}
-      <div className={index < content.items.length - 1 ? "pb-8" : "pb-0"}>
+      <div className={index < content.einträge.length - 1 ? "pb-8" : "pb-0"}>
         <h3 className="text-base font-semibold leading-snug tracking-[-0.02em] text-white/88">
-          {item.title}
+          {item.überschrift}
         </h3>
         <p className="mt-1.5 text-sm font-light leading-relaxed text-white/55">
-          {item.description}
+          {item.beschreibung}
         </p>
       </div>
     </div>
@@ -78,13 +78,13 @@ export function Trust() {
           <ScrollReveal direction="left" className="lg:w-[42%] lg:shrink-0">
             <div className="lg:sticky lg:top-28">
               <p className="font-mono text-xs font-medium uppercase tracking-[0.18em] text-accent">
-                {content.eyebrow}
+                {content.vorzeile}
               </p>
               <h2 className="mt-3 text-3xl font-semibold leading-[1.15] tracking-[-0.04em] text-white/88 sm:text-4xl">
-                {content.title}
+                {content.überschrift}
               </h2>
               <p className="mt-4 text-base font-light leading-relaxed text-white/55">
-                {content.description}
+                {content.beschreibung}
               </p>
             </div>
           </ScrollReveal>
@@ -95,9 +95,9 @@ export function Trust() {
             <div className="mb-8 h-px w-12 bg-accent" aria-hidden="true" />
 
             <div role="list" aria-label="Vertrauenssignale">
-              {content.items.map((item, i) => (
+              {content.einträge.map((item, i) => (
                 <ScrollReveal
-                  key={item.title}
+                  key={item.überschrift}
                   direction="right"
                   stagger={120}
                   index={i}

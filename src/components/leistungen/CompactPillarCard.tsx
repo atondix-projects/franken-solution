@@ -8,7 +8,7 @@ import { PillarIcon } from "./pillar-icons";
 import { pillarCardTitleClass } from "./pillar-card-styles";
 import { Icon } from "@/components/ui/Icon";
 
-const detailLinkLabel = leistungenContent.pillars.detailLinkLabel;
+const detailLinkLabel = leistungenContent.leistungsgruppen.detailLinkText;
 
 interface CompactPillarCardProps {
   group: LeistungenPillarGroup;
@@ -27,7 +27,7 @@ export function CompactPillarCard({ group }: CompactPillarCardProps) {
 
   return (
     <div
-      id={group.slug}
+      id={group.pfadKennung}
       ref={cardRef}
       onMouseMove={onMouseMove}
       onMouseLeave={onMouseLeave}
@@ -42,11 +42,11 @@ export function CompactPillarCard({ group }: CompactPillarCardProps) {
       <div className="mb-5 flex flex-col gap-3">
         <div className="icon-chip-glow flex h-10 w-10 shrink-0 items-center justify-center rounded-md border border-foreground/8 bg-foreground/4 sm:h-11 sm:w-11">
           <PillarIcon
-            slug={group.slug}
+            slug={group.pfadKennung}
             className="h-5 w-5 text-foreground/50"
           />
         </div>
-        <h3 className={pillarCardTitleClass}>{group.title}</h3>
+        <h3 className={pillarCardTitleClass}>{group.überschrift}</h3>
       </div>
 
       {/* Trigger */}
@@ -55,7 +55,7 @@ export function CompactPillarCard({ group }: CompactPillarCardProps) {
           Auslöser
         </p>
         <p className="mt-1 text-sm font-light leading-relaxed text-foreground-muted">
-          {group.triggerText}
+          {group.auslöserText}
         </p>
       </div>
 
@@ -78,14 +78,14 @@ export function CompactPillarCard({ group }: CompactPillarCardProps) {
           Ergebnis
         </p>
         <p className="mt-1 text-sm font-light leading-relaxed text-foreground-muted">
-          {group.outcome}
+          {group.ergebnis}
         </p>
       </div>
 
       {/* Detail link */}
       <div ref={magneticRef} className="magnetic-target self-start">
         <a
-          href={group.href}
+          href={group.verlinkung}
           className="inline-flex items-center gap-2 font-mono text-xs font-medium text-accent transition-opacity duration-300 hover:opacity-70 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
         >
           {detailLinkLabel}

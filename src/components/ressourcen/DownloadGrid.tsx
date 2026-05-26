@@ -29,11 +29,11 @@ function PlaceholderCard() {
         </p>
 
         <p className="mt-2 text-lg font-semibold leading-snug text-foreground/40">
-          {content.placeholder.title}
+          {content.platzhalter.überschrift}
         </p>
 
         <p className="mt-1.5 text-sm font-light leading-relaxed text-foreground/35">
-          {content.placeholder.description}
+          {content.platzhalter.beschreibung}
         </p>
       </div>
 
@@ -57,7 +57,7 @@ export function DownloadGrid() {
           <div>
             <ScrollReveal direction="up" delay={0}>
               <p className="font-mono text-xs font-medium uppercase tracking-[0.18em] text-accent">
-                {content.eyebrow}
+                {content.vorzeile}
               </p>
             </ScrollReveal>
             <ScrollReveal direction="up" delay={80}>
@@ -65,7 +65,7 @@ export function DownloadGrid() {
                 id="download-grid-heading"
                 className="mt-3 text-2xl font-semibold leading-[1.15] tracking-[-0.03em] text-foreground sm:text-3xl"
               >
-                {content.title}
+                {content.überschrift}
               </h2>
             </ScrollReveal>
           </div>
@@ -78,24 +78,28 @@ export function DownloadGrid() {
         </div>
 
         <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
-          {content.items.map((item, i) => (
+          {content.einträge.map((item, i) => (
             <ScrollReveal
-              key={item.label}
+              key={item.beschriftung}
               direction="premium"
               stagger={100}
               index={i}
               delay={80}
             >
               <DownloadCard
-                label={item.label}
+                label={item.beschriftung}
                 name={item.name}
-                description={item.description}
-                helper={item.helper}
-                action={item.action}
+                description={item.beschreibung}
+                helper={item.hilfetext}
+                action={{
+                  href: item.aktion.verlinkung,
+                  ariaLabel: item.aktion.barriereBeschriftung,
+                  downloadFilename: item.aktion.downloadDateiname,
+                }}
               />
             </ScrollReveal>
           ))}
-          <ScrollReveal direction="premium" stagger={100} index={content.items.length} delay={80}>
+          <ScrollReveal direction="premium" stagger={100} index={content.einträge.length} delay={80}>
             <PlaceholderCard />
           </ScrollReveal>
         </div>

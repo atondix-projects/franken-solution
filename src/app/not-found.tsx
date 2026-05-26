@@ -44,7 +44,7 @@ export default function NotFound() {
                 className="size-2 rounded-full bg-accent"
                 aria-hidden="true"
               />
-              <span>{content.eyebrow}</span>
+              <span>{content.vorzeile}</span>
             </div>
 
             <h1
@@ -56,7 +56,7 @@ export default function NotFound() {
                 } as CSSProperties
               }
             >
-              {content.title}
+              {content.überschrift}
             </h1>
 
             <p
@@ -68,7 +68,7 @@ export default function NotFound() {
                 } as CSSProperties
               }
             >
-              {content.lead}
+              {content.einleitung}
             </p>
 
             <div
@@ -82,17 +82,17 @@ export default function NotFound() {
             >
               <Button
                 renderAs="link"
-                href={content.primaryCta.href}
+                href={content.primärerAufruf.verlinkung}
                 variant="primary"
               >
-                {content.primaryCta.label}
+                {content.primärerAufruf.beschriftung}
               </Button>
               <Button
                 renderAs="link"
-                href={content.secondaryCta.href}
+                href={content.sekundärerAufruf.verlinkung}
                 variant="secondary"
               >
-                {content.secondaryCta.label}
+                {content.sekundärerAufruf.beschriftung}
               </Button>
             </div>
           </div>

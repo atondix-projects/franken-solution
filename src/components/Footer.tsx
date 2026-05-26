@@ -3,8 +3,8 @@ import { Button } from "./ui/Button";
 import { ressourcenContent } from "@/content/ressourcen";
 import { siteContent } from "@/content/site";
 
-const fernwartungAction = ressourcenContent.download.items[0].action;
-const content = siteContent.footer;
+const fernwartungAction = ressourcenContent.download.einträge[0].aktion;
+const content = siteContent.fußzeile;
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -50,28 +50,28 @@ export function Footer() {
         <div className="flex flex-col gap-8 pb-10 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-3xl">
             <p className="font-mono text-xs uppercase tracking-[0.24em] text-white/45">
-              {content.brandName}
+              {content.markenname}
             </p>
             <h2 className="mt-4 max-w-2xl text-3xl font-semibold leading-[1.08] tracking-[-0.04em] text-white sm:text-4xl">
-              {content.tagline}
+              {content.slogan}
             </h2>
             <p className="mt-4 max-w-2xl text-base font-light leading-7 text-white/70 sm:text-lg">
-              {content.description}
+              {content.beschreibung}
             </p>
           </div>
 
           <div className="shrink-0">
-            <Button renderAs="link" href={content.cta.href} variant="primary">
-              {content.cta.label}
+            <Button renderAs="link" href={content.nächsterSchritt.verlinkung} variant="primary">
+              {content.nächsterSchritt.beschriftung}
             </Button>
           </div>
         </div>
 
         <div className="pb-8">
           <a
-            href={fernwartungAction.href}
-            download={fernwartungAction.downloadFilename}
-            aria-label={fernwartungAction.ariaLabel}
+            href={fernwartungAction.verlinkung}
+            download={fernwartungAction.downloadDateiname}
+            aria-label={fernwartungAction.barriereBeschriftung}
             className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.22em] text-white/55 transition-colors duration-200 hover:text-accent focus-visible:text-accent focus-visible:outline-none"
           >
             <svg
@@ -90,26 +90,26 @@ export function Footer() {
               <polyline points="7 10 12 15 17 10" />
               <line x1="12" y1="15" x2="12" y2="3" />
             </svg>
-            {content.downloadLabel}
+            {content.downloadBeschriftung}
           </a>
         </div>
 
         <div className="mt-10 flex flex-col gap-4 border-t border-white/10 pt-6 text-sm text-white/55 lg:flex-row lg:items-center lg:justify-between">
           <p className="font-mono text-xs uppercase tracking-[0.22em]">
-            &copy; {currentYear} {content.brandName}
+            &copy; {currentYear} {content.markenname}
           </p>
 
           <nav
             className="flex flex-wrap gap-x-5 gap-y-2"
             aria-label="Footer navigation"
           >
-            {content.links.map((link) => (
+            {content.verknüpfungen.map((link) => (
               <Link
-                key={link.label}
-                href={link.href}
+                key={link.beschriftung}
+                href={link.verlinkung}
                 className="transition-colors duration-200 hover:text-accent focus-visible:text-accent focus-visible:outline-none"
               >
-                {link.label}
+                {link.beschriftung}
               </Link>
             ))}
           </nav>

@@ -2,20 +2,20 @@ import { leistungenContent } from "@/content/leistungen";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { Icon } from "@/components/ui/Icon";
 
-const content = leistungenContent.situations;
+const content = leistungenContent.situationen;
 
-type SituationPillar = (typeof content.rows)[number]["pillars"][number];
+type SituationPillar = (typeof content.zeilen)[number]["leistungsgruppen"][number];
 
 function SituationPillarLinks({ pillars }: { pillars: readonly SituationPillar[] }) {
   return (
     <div className="flex flex-wrap gap-2">
       {pillars.map((pillar) => (
         <a
-          key={pillar.anchor}
-          href={pillar.anchor}
+          key={pillar.sprungZiel}
+          href={pillar.sprungZiel}
           className="inline-flex max-w-full items-center gap-1 rounded-full border border-accent/20 bg-accent/5 px-3 py-1 font-mono text-xs font-medium text-accent transition-colors duration-200 hover:border-accent/40 hover:bg-accent/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
         >
-          {pillar.label}
+          {pillar.beschriftung}
           <Icon name="arrowRight" className="size-2.5 shrink-0" />
         </a>
       ))}
@@ -39,33 +39,33 @@ export function SituationMatrix() {
       <div className="relative mx-auto max-w-7xl px-6">
         <ScrollReveal direction="up" className="mx-auto max-w-2xl text-center">
           <p className="font-mono text-xs font-medium uppercase tracking-[0.18em] text-accent">
-            {content.eyebrow}
+            {content.vorzeile}
           </p>
           <h2 className="mt-3 text-3xl font-semibold leading-[1.15] tracking-[-0.04em] text-white/88 sm:text-4xl">
-            {content.headline}
+            {content.überschrift}
           </h2>
           <p className="mt-4 text-base font-light leading-relaxed text-white/55">
-            {content.description}
+            {content.beschreibung}
           </p>
         </ScrollReveal>
 
         <ScrollReveal direction="up" delay={120} className="mt-12">
           <div className="overflow-hidden rounded-xl border border-foreground/6 bg-white/90 text-sm">
             <div className="divide-y divide-foreground/5 md:hidden">
-              {content.rows.map((row, i) => (
+              {content.zeilen.map((row, i) => (
                 <article
                   key={i}
                   className="px-4 py-4"
-                  aria-label={`${row.situation}. ${content.tableHeaders.approach}: ${row.pillars.map((p) => p.label).join(", ")}`}
+                  aria-label={`${row.situation}. ${content.tabellenKöpfe.ansatz}: ${row.leistungsgruppen.map((p) => p.beschriftung).join(", ")}`}
                 >
                   <p className="font-light leading-relaxed text-foreground-muted">
                     {row.situation}
                   </p>
                   <p className="mt-3 font-mono text-xs font-medium uppercase tracking-[0.12em] text-foreground-muted">
-                    {content.tableHeaders.approach}
+                    {content.tabellenKöpfe.ansatz}
                   </p>
                   <div className="mt-2">
-                    <SituationPillarLinks pillars={row.pillars} />
+                    <SituationPillarLinks pillars={row.leistungsgruppen} />
                   </div>
                 </article>
               ))}
@@ -78,18 +78,18 @@ export function SituationMatrix() {
                     scope="col"
                     className="px-6 py-4 text-left font-mono text-xs font-medium uppercase tracking-[0.12em] text-foreground-muted"
                   >
-                    {content.tableHeaders.situation}
+                    {content.tabellenKöpfe.situation}
                   </th>
                   <th
                     scope="col"
                     className="px-6 py-4 text-left font-mono text-xs font-medium uppercase tracking-[0.12em] text-foreground-muted"
                   >
-                    {content.tableHeaders.approach}
+                    {content.tabellenKöpfe.ansatz}
                   </th>
                 </tr>
               </thead>
               <tbody>
-                {content.rows.map((row, i) => (
+                {content.zeilen.map((row, i) => (
                   <tr
                     key={i}
                     className="border-b border-foreground/5 transition-colors duration-300 last:border-0 hover:bg-foreground/[0.04]"
@@ -98,7 +98,7 @@ export function SituationMatrix() {
                       {row.situation}
                     </td>
                     <td className="px-6 py-4">
-                      <SituationPillarLinks pillars={row.pillars} />
+                      <SituationPillarLinks pillars={row.leistungsgruppen} />
                     </td>
                   </tr>
                 ))}

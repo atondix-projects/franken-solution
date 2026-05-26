@@ -1,8 +1,8 @@
 export const impressumContent = {
-  eyebrow: "Rechtliches",
-  title: "Impressum",
-  description: "Angaben gemäß § 5 TMG",
-  notes: [
+  vorzeile: "Rechtliches",
+  überschrift: "Impressum",
+  beschreibung: "Angaben gemäß § 5 TMG",
+  hinweise: [
     "Unternehmensname: Franken Solution",
     "Adresse: Winzelbürgstr. 9, 90491 Nürnberg, Deutschland",
     "Telefon: 0911 95898731",
@@ -12,7 +12,7 @@ export const impressumContent = {
     "Registergericht: Placeholder: Amtsgericht",
     "Umsatzsteuer-ID: Placeholder: USt-IdNr. gemäß § 27 a UStG",
   ],
-  cta: { label: "Zur Startseite", href: "/" },
+  nächsterSchritt: { beschriftung: "Zur Startseite", verlinkung: "/" },
 } as const;
 
 export type ImpressumContent = typeof impressumContent;

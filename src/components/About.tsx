@@ -8,7 +8,7 @@ import { Button } from "./ui/Button";
 import { ScrollReveal } from "./ScrollReveal";
 import { Icon } from "./ui/Icon";
 
-const content = homepageContent.about;
+const content = homepageContent.überUns;
 
 interface CounterCardProps {
   value: string;
@@ -79,7 +79,7 @@ export function About() {
             >
               <Image
                 src="/homepage-hero.jpg"
-                alt={content.imageAlt}
+                alt={content.bildBeschreibung}
                 fill
                 sizes="(min-width: 1024px) 52vw, 100vw"
                 className="object-cover object-center"
@@ -89,11 +89,11 @@ export function About() {
 
             {/* Counters — overlapping bottom edge of diorama */}
             <div className="absolute -bottom-6 left-4 right-4 grid grid-cols-3 gap-3 sm:left-6 sm:right-6">
-              {content.counters.map((counter, i) => (
+              {content.kennzahlen.map((counter, i) => (
                 <CounterCard
-                  key={counter.label}
-                  value={counter.value}
-                  label={counter.label}
+                  key={counter.beschriftung}
+                  value={counter.wert}
+                  label={counter.beschriftung}
                   index={i}
                 />
               ))}
@@ -103,20 +103,20 @@ export function About() {
           {/* Right: text content */}
           <ScrollReveal direction="right" delay={120} className="pt-10 lg:pt-0">
             <p className="font-mono text-xs font-medium uppercase tracking-[0.18em] text-accent">
-              {content.eyebrow}
+              {content.vorzeile}
             </p>
 
             <h2 className="mt-3 text-3xl font-semibold leading-[1.15] tracking-[-0.04em] text-foreground sm:text-4xl">
-              {content.title}
+              {content.überschrift}
             </h2>
 
             <p className="mt-5 text-base font-light leading-relaxed text-foreground-muted">
-              {content.description}
+              {content.beschreibung}
             </p>
 
             {/* Differentiator checklist */}
             <ul className="mt-7 space-y-3" role="list">
-              {content.differentiators.map((item) => (
+              {content.unterscheidungsMerkmale.map((item) => (
                 <li key={item} className="group flex items-start gap-3">
                   <span className="icon-chip-glow mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-full bg-accent/10 text-accent">
                     <Icon name="check" className="size-3" />
@@ -131,10 +131,10 @@ export function About() {
             <div className="mt-8">
               <Button
                 renderAs="link"
-                href={content.cta.href}
+                href={content.nächsterSchritt.verlinkung}
                 variant="secondary"
               >
-                {content.cta.label}
+                {content.nächsterSchritt.beschriftung}
               </Button>
             </div>
           </ScrollReveal>

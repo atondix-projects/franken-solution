@@ -14,7 +14,7 @@ const FULL_BLEED_MAX_WIDTH = "100%";
 const COMPACT_SHELL_MAX_WIDTH = "80rem";
 const TOP_CONTENT_MAX_WIDTH = "96rem";
 
-const navContent = siteContent.nav;
+const navContent = siteContent.navigation;
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -171,12 +171,12 @@ export function Navbar() {
                   }`}
                 aria-label="Primary navigation"
               >
-                {navContent.links.map((link) => {
-                  const isActive = isActiveLink(link.href);
+                {navContent.verknüpfungen.map((link) => {
+                  const isActive = isActiveLink(link.verlinkung);
                   return (
                     <Link
-                      key={link.label}
-                      href={link.href}
+                      key={link.beschriftung}
+                      href={link.verlinkung}
                       onClick={() => setIsOpen(false)}
                       className={`group relative flex items-center font-medium uppercase transition-[font-size,letter-spacing,padding,color] duration-[460ms] ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none ${isContentCompact
                         ? "py-1.5 text-xs tracking-[0.18em]"
@@ -186,7 +186,7 @@ export function Navbar() {
                           : "text-foreground hover:text-accent"
                         }`}
                     >
-                      <span className="relative z-10">{link.label}</span>
+                      <span className="relative z-10">{link.beschriftung}</span>
                       <span
                         className={`absolute -bottom-0.5 left-0 h-0.5 rounded-full bg-accent transition-all duration-300 ease-out ${isActive
                           ? "w-0 opacity-0"
@@ -206,12 +206,12 @@ export function Navbar() {
               >
                 <Button
                   renderAs="link"
-                  href={navContent.desktopCta.href}
+                  href={navContent.desktopAufruf.verlinkung}
                   variant="primary"
                   onClick={() => setIsOpen(false)}
                   className="transition-[box-shadow] duration-[460ms] ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none"
                 >
-                  {navContent.desktopCta.label}
+                  {navContent.desktopAufruf.beschriftung}
                 </Button>
               </div>
 
@@ -224,7 +224,7 @@ export function Navbar() {
                     }`}
                   aria-expanded={isOpen}
                   aria-controls="mobile-nav"
-                  aria-label={isOpen ? navContent.menuAriaOpen : navContent.menuAriaClose}
+                  aria-label={isOpen ? navContent.menüÖffnenBeschriftung : navContent.menüSchließenBeschriftung}
                 >
                   <span
                     className={`h-[2px] rounded-full bg-foreground transition-all duration-300 ease-in-out ${isContentCompact ? "w-5" : "w-6"
@@ -252,12 +252,12 @@ export function Navbar() {
                 >
                   <div className="flex h-full flex-col p-8 pt-32">
                     <nav className="flex flex-col gap-6">
-                      {navContent.links.map((link, i) => {
-                        const isActive = isActiveLink(link.href);
+                      {navContent.verknüpfungen.map((link, i) => {
+                        const isActive = isActiveLink(link.verlinkung);
                         return (
                           <Link
-                            key={link.label}
-                            href={link.href}
+                            key={link.beschriftung}
+                            href={link.verlinkung}
                             onClick={() => setIsOpen(false)}
                             className={`text-3xl font-semibold tracking-[-0.04em] text-foreground transition-all duration-500 hover:text-accent ${isOpen
                               ? "translate-x-0 opacity-100"
@@ -266,7 +266,7 @@ export function Navbar() {
                             style={{ transitionDelay: `${i * 75}ms` }}
                           >
                             <span className="relative inline-block">
-                              {link.label}
+                              {link.beschriftung}
                               {isActive && (
                                 <span className="absolute -right-6 top-1/2 h-2 w-2 -translate-y-1/2 rounded-full bg-accent" />
                               )}
@@ -282,12 +282,12 @@ export function Navbar() {
                     >
                       <Button
                         renderAs="link"
-                        href={navContent.mobileCta.href}
+                        href={navContent.mobilerAufruf.verlinkung}
                         variant="primary"
                         onClick={() => setIsOpen(false)}
                         className="w-full"
                       >
-                        {navContent.mobileCta.label}
+                        {navContent.mobilerAufruf.beschriftung}
                       </Button>
                     </div>
 
@@ -296,7 +296,7 @@ export function Navbar() {
                         }`}
                     >
                       <p className="font-mono text-xs uppercase tracking-[0.2em] text-black/40">
-                        {navContent.brandName} &copy; {new Date().getFullYear()}
+                        {navContent.markenname} &copy; {new Date().getFullYear()}
                       </p>
                     </div>
                   </div>

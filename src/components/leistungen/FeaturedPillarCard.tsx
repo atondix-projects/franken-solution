@@ -8,7 +8,7 @@ import { PillarIcon } from "./pillar-icons";
 import { pillarCardTitleClass } from "./pillar-card-styles";
 import { Icon } from "@/components/ui/Icon";
 
-const detailLinkLabel = leistungenContent.pillars.detailLinkLabel;
+const detailLinkLabel = leistungenContent.leistungsgruppen.detailLinkText;
 
 interface FeaturedPillarCardProps {
   group: LeistungenPillarGroup;
@@ -27,7 +27,7 @@ export function FeaturedPillarCard({ group }: FeaturedPillarCardProps) {
 
   return (
     <div
-      id={group.slug}
+      id={group.pfadKennung}
       ref={cardRef}
       onMouseMove={onMouseMove}
       onMouseLeave={onMouseLeave}
@@ -43,7 +43,7 @@ export function FeaturedPillarCard({ group }: FeaturedPillarCardProps) {
         <div className="shrink-0">
           <div className="icon-chip-glow flex h-14 w-14 items-center justify-center rounded-lg border border-foreground/8 bg-foreground/4 sm:h-20 sm:w-20">
             <PillarIcon
-              slug={group.slug}
+              slug={group.pfadKennung}
               className="h-7 w-7 text-foreground/50 sm:h-10 sm:w-10"
             />
           </div>
@@ -54,13 +54,13 @@ export function FeaturedPillarCard({ group }: FeaturedPillarCardProps) {
           {/* Title + Trigger */}
           <div className="grid gap-5 lg:grid-cols-2">
             <div className="flex flex-col gap-2">
-              <h3 className={pillarCardTitleClass}>{group.title}</h3>
+              <h3 className={pillarCardTitleClass}>{group.überschrift}</h3>
               <div>
                 <p className="font-mono text-xs font-medium uppercase tracking-[0.16em] text-foreground-muted">
                   Auslöser
                 </p>
                 <p className="mt-1 text-sm font-light leading-relaxed text-foreground-muted">
-                  {group.triggerText}
+                  {group.auslöserText}
                 </p>
               </div>
             </div>
@@ -95,13 +95,13 @@ export function FeaturedPillarCard({ group }: FeaturedPillarCardProps) {
                 Ergebnis
               </p>
               <p className="max-w-xl text-sm font-light leading-relaxed text-foreground-muted">
-                {group.outcome}
+                {group.ergebnis}
               </p>
             </div>
 
             <div ref={magneticRef} className="magnetic-target shrink-0">
               <a
-                href={group.href}
+                href={group.verlinkung}
                 className="inline-flex items-center gap-2 font-mono text-xs font-medium text-accent transition-opacity duration-300 hover:opacity-70 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
               >
                 {detailLinkLabel}

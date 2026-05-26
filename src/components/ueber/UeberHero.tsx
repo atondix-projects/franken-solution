@@ -2,8 +2,8 @@ import type { CSSProperties } from "react";
 import { ueberFrankenSolutionContent } from "@/content/ueber-franken-solution";
 import { homepageContent } from "@/content/homepage";
 
-const content = ueberFrankenSolutionContent.hero;
-const counters = homepageContent.about.counters;
+const content = ueberFrankenSolutionContent.kopfbereich;
+const counters = homepageContent.überUns.kennzahlen;
 
 function heroStyle(delay: string, duration = "560ms"): CSSProperties {
   return {
@@ -43,7 +43,7 @@ export function UeberHero() {
         >
           <span className="h-px w-6 bg-accent/70" aria-hidden="true" />
           <p className="font-mono text-xs font-medium uppercase tracking-[0.2em] text-accent">
-            {content.eyebrow}
+            {content.vorzeile}
           </p>
           <span className="h-px w-6 bg-accent/70" aria-hidden="true" />
         </div>
@@ -54,7 +54,7 @@ export function UeberHero() {
           className="hero-load hero-load-up mt-5 text-3xl font-semibold leading-[1.1] tracking-[-0.025em] text-foreground sm:text-4xl lg:text-5xl"
           style={heroStyle("140ms", "620ms")}
         >
-          {content.title}
+          {content.überschrift}
         </h1>
 
         {/* Lead */}
@@ -62,7 +62,7 @@ export function UeberHero() {
           className="hero-load hero-load-up mx-auto mt-6 max-w-2xl text-base font-light leading-relaxed text-foreground/60 sm:text-lg"
           style={heroStyle("240ms")}
         >
-          {content.lead}
+          {content.einleitung}
         </p>
 
         {/* Counters */}
@@ -72,15 +72,15 @@ export function UeberHero() {
         >
           {counters.map((counter) => (
             <div
-              key={counter.label}
+              key={counter.beschriftung}
               className="glass-card flex flex-col items-center rounded-xl px-4 py-5 text-center"
               style={{ boxShadow: "var(--elev-1)" }}
             >
               <span className="font-mono text-2xl font-bold leading-none text-accent sm:text-3xl">
-                {counter.value}
+                {counter.wert}
               </span>
               <span className="mt-2 text-xs font-medium leading-tight text-foreground-muted">
-                {counter.label}
+                {counter.beschriftung}
               </span>
             </div>
           ))}

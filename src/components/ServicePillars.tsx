@@ -3,7 +3,7 @@ import { Button } from "./ui/Button";
 import { ScrollReveal } from "./ScrollReveal";
 import { ServiceCard } from "./ServiceCard";
 
-const content = homepageContent.services;
+const content = homepageContent.leistungen;
 
 export function ServicePillars() {
   return (
@@ -35,13 +35,13 @@ export function ServicePillars() {
       <div className="relative mx-auto max-w-7xl px-6">
         <ScrollReveal direction="up" className="mx-auto max-w-2xl text-center">
           <p className="font-mono text-xs font-medium uppercase tracking-[0.18em] text-accent">
-            {content.eyebrow}
+            {content.vorzeile}
           </p>
           <h2 className="mt-3 text-3xl font-semibold leading-[1.15] tracking-[-0.04em] text-white/88 sm:text-4xl">
-            {content.title}
+            {content.überschrift}
           </h2>
           <p className="mt-4 text-base font-light leading-relaxed text-white/55">
-            {content.description}
+            {content.beschreibung}
           </p>
         </ScrollReveal>
 
@@ -49,9 +49,9 @@ export function ServicePillars() {
           className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
           role="list"
         >
-          {content.items.map((item, i) => (
+          {content.einträge.map((item, i) => (
             <ScrollReveal
-              key={item.slug}
+              key={item.pfadKennung}
               as="li"
               direction="premium"
               stagger={80}
@@ -60,9 +60,9 @@ export function ServicePillars() {
               className="h-full"
             >
               <ServiceCard
-                slug={item.slug}
-                title={item.title}
-                description={item.description}
+                slug={item.pfadKennung}
+                title={item.überschrift}
+                description={item.beschreibung}
               />
             </ScrollReveal>
           ))}
@@ -74,10 +74,10 @@ export function ServicePillars() {
           className="mt-16 flex flex-col items-center gap-6 text-center"
         >
           <p className="max-w-xl text-sm font-light leading-relaxed text-white/55">
-            {content.supportingStatement}
+            {content.ergänzendeAussage}
           </p>
-          <Button renderAs="link" href={content.cta.href} variant="primary">
-            {content.cta.label}
+          <Button renderAs="link" href={content.nächsterSchritt.verlinkung} variant="primary">
+            {content.nächsterSchritt.beschriftung}
           </Button>
         </ScrollReveal>
       </div>

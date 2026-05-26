@@ -3,7 +3,7 @@ import { homepageContent } from "@/content/homepage";
 import type { FounderItem } from "@/content/homepage";
 import { ScrollReveal } from "./ScrollReveal";
 
-const content = homepageContent.founders;
+const content = homepageContent.gründer;
 
 function FounderSilhouette({ label }: { label: string }) {
   return (
@@ -42,18 +42,18 @@ function FounderStage({ item, index }: { item: FounderItem; index: number }) {
         />
 
         {/* Portrait — inset inside card (framed look), with drop-shadow for depth and a contained hover lift */}
-        {item.photoSrc ? (
+        {item.fotoQuelle ? (
           <div className="absolute inset-x-5 inset-y-8 transform-gpu transition duration-500 ease-out drop-shadow-[0_18px_24px_rgba(5,5,5,0.28)] group-hover:-translate-y-2 group-hover:scale-[1.035] group-hover:drop-shadow-[0_30px_38px_rgba(5,5,5,0.42)] motion-reduce:transform-none motion-reduce:transition-none">
             <Image
-              src={item.photoSrc}
-              alt={item.photoAlt}
+              src={item.fotoQuelle}
+              alt={item.fotoBeschreibung}
               fill
               sizes="(min-width: 1024px) 50vw, 100vw"
               className="object-contain object-bottom"
             />
           </div>
         ) : (
-          <FounderSilhouette label={item.photoAlt} />
+          <FounderSilhouette label={item.fotoBeschreibung} />
         )}
 
         {/* Floor accent line — sits above the portrait at the base of the card */}
@@ -68,7 +68,7 @@ function FounderStage({ item, index }: { item: FounderItem; index: number }) {
         <div className="mb-3 h-px w-8 bg-accent" aria-hidden="true" />
 
         <p className="font-mono text-xs font-medium uppercase tracking-[0.18em] text-accent">
-          {item.role}
+          {item.rolle}
         </p>
 
         <h3 className="mt-1 text-2xl font-semibold leading-tight tracking-[-0.035em] text-foreground sm:text-3xl">
@@ -80,7 +80,7 @@ function FounderStage({ item, index }: { item: FounderItem; index: number }) {
           className="mt-3 flex flex-wrap items-center gap-x-0 gap-y-1"
           role="list"
         >
-          {item.credentials.map((cred, i) => (
+          {item.qualifikationen.map((cred, i) => (
             <li key={cred} className="flex items-center">
               {i > 0 && (
                 <span
@@ -106,21 +106,21 @@ export function Founders() {
         {/* Section header */}
         <ScrollReveal direction="up" className="mb-14 max-w-xl">
           <p className="font-mono text-xs font-medium uppercase tracking-[0.18em] text-accent">
-            {content.eyebrow}
+            {content.vorzeile}
           </p>
           <h2 className="mt-3 text-3xl font-semibold leading-[1.15] tracking-[-0.04em] text-foreground sm:text-4xl">
-            {content.title}
+            {content.überschrift}
           </h2>
           <p className="mt-4 text-base font-light leading-relaxed text-foreground-muted">
-            {content.description}
+            {content.beschreibung}
           </p>
         </ScrollReveal>
 
         {/* Full-width diptych grid */}
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-8">
-          {content.items.map((item, i) => (
+          {content.einträge.map((item, i) => (
             <ScrollReveal
-              key={item.id}
+              key={item.kennung}
               direction={i % 2 === 0 ? "left" : "right"}
               delay={i * 120}
             >

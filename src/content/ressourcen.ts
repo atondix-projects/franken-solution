@@ -1,43 +1,43 @@
 export const ressourcenContent = {
-  hero: {
-    eyebrow: "Ressourcen",
-    title: "Werkzeuge, die wir Ihnen direkt zur Verfügung stellen.",
-    lead: "Praktische Hilfsmittel für die Zusammenarbeit mit Franken Solution — vom Fernwartungs-Tool bis zu Informationsmaterialien, die Schritt für Schritt dazukommen.",
-    subtext: "Alle Tools stammen direkt von Franken Solution und sind für Kunden und Partner bestimmt.",
-    trustChips: [
+  kopfbereich: {
+    vorzeile: "Ressourcen",
+    überschrift: "Werkzeuge, die wir Ihnen direkt zur Verfügung stellen.",
+    einleitung: "Praktische Hilfsmittel für die Zusammenarbeit mit Franken Solution — vom Fernwartungs-Tool bis zu Informationsmaterialien, die Schritt für Schritt dazukommen.",
+    zusatztext: "Alle Tools stammen direkt von Franken Solution und sind für Kunden und Partner bestimmt.",
+    vertrauensMerkmale: [
       "Direkt von Franken Solution",
       "Windows-kompatibel",
       "Kein Login erforderlich",
     ],
   },
   download: {
-    eyebrow: "Fernwartung",
-    title: "Direkter Support-Zugang.",
-    items: [
+    vorzeile: "Fernwartung",
+    überschrift: "Direkter Support-Zugang.",
+    einträge: [
       {
-        label: "Fernwartung",
+        beschriftung: "Fernwartung",
         name: "Fernwartungs-Tool",
-        description: "Schnelle Bildschirmübertragung für unseren Support. Nur nach telefonischer Aufforderung starten.",
-        helper: "Windows · EXE-Datei",
-        action: {
-          href: "/downloads/fernwartung.exe",
-          ariaLabel: "Fernwartungs-Tool als EXE-Datei herunterladen",
-          downloadFilename: "fernwartung.exe",
+        beschreibung: "Schnelle Bildschirmübertragung für unseren Support. Nur nach telefonischer Aufforderung starten.",
+        hilfetext: "Windows · EXE-Datei",
+        aktion: {
+          verlinkung: "/downloads/fernwartung.exe",
+          barriereBeschriftung: "Fernwartungs-Tool als EXE-Datei herunterladen",
+          downloadDateiname: "fernwartung.exe",
         },
       },
     ],
-    placeholder: {
-      title: "Weitere Ressourcen folgen",
-      description: "Checklisten, Whitepapers und weitere Werkzeuge kommen Schritt für Schritt dazu.",
+    platzhalter: {
+      überschrift: "Weitere Ressourcen folgen",
+      beschreibung: "Checklisten, Whitepapers und weitere Werkzeuge kommen Schritt für Schritt dazu.",
     },
   },
-  cta: {
-    eyebrow: "Direkter Draht",
-    title: "Fragen zum Tool. Wir sind direkt erreichbar.",
-    description: "Unser Support steht Ihnen werktags von 09:00 bis 17:00 Uhr zur Verfügung. Ein kurzer Anruf genügt, um direkt loszulegen.",
-    note: "Werktags von 09:00 bis 17:00 Uhr erreichbar. Kein Ticket. Kein Umweg.",
-    primaryCta: { label: "Kontakt aufnehmen", href: "/kontakt" },
-    secondaryCta: { label: "Leistungen ansehen", href: "/leistungen" },
+  nächsterSchritt: {
+    vorzeile: "Direkter Draht",
+    überschrift: "Fragen zum Tool. Wir sind direkt erreichbar.",
+    beschreibung: "Unser Support steht Ihnen werktags von 09:00 bis 17:00 Uhr zur Verfügung. Ein kurzer Anruf genügt, um direkt loszulegen.",
+    hinweis: "Werktags von 09:00 bis 17:00 Uhr erreichbar. Kein Ticket. Kein Umweg.",
+    primärerAufruf: { beschriftung: "Kontakt aufnehmen", verlinkung: "/kontakt" },
+    sekundärerAufruf: { beschriftung: "Leistungen ansehen", verlinkung: "/leistungen" },
   },
 } as const;
 

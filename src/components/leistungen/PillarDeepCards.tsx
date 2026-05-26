@@ -3,8 +3,8 @@ import { ScrollReveal } from "@/components/ScrollReveal";
 import { FeaturedPillarCard } from "./FeaturedPillarCard";
 import { CompactPillarCard } from "./CompactPillarCard";
 
-const content = leistungenContent.pillars;
-const [p0, p1, p2, p3, p4, p5] = content.groups;
+const content = leistungenContent.leistungsgruppen;
+const [p0, p1, p2, p3, p4, p5] = content.gruppen;
 
 export function PillarDeepCards() {
   return (
@@ -21,13 +21,13 @@ export function PillarDeepCards() {
       <div className="relative mx-auto max-w-7xl px-6">
         <ScrollReveal direction="up" className="mx-auto max-w-2xl text-center">
           <p className="font-mono text-xs font-medium uppercase tracking-[0.18em] text-accent">
-            {content.eyebrow}
+            {content.vorzeile}
           </p>
           <h2 className="mt-3 text-3xl font-semibold leading-[1.15] tracking-[-0.04em] text-foreground sm:text-4xl">
-            {content.headline}
+            {content.überschrift}
           </h2>
           <p className="mt-4 text-base font-light leading-relaxed text-foreground-muted">
-            {content.description}
+            {content.beschreibung}
           </p>
         </ScrollReveal>
 

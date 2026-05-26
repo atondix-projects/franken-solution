@@ -9,16 +9,16 @@ import type { LeistungenPillarGroup } from "@/content/leistungen";
 type PageParams = { slug: string };
 
 const PILLAR_GROUPS: ReadonlyArray<LeistungenPillarGroup> =
-  leistungenContent.pillars.groups;
+  leistungenContent.leistungsgruppen.gruppen;
 
-const detail = leistungenContent.pillarDetail;
+const detail = leistungenContent.leistungsgruppeDetail;
 
 function findGroup(slug: string): LeistungenPillarGroup | undefined {
-  return PILLAR_GROUPS.find((g) => g.slug === slug);
+  return PILLAR_GROUPS.find((g) => g.pfadKennung === slug);
 }
 
 export async function generateStaticParams(): Promise<PageParams[]> {
-  return PILLAR_GROUPS.map((g) => ({ slug: g.slug }));
+  return PILLAR_GROUPS.map((g) => ({ slug: g.pfadKennung }));
 }
 
 export async function generateMetadata({
@@ -30,15 +30,15 @@ export async function generateMetadata({
   const group = findGroup(slug);
   if (!group) return {};
 
-  const ogTitle = `${group.title} | Franken Solution`;
+  const ogTitle = `${group.überschrift} | Franken Solution`;
 
   return {
-    title: group.title,
-    description: group.intro,
+    title: group.überschrift,
+    description: group.einführung,
     alternates: { canonical: `/leistungen/${slug}` },
     openGraph: {
       title: ogTitle,
-      description: group.intro,
+      description: group.einführung,
       url: `/leistungen/${slug}`,
       siteName: "Franken Solution",
       locale: "de_DE",
@@ -47,7 +47,7 @@ export async function generateMetadata({
     twitter: {
       card: "summary_large_image",
       title: ogTitle,
-      description: group.intro,
+      description: group.einführung,
     },
     robots: { index: true, follow: true },
   };
@@ -107,16 +107,16 @@ export default async function LeistungenDetailPage({
             className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.18em] text-foreground/55 transition-colors hover:text-accent"
           >
             <span aria-hidden="true">&larr;</span>
-            {detail.backLink}
+            {detail.zurückLink}
           </Link>
 
           <div className="mt-10 max-w-3xl">
-            <Eyebrow label={detail.eyebrowGroup} />
+            <Eyebrow label={detail.vorzeileGruppe} />
             <h1 className="mt-5 text-4xl font-semibold leading-[1.05] tracking-[-0.03em] text-foreground sm:text-5xl lg:text-6xl">
-              {group.title}
+              {group.überschrift}
             </h1>
             <p className="mt-6 text-lg font-light leading-relaxed text-foreground/70 sm:text-xl">
-              {group.intro}
+              {group.einführung}
             </p>
           </div>
         </div>
@@ -125,10 +125,10 @@ export default async function LeistungenDetailPage({
       {/* Auslöser */}
       <section className="border-y border-black/5 bg-black/[0.025] py-16 sm:py-20">
         <div className="mx-auto max-w-7xl px-6">
-          <Eyebrow label={detail.eyebrowTrigger} />
+          <Eyebrow label={detail.vorzeileAuslöser} />
           <figure className="mt-6 max-w-3xl border-l-4 border-accent pl-6 sm:pl-8">
             <blockquote className="text-xl font-light leading-relaxed text-foreground/85 sm:text-2xl">
-              {group.triggerText}
+              {group.auslöserText}
             </blockquote>
           </figure>
         </div>
@@ -138,9 +138,9 @@ export default async function LeistungenDetailPage({
       <section className="bg-background py-24 sm:py-28">
         <div className="mx-auto max-w-7xl px-6">
           <div className="max-w-2xl">
-            <Eyebrow label={detail.eyebrowBausteine} />
+            <Eyebrow label={detail.vorzeileBausteine} />
             <h2 className="mt-5 text-3xl font-semibold leading-[1.1] tracking-[-0.02em] text-foreground sm:text-4xl">
-              {detail.bausteineHeading}
+              {detail.bausteineÜberschrift}
             </h2>
           </div>
 
@@ -168,9 +168,9 @@ export default async function LeistungenDetailPage({
       {/* Ergebnis */}
       <section className="bg-background-muted py-24 text-white sm:py-32">
         <div className="mx-auto max-w-7xl px-6">
-          <EyebrowOnDark label={detail.eyebrowErgebnis} />
+          <EyebrowOnDark label={detail.vorzeileErgebnis} />
           <p className="mt-6 max-w-4xl text-3xl font-light leading-[1.2] tracking-[-0.02em] text-white sm:text-4xl lg:text-[2.75rem]">
-            {group.outcome}
+            {group.ergebnis}
           </p>
         </div>
       </section>
@@ -178,19 +178,19 @@ export default async function LeistungenDetailPage({
       {/* CTA */}
       <section className="bg-background py-24 sm:py-28">
         <div className="mx-auto max-w-3xl px-6 text-center">
-          <Eyebrow label={detail.cta.eyebrow} />
+          <Eyebrow label={detail.nächsterSchritt.vorzeile} />
           <h2 className="mt-5 text-3xl font-semibold leading-[1.1] tracking-[-0.02em] text-foreground sm:text-4xl">
-            {detail.cta.headingPrefix}{" "}{group.title.toLowerCase()}{" "}{detail.cta.headingSuffix}
+            {detail.nächsterSchritt.überschriftAnfang}{" "}{group.überschrift.toLowerCase()}{" "}{detail.nächsterSchritt.überschriftEnde}
           </h2>
           <p className="mt-5 text-base font-light leading-relaxed text-foreground/65">
-            {detail.cta.body}
+            {detail.nächsterSchritt.fließtext}
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Button renderAs="link" href={detail.cta.primaryCta.href} variant="primary">
-              {detail.cta.primaryCta.label}
+            <Button renderAs="link" href={detail.nächsterSchritt.primärerAufruf.verlinkung} variant="primary">
+              {detail.nächsterSchritt.primärerAufruf.beschriftung}
             </Button>
-            <Button renderAs="link" href={detail.cta.secondaryCta.href} variant="secondary">
-              {detail.cta.secondaryCta.label}
+            <Button renderAs="link" href={detail.nächsterSchritt.sekundärerAufruf.verlinkung} variant="secondary">
+              {detail.nächsterSchritt.sekundärerAufruf.beschriftung}
             </Button>
           </div>
         </div>

@@ -35,11 +35,11 @@ export default function ImpressumPage() {
   return (
     <SiteFrame>
       <PlaceholderPage
-        eyebrow={impressumContent.eyebrow}
-        title={impressumContent.title}
-        description={impressumContent.description}
-        notes={impressumContent.notes}
-        primaryCta={impressumContent.cta}
+        eyebrow={impressumContent.vorzeile}
+        title={impressumContent.überschrift}
+        description={impressumContent.beschreibung}
+        notes={impressumContent.hinweise}
+        primaryCta={{ label: impressumContent.nächsterSchritt.beschriftung, href: impressumContent.nächsterSchritt.verlinkung }}
       />
     </SiteFrame>
   );

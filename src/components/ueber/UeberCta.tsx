@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/Button";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { Icon } from "@/components/ui/Icon";
 
-const content = ueberFrankenSolutionContent.cta;
+const content = ueberFrankenSolutionContent.nächsterSchritt;
 
 export function UeberCta() {
   return (
@@ -14,7 +14,7 @@ export function UeberCta() {
       <div className="relative z-10 mx-auto max-w-4xl px-6 text-center">
         <ScrollReveal direction="up" delay={0}>
           <p className="font-mono text-xs font-medium uppercase tracking-[0.18em] text-accent">
-            {content.eyebrow}
+            {content.vorzeile}
           </p>
         </ScrollReveal>
 
@@ -23,13 +23,13 @@ export function UeberCta() {
             id="ueber-cta-heading"
             className="mt-4 text-3xl font-semibold leading-[1.1] tracking-[-0.04em] text-foreground sm:text-4xl"
           >
-            {content.title}
+            {content.überschrift}
           </h2>
         </ScrollReveal>
 
         <ScrollReveal direction="up" delay={240}>
           <p className="mx-auto mt-6 max-w-2xl text-base font-light leading-relaxed text-foreground/65">
-            {content.description}
+            {content.beschreibung}
           </p>
         </ScrollReveal>
 
@@ -40,27 +40,27 @@ export function UeberCta() {
         >
           <Button
             renderAs="link"
-            href={content.primaryCta.href}
+            href={content.primärerAufruf.verlinkung}
             variant="primary"
           >
             <span className="flex items-center gap-2">
-              {content.primaryCta.label}
+              {content.primärerAufruf.beschriftung}
               <Icon name="arrowRight" className="size-4 shrink-0" />
             </span>
           </Button>
           <Button
             renderAs="link"
-            href={content.secondaryCta.href}
+            href={content.sekundärerAufruf.verlinkung}
             variant="secondary"
           >
-            {content.secondaryCta.label}
+            {content.sekundärerAufruf.beschriftung}
           </Button>
         </ScrollReveal>
 
         <ScrollReveal direction="fade" delay={560}>
           <p className="mt-8 flex items-center justify-center gap-2 text-xs font-light text-foreground/65">
             <Icon name="shieldCheck" className="size-3" />
-            {content.note}
+            {content.hinweis}
           </p>
         </ScrollReveal>
       </div>

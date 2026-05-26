@@ -3,9 +3,9 @@ import type { ProcessSectionContent } from "@/content/homepage";
 import { ScrollReveal } from "./ScrollReveal";
 import { Icon } from "./ui/Icon";
 
-const content = homepageContent.process;
+const content = homepageContent.arbeitsweise;
 
-type Step = ProcessSectionContent["steps"][number];
+type Step = ProcessSectionContent["schritte"][number];
 
 function ProcessConnector({
   connectorDelay,
@@ -52,7 +52,7 @@ function ProcessStep({
             {index + 1}
           </span>
           <div className="icon-chip-glow icon-pop-in flex size-12 shrink-0 items-center justify-center rounded-xl border border-accent/25 bg-accent/8 text-accent">
-            <Icon name={step.iconKey} className="size-5" />
+            <Icon name={step.symbolName} className="size-5" />
           </div>
         </div>
 
@@ -69,10 +69,10 @@ function ProcessStep({
           style={{ transform: `rotateY(${tiltDir}deg)` }}
         >
           <h3 className="text-base font-semibold tracking-tight text-foreground">
-            {step.title}
+            {step.überschrift}
           </h3>
           <p className="mt-2 text-sm font-light leading-relaxed text-foreground-muted">
-            {step.description}
+            {step.beschreibung}
           </p>
         </div>
       </div>
@@ -86,13 +86,13 @@ export function Process() {
       <div className="mx-auto max-w-7xl px-6">
         <ScrollReveal direction="up" className="mx-auto max-w-2xl text-center">
           <p className="font-mono text-xs font-medium uppercase tracking-[0.18em] text-accent">
-            {content.eyebrow}
+            {content.vorzeile}
           </p>
           <h2 className="mt-3 text-3xl font-semibold leading-[1.15] tracking-[-0.04em] text-foreground sm:text-4xl">
-            {content.title}
+            {content.überschrift}
           </h2>
           <p className="mt-4 text-base font-light leading-relaxed text-foreground-muted">
-            {content.description}
+            {content.beschreibung}
           </p>
         </ScrollReveal>
 
@@ -100,11 +100,11 @@ export function Process() {
           className="relative mt-14 mx-auto max-w-3xl flex flex-col gap-0"
           aria-label="Prozessschritte"
         >
-          {content.steps.map((step, i) => {
+          {content.schritte.map((step, i) => {
             const totalDelay = 80 + 120 * i;
             return (
               <ScrollReveal
-                key={step.title}
+                key={step.überschrift}
                 as="li"
                 direction="premium"
                 stagger={120}
@@ -114,7 +114,7 @@ export function Process() {
                 <ProcessStep
                   step={step}
                   index={i}
-                  isLast={i === content.steps.length - 1}
+                  isLast={i === content.schritte.length - 1}
                   connectorDelay={totalDelay + 300}
                 />
               </ScrollReveal>

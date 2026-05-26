@@ -7,7 +7,7 @@ import { useCardSpotlight } from "@/hooks/useCardSpotlight";
 import { PillarIcon } from "./leistungen/pillar-icons";
 
 interface ServiceCardProps {
-  slug: LeistungenPillarGroup["slug"];
+  slug: LeistungenPillarGroup["pfadKennung"];
   title: string;
   description: string;
 }

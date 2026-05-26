@@ -1,28 +1,28 @@
 export const ueberFrankenSolutionContent = {
-  hero: {
-    eyebrow: "Über Franken Solution",
-    title: "Persönlich. Strukturiert. Herstellerneutral.",
-    lead: "Franken Solution ist ein fokussierter B2B-Partner für IT-Sicherheit und sicheren IT-Betrieb – gegründet von zwei Fachinformatikern mit persönlichem Anspruch an die Betreuung ihrer Kunden.",
+  kopfbereich: {
+    vorzeile: "Über Franken Solution",
+    überschrift: "Persönlich. Strukturiert. Herstellerneutral.",
+    einleitung: "Franken Solution ist ein fokussierter B2B-Partner für IT-Sicherheit und sicheren IT-Betrieb – gegründet von zwei Fachinformatikern mit persönlichem Anspruch an die Betreuung ihrer Kunden.",
   },
   werte: {
-    eyebrow: "Werte",
-    title: "Worauf unsere Arbeit aufbaut.",
-    description:
+    vorzeile: "Werte",
+    überschrift: "Worauf unsere Arbeit aufbaut.",
+    beschreibung:
       "Vier Grundsätze prägen die Zusammenarbeit mit Franken Solution. Sie bestimmen, wie wir kommunizieren, entscheiden und Verantwortung übernehmen.",
   },
-  cta: {
-    eyebrow: "Nächster Schritt",
-    title: "Klingt nach der richtigen Zusammenarbeit?",
-    description:
+  nächsterSchritt: {
+    vorzeile: "Nächster Schritt",
+    überschrift: "Klingt nach der richtigen Zusammenarbeit?",
+    beschreibung:
       "Ob konkretes Anliegen oder erste Orientierung — ein sachliches Erstgespräch ist der einfachste Weg, sich kennenzulernen.",
-    note: "Kein Verkaufsdruck. Nur ein sachliches Erstgespräch.",
-    primaryCta: {
-      label: "Beratung anfragen",
-      href: "/kontakt",
+    hinweis: "Kein Verkaufsdruck. Nur ein sachliches Erstgespräch.",
+    primärerAufruf: {
+      beschriftung: "Beratung anfragen",
+      verlinkung: "/kontakt",
     },
-    secondaryCta: {
-      label: "Leistungen ansehen",
-      href: "/leistungen",
+    sekundärerAufruf: {
+      beschriftung: "Leistungen ansehen",
+      verlinkung: "/leistungen",
     },
   },
 } as const;

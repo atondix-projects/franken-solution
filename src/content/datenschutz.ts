@@ -1,9 +1,9 @@
 export const datenschutzContent = {
-  eyebrow: "Rechtliches",
-  title: "Datenschutzerklärung",
-  description:
+  vorzeile: "Rechtliches",
+  überschrift: "Datenschutzerklärung",
+  beschreibung:
     "Informationen zur Verarbeitung personenbezogener Daten gemäß DSGVO",
-  notes: [
+  hinweise: [
     "Verantwortlicher: Franken Solution, Winzelbürgstr. 9, 90491 Nürnberg – kontakt@franken-solution.de",
     "Erhebung von Daten: Wir erheben personenbezogene Daten nur, soweit dies zur Bereitstellung unserer Leistungen erforderlich ist.",
     "Zweck der Verarbeitung: Kontaktanfragen, Vertragserfüllung sowie berechtigte Interessen gemäß Art. 6 DSGVO.",
@@ -14,7 +14,7 @@ export const datenschutzContent = {
     "Beschwerderecht: Sie haben das Recht, sich bei einer Datenschutzaufsichtsbehörde zu beschweren.",
     "Kontakt Datenschutz: Placeholder: Datenschutzbeauftragter (sofern bestellt)",
   ],
-  cta: { label: "Zur Startseite", href: "/" },
+  nächsterSchritt: { beschriftung: "Zur Startseite", verlinkung: "/" },
 } as const;
 
 export type DatenschutzContent = typeof datenschutzContent;

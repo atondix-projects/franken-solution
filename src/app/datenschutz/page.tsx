@@ -35,11 +35,11 @@ export default function DatenschutzPage() {
   return (
     <SiteFrame>
       <PlaceholderPage
-        eyebrow={datenschutzContent.eyebrow}
-        title={datenschutzContent.title}
-        description={datenschutzContent.description}
-        notes={datenschutzContent.notes}
-        primaryCta={datenschutzContent.cta}
+        eyebrow={datenschutzContent.vorzeile}
+        title={datenschutzContent.überschrift}
+        description={datenschutzContent.beschreibung}
+        notes={datenschutzContent.hinweise}
+        primaryCta={{ label: datenschutzContent.nächsterSchritt.beschriftung, href: datenschutzContent.nächsterSchritt.verlinkung }}
       />
     </SiteFrame>
   );

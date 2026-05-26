@@ -2,7 +2,7 @@ import type { CSSProperties } from "react";
 import { kontaktContent } from "@/content/kontakt";
 import { Icon } from "@/components/ui/Icon";
 
-const content = kontaktContent.hero;
+const content = kontaktContent.kopfbereich;
 
 function heroStyle(delay: string, duration = "560ms"): CSSProperties {
   return {
@@ -95,7 +95,7 @@ export function KontaktHero() {
         >
           <span className="h-px w-6 bg-accent/70" aria-hidden="true" />
           <p className="font-mono text-xs font-medium uppercase tracking-[0.2em] text-accent">
-            {content.eyebrow}
+            {content.vorzeile}
           </p>
           <span className="h-px w-6 bg-accent/70" aria-hidden="true" />
         </div>
@@ -106,7 +106,7 @@ export function KontaktHero() {
           className="hero-load hero-load-up mt-5 text-3xl font-semibold leading-[1.1] tracking-[-0.025em] text-foreground sm:text-4xl lg:text-5xl"
           style={heroStyle("140ms", "620ms")}
         >
-          {content.title}
+          {content.überschrift}
         </h1>
 
         {/* Lead */}
@@ -114,7 +114,7 @@ export function KontaktHero() {
           className="hero-load hero-load-up mx-auto mt-6 max-w-2xl text-base font-light leading-relaxed text-foreground/60 sm:text-lg"
           style={heroStyle("240ms")}
         >
-          {content.lead}
+          {content.einleitung}
         </p>
 
         {/* Connector line decoration */}
@@ -130,7 +130,7 @@ export function KontaktHero() {
           className="hero-load hero-load-up mt-6 flex flex-wrap items-center justify-center gap-3"
           style={heroStyle("400ms", "500ms")}
         >
-          {content.trustChips.map((chip) => (
+          {content.vertrauensMerkmale.map((chip) => (
             <span
               key={chip}
               className="inline-flex items-center gap-1.5 rounded-full border border-foreground/10 bg-foreground/[0.04] px-3.5 py-1.5 font-mono text-xs font-medium tracking-[0.08em] text-foreground/60"

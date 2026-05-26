@@ -21,7 +21,7 @@ const InteractiveNetworkBackground = dynamic(() =>
   ),
 );
 
-const content = homepageContent.hero;
+const content = homepageContent.kopfbereich;
 
 const ICON_MAP = {
   mapPin: MapPinIcon,
@@ -117,26 +117,26 @@ export function Hero() {
             className="hero-load hero-load-up text-3xl font-semibold leading-[1.1] tracking-[-0.02em] text-[#010202] sm:text-4xl md:text-5xl"
             style={heroLoadStyle("140ms", "560ms")}
           >
-            {content.headlinePrefix}{" "}
-            <TypewriterAccent texts={content.accentTexts} />
+            {content.seitentitelPräfix}{" "}
+            <TypewriterAccent texts={content.akzentwörter} />
           </h1>
 
           <p
             className="hero-load hero-load-up mt-4 max-w-185 text-lg font-light leading-normal text-[#010202]"
             style={heroLoadStyle("240ms", "560ms")}
           >
-            {content.subtitle}
+            {content.unterüberschrift}
           </p>
 
           <div
             className="hero-load hero-load-up mt-8 flex flex-wrap gap-2.5"
             style={heroLoadStyle("320ms", "560ms")}
           >
-            <Button renderAs="link" href={content.primaryCta.href} variant="primary">
-              {content.primaryCta.label}
+            <Button renderAs="link" href={content.primärerAufruf.verlinkung} variant="primary">
+              {content.primärerAufruf.beschriftung}
             </Button>
-            <Button renderAs="link" href={content.secondaryCta.href} variant="secondary">
-              {content.secondaryCta.label}
+            <Button renderAs="link" href={content.sekundärerAufruf.verlinkung} variant="secondary">
+              {content.sekundärerAufruf.beschriftung}
             </Button>
           </div>
         </div>
@@ -146,8 +146,8 @@ export function Hero() {
           speed={0.18}
           className="ml-auto hidden h-150 lg:block relative"
         >
-          {content.featureCards.map((card, i) => {
-            const IconComponent = ICON_MAP[card.iconKey as keyof typeof ICON_MAP];
+          {content.merkmalKarten.map((card, i) => {
+            const IconComponent = ICON_MAP[card.symbolName as keyof typeof ICON_MAP];
             const positions = [
               "hero-load hero-load-up absolute right-[36%] top-45 w-84",
               "hero-load hero-load-up absolute right-[25%] top-102 w-84",
@@ -161,14 +161,14 @@ export function Hero() {
             ] as const;
             return (
               <div
-                key={card.iconKey}
+                key={card.symbolName}
                 className={positions[i]}
                 style={heroLoadStyle(delays[i], "620ms")}
               >
                 <FeatureCard
                   icon={<IconComponent className="size-8" />}
-                  title={card.title}
-                  description={card.description}
+                  title={card.überschrift}
+                  description={card.beschreibung}
                   className={animations[i]}
                 />
               </div>

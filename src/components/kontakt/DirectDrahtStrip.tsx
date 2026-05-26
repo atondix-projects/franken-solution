@@ -2,7 +2,7 @@ import { kontaktContent } from "@/content/kontakt";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { Icon } from "@/components/ui/Icon";
 
-const content = kontaktContent.directDraht;
+const content = kontaktContent.direkterDraht;
 
 export function DirectDrahtStrip() {
   return (
@@ -27,7 +27,7 @@ export function DirectDrahtStrip() {
           <div>
             <ScrollReveal direction="up" delay={0}>
               <p className="font-mono text-xs font-medium uppercase tracking-[0.2em] text-accent">
-                {content.eyebrow}
+                {content.vorzeile}
               </p>
             </ScrollReveal>
 
@@ -36,13 +36,13 @@ export function DirectDrahtStrip() {
                 id="direct-draht-heading"
                 className="mt-4 text-3xl font-semibold leading-[1.1] tracking-[-0.04em] text-white sm:text-4xl"
               >
-                {content.title}
+                {content.überschrift}
               </h2>
             </ScrollReveal>
 
             <ScrollReveal direction="up" delay={160}>
               <p className="mt-5 text-base font-light leading-relaxed text-white/50">
-                {content.body}
+                {content.fließtext}
               </p>
             </ScrollReveal>
           </div>
@@ -51,11 +51,11 @@ export function DirectDrahtStrip() {
           <ScrollReveal direction="up" delay={200}>
             <div className="rounded-[20px] border border-white/[0.07] bg-white/[0.04] p-8 backdrop-blur-sm">
               <p className="font-mono text-xs font-medium uppercase tracking-[0.2em] text-white/30">
-                {content.contrastLabel}
+                {content.kontrastBeschriftung}
               </p>
 
               <ul className="mt-6 space-y-4">
-                {content.contrastRows.map((label) => (
+                {content.kontrastZeilen.map((label) => (
                   <li
                     key={label}
                     className="flex items-center gap-4 border-b border-white/[0.06] pb-4 last:border-0 last:pb-0"

@@ -6,9 +6,9 @@ import { ScrollReveal } from "@/components/ScrollReveal";
 import { useMagnetic } from "@/hooks/useMagnetic";
 import { Icon } from "@/components/ui/Icon";
 
-const content = leistungenContent.cta;
+const content = leistungenContent.nächsterSchritt;
 
-const HEADLINE_PHRASES = content.headline
+const HEADLINE_PHRASES = content.überschrift
   .split(". ")
   .map((p) => (p.endsWith(".") ? p : p + "."));
 
@@ -27,7 +27,7 @@ export function LeistungenCta() {
       <div className="relative z-10 mx-auto max-w-4xl px-6 text-center">
         <ScrollReveal direction="up" delay={0}>
           <p className="font-mono text-xs font-medium uppercase tracking-[0.18em] text-accent">
-            {content.eyebrow}
+            {content.vorzeile}
           </p>
         </ScrollReveal>
 
@@ -59,7 +59,7 @@ export function LeistungenCta() {
 
         <ScrollReveal direction="up" delay={200}>
           <p className="mx-auto mt-6 max-w-2xl text-base font-light leading-relaxed text-foreground/65">
-            {content.description}
+            {content.beschreibung}
           </p>
         </ScrollReveal>
 
@@ -71,28 +71,28 @@ export function LeistungenCta() {
           <div ref={magneticRef} className="magnetic-target rounded-md">
             <Button
               renderAs="link"
-              href={content.primaryCta.href}
+              href={content.primärerAufruf.verlinkung}
               variant="primary"
             >
               <span className="flex items-center gap-2">
-                {content.primaryCta.label}
+                {content.primärerAufruf.beschriftung}
                 <Icon name="arrowRight" className="size-4 shrink-0" />
               </span>
             </Button>
           </div>
           <Button
             renderAs="link"
-            href={content.secondaryCta.href}
+            href={content.sekundärerAufruf.verlinkung}
             variant="secondary"
           >
-            {content.secondaryCta.label}
+            {content.sekundärerAufruf.beschriftung}
           </Button>
         </ScrollReveal>
 
         <ScrollReveal direction="fade" delay={520}>
           <p className="mt-8 flex items-center justify-center gap-2 text-xs font-light text-foreground/65">
             <Icon name="shieldCheck" className="size-3" />
-            {content.note}
+            {content.hinweis}
           </p>
         </ScrollReveal>
       </div>

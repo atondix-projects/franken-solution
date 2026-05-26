@@ -45,7 +45,7 @@ export default function Error({ error, reset }: ErrorPageProps) {
                 className="size-2 rounded-full bg-accent"
                 aria-hidden="true"
               />
-              <span>{content.eyebrow}</span>
+              <span>{content.vorzeile}</span>
             </div>
 
             <h1
@@ -57,7 +57,7 @@ export default function Error({ error, reset }: ErrorPageProps) {
                 } as CSSProperties
               }
             >
-              {content.title}
+              {content.überschrift}
             </h1>
 
             <p
@@ -69,7 +69,7 @@ export default function Error({ error, reset }: ErrorPageProps) {
                 } as CSSProperties
               }
             >
-              {content.lead}
+              {content.einleitung}
             </p>
 
             {error.digest && (
@@ -84,9 +84,9 @@ export default function Error({ error, reset }: ErrorPageProps) {
               >
                 <span
                   className="inline-flex items-center gap-2 rounded-full border border-foreground/10 bg-foreground/[0.04] px-3 py-1.5 font-mono text-xs text-foreground/60"
-                  aria-label={`${content.digestLabel}: ${error.digest}`}
+                  aria-label={`${content.referenzBeschriftung}: ${error.digest}`}
                 >
-                  {content.digestLabel} · {error.digest}
+                  {content.referenzBeschriftung} · {error.digest}
                 </span>
               </div>
             )}
@@ -101,10 +101,10 @@ export default function Error({ error, reset }: ErrorPageProps) {
               }
             >
               <Button variant="primary" onClick={reset}>
-                {content.retryLabel}
+                {content.wiederholenBeschriftung}
               </Button>
               <Button renderAs="link" href="/" variant="secondary">
-                {content.homeLabel}
+                {content.startseiteBeschriftung}
               </Button>
             </div>
           </div>

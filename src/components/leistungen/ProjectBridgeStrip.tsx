@@ -2,7 +2,7 @@ import { leistungenContent } from "@/content/leistungen";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { ProjectTile } from "@/components/leistungen/ProjectTile";
 
-const content = leistungenContent.projects;
+const content = leistungenContent.projekte;
 
 export function ProjectBridgeStrip() {
   return (
@@ -18,13 +18,13 @@ export function ProjectBridgeStrip() {
       <div className="relative mx-auto max-w-7xl px-6">
         <ScrollReveal direction="up" className="mx-auto max-w-2xl text-center">
           <p className="font-mono text-xs font-medium uppercase tracking-[0.18em] text-accent">
-            {content.eyebrow}
+            {content.vorzeile}
           </p>
           <h2 className="mt-3 text-3xl font-semibold leading-[1.15] tracking-[-0.04em] text-foreground sm:text-4xl">
-            {content.headline}
+            {content.überschrift}
           </h2>
           <p className="mt-4 text-base font-light leading-relaxed text-foreground-muted">
-            {content.description}
+            {content.beschreibung}
           </p>
         </ScrollReveal>
 
@@ -36,9 +36,9 @@ export function ProjectBridgeStrip() {
           />
 
           <div className="grid items-stretch gap-6 pl-6 sm:grid-cols-2 lg:grid-cols-4">
-            {content.tiles.map((tile, i) => (
+            {content.kacheln.map((tile, i) => (
               <ScrollReveal
-                key={tile.index}
+                key={tile.nummer}
                 direction="up"
                 stagger={70}
                 index={i}
@@ -46,9 +46,9 @@ export function ProjectBridgeStrip() {
                 className="h-full"
               >
                 <ProjectTile
-                  index={tile.index}
-                  title={tile.title}
-                  body={tile.body}
+                  index={tile.nummer}
+                  title={tile.überschrift}
+                  body={tile.fließtext}
                 />
               </ScrollReveal>
             ))}

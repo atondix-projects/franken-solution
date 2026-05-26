@@ -1,33 +1,33 @@
 export const siteContent = {
-  nav: {
-    links: [
-      { label: "Start", href: "/" },
-      { label: "Leistungen", href: "/leistungen" },
-      { label: "Ressourcen", href: "/ressourcen" },
+  navigation: {
+    verknüpfungen: [
+      { beschriftung: "Start", verlinkung: "/" },
+      { beschriftung: "Leistungen", verlinkung: "/leistungen" },
+      { beschriftung: "Ressourcen", verlinkung: "/ressourcen" },
     ],
-    desktopCta: { label: "Kontakt aufnehmen", href: "/kontakt" },
-    mobileCta: { label: "Beratung vereinbaren", href: "/kontakt" },
-    menuAriaOpen: "Menü schließen",
-    menuAriaClose: "Menü öffnen",
-    brandName: "Franken Solution",
+    desktopAufruf: { beschriftung: "Kontakt aufnehmen", verlinkung: "/kontakt" },
+    mobilerAufruf: { beschriftung: "Beratung vereinbaren", verlinkung: "/kontakt" },
+    menüÖffnenBeschriftung: "Menü schließen",
+    menüSchließenBeschriftung: "Menü öffnen",
+    markenname: "Franken Solution",
   },
-  footer: {
-    brandName: "Franken Solution",
-    tagline: "Sichere hybride IT, planbar betreut.",
-    description:
+  fußzeile: {
+    markenname: "Franken Solution",
+    slogan: "Sichere hybride IT, planbar betreut.",
+    beschreibung:
       "Franken Solution unterstützt Unternehmen mit klaren Standards, persönlicher Betreuung und laufender IT-Sicherheit für hybride Umgebungen.",
-    cta: { label: "Beratung anfragen", href: "/kontakt" },
-    downloadLabel: "Fernwartung herunterladen",
-    links: [
-      { label: "Leistungen", href: "/leistungen" },
-      { label: "Ressourcen", href: "/ressourcen" },
-      { label: "Kontakt", href: "/kontakt" },
-      { label: "Impressum", href: "/impressum" },
-      { label: "Datenschutz", href: "/datenschutz" },
+    nächsterSchritt: { beschriftung: "Beratung anfragen", verlinkung: "/kontakt" },
+    downloadBeschriftung: "Fernwartung herunterladen",
+    verknüpfungen: [
+      { beschriftung: "Leistungen", verlinkung: "/leistungen" },
+      { beschriftung: "Ressourcen", verlinkung: "/ressourcen" },
+      { beschriftung: "Kontakt", verlinkung: "/kontakt" },
+      { beschriftung: "Impressum", verlinkung: "/impressum" },
+      { beschriftung: "Datenschutz", verlinkung: "/datenschutz" },
     ],
   },
 } as const;
 
 export type SiteContent = typeof siteContent;
-export type NavContent = SiteContent["nav"];
-export type FooterContent = SiteContent["footer"];
+export type NavContent = SiteContent["navigation"];
+export type FooterContent = SiteContent["fußzeile"];
