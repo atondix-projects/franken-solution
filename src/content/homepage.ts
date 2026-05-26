@@ -1,6 +1,6 @@
 export const homepageContent = {
   hero: {
-    headlinePrefix: "Ihr fränkischer Partner für",
+    seitentitelPräfix: "Ihr fränkischer Partner für",
     accentTexts: ["IT-Support", "Cloud-Lösungen", "IT-Sicherheit"],
     subtitle:
       "Wir betreuen die IT von Unternehmen in Franken: persönlich, sicher und zuverlässig im Alltag.",
