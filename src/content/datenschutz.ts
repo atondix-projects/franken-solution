@@ -1,5 +1,5 @@
 export const datenschutzContent = {
-  eyebrow: "Rechtliches",
+  eyebrow: "Rechtlichess",
   title: "Datenschutzerklärung",
   description:
     "Informationen zur Verarbeitung personenbezogener Daten gemäß DSGVO",
