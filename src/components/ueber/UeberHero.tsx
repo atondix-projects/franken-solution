@@ -1,9 +1,7 @@
 import type { CSSProperties } from "react";
 import { ueberFrankenSolutionContent } from "@/content/ueber-franken-solution";
-import { homepageContent } from "@/content/homepage";
 
 const content = ueberFrankenSolutionContent.kopfbereich;
-const counters = homepageContent.überUns.kennzahlen;
 
 function heroStyle(delay: string, duration = "560ms"): CSSProperties {
   return {
@@ -64,27 +62,6 @@ export function UeberHero() {
         >
           {content.einleitung}
         </p>
-
-        {/* Counters */}
-        <div
-          className="hero-load hero-load-up mx-auto mt-12 grid max-w-3xl grid-cols-1 gap-4 sm:grid-cols-3"
-          style={heroStyle("360ms", "560ms")}
-        >
-          {counters.map((counter) => (
-            <div
-              key={counter.beschriftung}
-              className="glass-card flex flex-col items-center rounded-xl px-4 py-5 text-center"
-              style={{ boxShadow: "var(--elev-1)" }}
-            >
-              <span className="font-mono text-2xl font-bold leading-none text-accent sm:text-3xl">
-                {counter.wert}
-              </span>
-              <span className="mt-2 text-xs font-medium leading-tight text-foreground-muted">
-                {counter.beschriftung}
-              </span>
-            </div>
-          ))}
-        </div>
       </div>
     </section>
   );

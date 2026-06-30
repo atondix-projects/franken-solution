@@ -78,8 +78,10 @@ function spokePoint(
 
 /** Short two-line labels for diagram cells (full title stays in aria-label) */
 const DIAGRAM_LABEL_OVERRIDES: Partial<Record<string, [string, string]>> = {
-  "email-sicherheit-und-archivierung": ["E-Mail-Schutz", "Archivierung"],
-  "backup-und-wiederherstellung": ["Backup", "Wiederherst."],
+  "identitaet-und-zugriffsschutz": ["Identität", "& Zugriff"],
+  "email-sicherheit-und-archivierung": ["E-Mail-", "Sicherheit"],
+  "backup-und-wiederherstellung": ["Backup", "& Recovery"],
+  "netzwerk-und-infrastruktur": ["Netzwerk", "& Infrastruktur"],
 };
 
 /** Two display lines per cell — splits on " und " without showing it */

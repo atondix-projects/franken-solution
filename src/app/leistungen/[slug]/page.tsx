@@ -180,7 +180,7 @@ export default async function LeistungenDetailPage({
         <div className="mx-auto max-w-3xl px-6 text-center">
           <Eyebrow label={detail.nächsterSchritt.vorzeile} />
           <h2 className="mt-5 text-3xl font-semibold leading-[1.1] tracking-[-0.02em] text-foreground sm:text-4xl">
-            {detail.nächsterSchritt.überschriftAnfang}{" "}{group.überschrift.toLowerCase()}{" "}{detail.nächsterSchritt.überschriftEnde}
+            {group.nächsterSchrittTitel}
           </h2>
           <p className="mt-5 text-base font-light leading-relaxed text-foreground/65">
             {detail.nächsterSchritt.fließtext}

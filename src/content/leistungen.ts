@@ -1,11 +1,12 @@
 export const leistungenContent = {
   kopfbereich: {
     vorzeile: "Leistungen",
-    überschrift: "Sechs Bausteine. Ein verlässlicher IT-Betrieb.",
+    überschrift: "Sechs Bausteine. Ein sicherer und stabiler IT-Betrieb.",
     diagrammTitel: "Managed Service mit sechs verlinkten Leistungsgruppen",
-    einleitung: "Jede Leistungsgruppe lässt sich einzeln einsetzen – und zusammen ergeben sie einen Managed Service, der Sicherheit und stabilen Betrieb dauerhaft verbindet.",
+    einleitung:
+      "Jede Leistungsgruppe kann einzeln eingesetzt werden. Zusammen entsteht daraus ein Managed Service, der Sicherheit, Stabilität und laufende Betreuung sinnvoll verbindet.",
     primärerAufruf: {
-      beschriftung: "Kontakt aufnehmen",
+      beschriftung: "Erstgespräch vereinbaren",
       verlinkung: "/kontakt",
     },
     sekundärerAufruf: {
@@ -22,50 +23,55 @@ export const leistungenContent = {
   },
   situationen: {
     vorzeile: "Typische Auslöser",
-    überschrift: "Welche Situation beschreibt Ihre aktuelle Lage?",
+    überschrift: "Welche Situation passt zu Ihrer aktuellen Lage?",
     tabellenKöpfe: {
-      situation: "Situation",
-      ansatz: "Ansatz",
+      situation: "Ausgangslage",
+      ansatz: "Sinnvoller Einstieg",
     },
     beschreibung:
-      "Diese Situationen tauchen selten einzeln auf. Die Tabelle zeigt, welche Leistungsgruppe als erstes ansetzt.",
+      "Häufig hängen mehrere Themen zusammen. Die Übersicht zeigt, wo ein sinnvoller erster Ansatzpunkt liegt.",
     zeilen: [
       {
-        situation: "Konten, Berechtigungen und Admin-Zugänge sind nicht klar geregelt",
+        situation:
+          "Konten, Berechtigungen und Admin-Zugänge sind nicht klar geregelt oder dokumentiert",
         leistungsgruppen: [
-          { beschriftung: "Identität und Zugriffsschutz", sprungZiel: "#identitaet-und-zugriffsschutz" },
+          { beschriftung: "Identität & Zugriff", sprungZiel: "#identitaet-und-zugriffsschutz" },
         ],
       },
       {
-        situation: "Phishing-Mails treffen Mitarbeitende, Postfächer wurden kompromittiert",
+        situation:
+          "Phishing-Mails erreichen Mitarbeitende oder Postfächer wurden bereits kompromittiert",
         leistungsgruppen: [
           { beschriftung: "E-Mail-Sicherheit", sprungZiel: "#email-sicherheit-und-archivierung" },
-          { beschriftung: "Security Awareness", sprungZiel: "#security-awareness" },
+          { beschriftung: "Awareness und Prozesse", sprungZiel: "#security-awareness" },
         ],
       },
       {
-        situation: "Backups laufen – aber ob eine Wiederherstellung klappt, ist unklar",
+        situation:
+          "Backups sind vorhanden, aber ob eine Wiederherstellung funktioniert, ist unklar",
         leistungsgruppen: [
-          { beschriftung: "Backup und Wiederherstellung", sprungZiel: "#backup-und-wiederherstellung" },
+          { beschriftung: "Backup & Recovery", sprungZiel: "#backup-und-wiederherstellung" },
         ],
       },
       {
-        situation: "Endgeräte sind schlecht sichtbar, Patches laufen unsauber",
+        situation:
+          "Endgeräte sind uneinheitlich verwaltet, Updates fehlen oder Sicherheitsrisiken sind nicht transparent",
         leistungsgruppen: [
-          { beschriftung: "Endpoint-Schutz und Monitoring", sprungZiel: "#endpoint-schutz-und-monitoring" },
+          { beschriftung: "Endpoint Management", sprungZiel: "#endpoint-schutz-und-monitoring" },
         ],
       },
       {
-        situation: "Versicherung oder Datenschutz fordert nachweisbare Schutzmaßnahmen",
+        situation:
+          "Cyberversicherung, Datenschutz oder Audits verlangen nachvollziehbare Schutzmaßnahmen",
         leistungsgruppen: [
-          { beschriftung: "Security Awareness", sprungZiel: "#security-awareness" },
-          { beschriftung: "Identität und Zugriffsschutz", sprungZiel: "#identitaet-und-zugriffsschutz" },
+          { beschriftung: "Awareness und Prozesse", sprungZiel: "#security-awareness" },
+          { beschriftung: "Identität & Zugriff", sprungZiel: "#identitaet-und-zugriffsschutz" },
         ],
       },
       {
         situation: "Das Netzwerk ist historisch gewachsen und nicht mehr sauber dokumentiert",
         leistungsgruppen: [
-          { beschriftung: "Netzwerk und Infrastruktur", sprungZiel: "#netzwerk-und-infrastruktur" },
+          { beschriftung: "Netzwerk & Infrastruktur", sprungZiel: "#netzwerk-und-infrastruktur" },
         ],
       },
     ],
@@ -74,7 +80,7 @@ export const leistungenContent = {
     vorzeile: "Leistungsgruppen",
     überschrift: "Was wir konkret übernehmen",
     beschreibung:
-      "Jede Gruppe hat einen klaren Verantwortungsbereich. Auslöser, Bausteine und erwartetes Ergebnis sind für jede Gruppe separat beschrieben.",
+      "Jede Leistungsgruppe hat einen klaren Schwerpunkt. Auslöser, Maßnahmen und erwartetes Ergebnis sind transparent beschrieben.",
     detailLinkText: "Details ansehen",
     gruppen: [
       {
@@ -82,7 +88,7 @@ export const leistungenContent = {
         pfadKennung: "identitaet-und-zugriffsschutz",
         verlinkung: "/leistungen/identitaet-und-zugriffsschutz",
         einführung:
-          "Konten und Berechtigungen sind ein häufiger Einstiegspunkt für Angriffe. Dieser Baustein regelt, wer auf was zugreifen darf – und wie das nachvollziehbar bleibt.",
+          "Konten und Berechtigungen sind ein häufiger Einstiegspunkt für Angriffe. Dieser Baustein sorgt dafür, dass Zugriffe klar geregelt, geschützt und nachvollziehbar dokumentiert werden.",
         auslöserText:
           "Konten ohne MFA, unklare Berechtigungsstrukturen oder unkontrollierte Admin-Zugänge.",
         bausteine: [
@@ -92,33 +98,39 @@ export const leistungenContent = {
           "Lifecycle-Management für Konten und Gruppen",
         ],
         ergebnis:
-          "Klarer Zugang für die richtigen Personen – mit nachvollziehbaren Regeln und dokumentierten Verantwortlichkeiten.",
+          "Klare Zugriffe für die richtigen Personen – mit nachvollziehbaren Regeln und dokumentierten Verantwortlichkeiten.",
+        nächsterSchrittTitel:
+          "Sollen Identitäten und Zugriffe bei Ihnen sauber geregelt werden?",
       },
       {
         überschrift: "E-Mail-Sicherheit und Archivierung",
         pfadKennung: "email-sicherheit-und-archivierung",
         verlinkung: "/leistungen/email-sicherheit-und-archivierung",
         einführung:
-          "E-Mail ist nach wie vor einer der häufigsten Angriffsvektoren. Dieser Baustein sichert den Kommunikationskanal und regelt Archivierung als eigene Aufgabe.",
+          "E-Mail ist nach wie vor einer der häufigsten Angriffswege. Dieser Baustein schützt den Kommunikationskanal und sorgt dafür, dass Archivierung nachvollziehbar geregelt ist.",
         auslöserText:
-          "Phishing-Mails, kompromittierte Postfächer oder fehlende Archivierungsstrategie.",
+          "Phishing-Mails erreichen Mitarbeitende, Postfächer wurden kompromittiert oder eine klare Archivierungsstrategie fehlt.",
         bausteine: [
           "Spam- und Phishing-Schutz",
-          "DKIM, SPF und DMARC-Konfiguration",
-          "Mailbox-Sicherheitsrichtlinien",
+          "SPF, DKIM und DMARC-Konfiguration",
+          "Postfach-Sicherheitsrichtlinien",
           "Archivierung nach betrieblichen und gesetzlichen Anforderungen",
         ],
+        ergebnisKurz:
+          "Geschützte E-Mail-Kommunikation mit revisionssicherer Archivierung.",
         ergebnis:
-          "E-Mail als strukturierter und gesicherter Kommunikationskanal – mit klarer Trennung zwischen operativem Betrieb und Archivierung.",
+          "Geschützte E-Mail-Kommunikation mit revisionssicherer Archivierung und klarer Trennung zwischen Betrieb und Aufbewahrung.",
+        nächsterSchrittTitel:
+          "Soll Ihre E-Mail-Sicherheit klar geregelt und die Archivierung revisionssicher aufgestellt werden?",
       },
       {
         überschrift: "Backup und Wiederherstellung",
         pfadKennung: "backup-und-wiederherstellung",
         verlinkung: "/leistungen/backup-und-wiederherstellung",
         einführung:
-          "Datensicherung existiert oft auf dem Papier – aber ob eine Wiederherstellung im Ernstfall klappt, ist selten geprüft. Dieser Baustein schließt diese Lücke.",
+          "Datensicherung existiert oft auf dem Papier – aber ob eine Wiederherstellung im Ernstfall klappt, ist selten geprüft. Diese Leistungsgruppe schließt genau diese Lücke.",
         auslöserText:
-          "Datenverluste, nicht geprüfte Backups oder unklare Wiederherstellungsverantwortlichkeit.",
+          "Datenverlust, ungeprüfte Backups oder unklare Verantwortlichkeiten bei der Wiederherstellung.",
         bausteine: [
           "Server- und Cloud-Backups",
           "Client-Datensicherung",
@@ -126,16 +138,18 @@ export const leistungenContent = {
           "Dokumentierte Recovery-Prozesse und Verantwortlichkeiten",
         ],
         ergebnis:
-          "Datensicherung, die nicht nur auf dem Papier existiert – mit getesteten Prozessen und klar geregelter Verantwortung.",
+          "Datensicherung, die im Ernstfall funktioniert – mit getesteten Wiederherstellungsprozessen und klar geregelten Verantwortlichkeiten.",
+        nächsterSchrittTitel:
+          "Soll Ihre Datensicherung im Ernstfall zuverlässig funktionieren?",
       },
       {
-        überschrift: "Endpoint-Schutz und Monitoring",
+        überschrift: "Endpoint Management",
         pfadKennung: "endpoint-schutz-und-monitoring",
         verlinkung: "/leistungen/endpoint-schutz-und-monitoring",
         einführung:
           "Endgeräte sind oft der blinde Fleck im IT-Betrieb. Dieser Baustein schafft Sichtbarkeit und stellt sicher, dass Auffälligkeiten früh erkannt und eingeordnet werden.",
         auslöserText:
-          "Ungeschützte Endgeräte, fehlende Sichtbarkeit oder unstrukturierte Patch-Prozesse.",
+          "Endgeräte sind uneinheitlich verwaltet, Updates fehlen oder Sicherheitsrisiken sind nicht ausreichend sichtbar.",
         bausteine: [
           "Endpoint Detection and Response (EDR)",
           "Patch-Management und Software-Inventar",
@@ -143,128 +157,141 @@ export const leistungenContent = {
           "Regelmäßige Sicherheitsberichte und Auswertungen",
         ],
         ergebnis:
-          "Endgeräte im Blick – mit strukturiertem Schutz, nachvollziehbaren Meldungen und klaren Verantwortlichkeiten.",
+          "Endgeräte bleiben geschützt, aktuell und im Blick – mit klaren Meldungen, strukturierten Auswertungen und geregelten Verantwortlichkeiten.",
+        nächsterSchrittTitel:
+          "Sollen Ihre Endgeräte geschützt, verwaltet und laufend überwacht werden?",
       },
       {
-        überschrift: "Security Awareness",
+        überschrift: "Awareness und Prozesse",
         pfadKennung: "security-awareness",
         verlinkung: "/leistungen/security-awareness",
         einführung:
-          "Mitarbeitende sind häufig der letzte Schutzwall vor einem Angriff. Dieser Baustein verankert Sicherheitsbewusstsein im Alltag – nicht als Pflichtschulung.",
+          "Technische Schutzmaßnahmen reichen allein nicht aus. Security Awareness sorgt dafür, dass Mitarbeitende typische Angriffe erkennen, richtig reagieren und Sicherheit im Arbeitsalltag präsent bleibt.",
         auslöserText:
-          "Mitarbeitende als häufiger Einstiegspunkt für Angriffe oder fehlendes Sicherheitsbewusstsein im Team.",
+          "Phishing und Social Engineering zielen direkt auf Ihre Mitarbeitenden. Fehlt ein gemeinsames Sicherheitsbewusstsein, steigt das Risiko für erfolgreiche Angriffe.",
         bausteine: [
-          "Gezielte Schulungsmaßnahmen",
+          "Praxisnahe Schulungsmaßnahmen",
           "Phishing-Simulationen",
-          "Richtlinien für sicheres Verhalten",
-          "Wiederkehrende Awareness-Kommunikation im Arbeitsalltag",
+          "Klare Verhaltensrichtlinien",
+          "Regelmäßige Sicherheitsimpulse im Arbeitsalltag",
         ],
         ergebnis:
-          "Sicherheitsbewusstsein als Teil des Arbeitsalltags – nicht als einmalige Pflichtveranstaltung.",
+          "Sicherheitsbewusstsein, das im Arbeitsalltag wirkt – mit klaren Regeln, realistischen Übungen und regelmäßigen Impulsen.",
+        nächsterSchrittTitel:
+          "Soll Sicherheitsbewusstsein in Ihrem Unternehmen dauerhaft verankert werden?",
       },
       {
         überschrift: "Netzwerk und Infrastruktur",
         pfadKennung: "netzwerk-und-infrastruktur",
         verlinkung: "/leistungen/netzwerk-und-infrastruktur",
         einführung:
-          "Ein historisch gewachsenes Netzwerk ohne klare Segmentierung ist schwer zu schützen und schwerer zu betreiben. Dieser Baustein schafft Struktur als Grundlage.",
+          "Netzwerk und Infrastruktur bilden die Grundlage für sicheren IT-Betrieb. Diese Leistungsgruppe sorgt für klare Strukturen, getrennte Bereiche und eine dokumentierte Basis, auf der sich Systeme verlässlich betreiben lassen.",
         auslöserText:
-          "Unstrukturierte Netzwerke, fehlendes Segmentierungskonzept oder mangelnde Dokumentation der Infrastruktur.",
+          "Historisch gewachsene Netzwerke, fehlende Segmentierung oder unvollständige Dokumentation der Infrastruktur.",
         bausteine: [
           "Netzwerksegmentierung und VLAN-Konzepte",
-          "Firewall-Konfiguration und -Monitoring",
-          "VPN und Remote-Access-Konzepte",
+          "Firewall-Konfiguration und Monitoring",
+          "VPN- und Remote-Access-Konzepte",
           "Dokumentation der Netzwerktopologie",
         ],
         ergebnis:
-          "Eine strukturierte Infrastruktur als belastbare Grundlage – klar dokumentiert, nachvollziehbar und auf Ihren Betrieb abgestimmt.",
+          "Eine strukturierte Netzwerkinfrastruktur als Grundlage für sicheren IT-Betrieb – klar dokumentiert, sinnvoll segmentiert und auf Ihr Unternehmen abgestimmt.",
+        nächsterSchrittTitel:
+          "Soll Ihre Netzwerkinfrastruktur sicher und strukturiert aufgestellt werden?",
       },
     ],
   },
   laufendeBetreuung: {
     vorzeile: "Laufende Betreuung",
-    überschrift: "Managed Service als fortlaufender Prozess",
+    überschrift: "Managed Service heißt: dranbleiben.",
     diagrammTitel: "Vier Schritte des fortlaufenden Managed-Service-Prozesses",
     beschreibung:
-      "Einmalige Maßnahmen greifen zu kurz. Sicherheit und stabiler Betrieb entstehen durch einen strukturierten Zyklus, der kontinuierlich wiederkehrt.",
+      "Einmalige Maßnahmen reichen selten aus. Sichere und stabile IT entsteht durch einen strukturierten Zyklus aus Überwachung, Bewertung, Umsetzung und Weiterentwicklung.",
     zyklus: [
       {
         überschrift: "Monitoring und Erkennung",
-        fließtext: "Sicherheitsrelevante Ereignisse und Betriebsauffälligkeiten werden laufend beobachtet und eingeordnet.",
+        fließtext:
+          "Sicherheitsrelevante Ereignisse, Systemzustände und Auffälligkeiten werden laufend überwacht – damit Risiken und Störungen früh sichtbar werden.",
       },
       {
         überschrift: "Bewertung und Priorisierung",
-        fließtext: "Erkannte Themen werden fachlich bewertet und in eine sinnvolle Bearbeitungsreihenfolge gebracht.",
+        fließtext:
+          "Erkannte Themen werden nach Risiko, Dringlichkeit und Nutzen bewertet – damit klar ist, was zuerst sinnvoll bearbeitet wird.",
       },
       {
         überschrift: "Umsetzung und Anpassung",
-        fließtext: "Maßnahmen werden umgesetzt, dokumentiert und bei Bedarf nachjustiert.",
+        fließtext:
+          "Priorisierte Maßnahmen werden geplant, umgesetzt und dokumentiert – bei Bedarf angepasst, ohne den laufenden Betrieb unnötig zu stören.",
       },
       {
         überschrift: "Weiterentwicklung",
-        fließtext: "Die IT-Umgebung wird regelmäßig auf neue Anforderungen, Bedrohungslagen und technische Entwicklungen hin geprüft.",
+        fließtext:
+          "Ihre IT-Umgebung wird regelmäßig überprüft und an neue Anforderungen, Sicherheitsrisiken und technische Entwicklungen angepasst.",
       },
     ],
     hervorhebung:
-      "Planbar betreut bedeutet: feste Ansprechpartner, klare Prozesse und eine IT-Umgebung, die nicht zwischen Notfällen reaktiv geflickt wird.",
+      "Planbar betreut bedeutet: feste Ansprechpartner, klare Prozesse und eine IT-Umgebung, die kontinuierlich im Blick bleibt – nicht erst, wenn etwas ausfällt.",
     mittelbeschriftung: "Betrieb",
   },
   projekte: {
     vorzeile: "Projektleistungen",
     überschrift: "Wenn strukturierte Änderungen anstehen",
     beschreibung:
-      "Neben dem laufenden Managed Service übernehmen wir Projekte, die eine klare Ausgangslage, einen Umfang und einen definierten Abschluss haben.",
+      "Neben der laufenden Betreuung übernehmen wir klar abgegrenzte IT-Projekte – mit definierter Ausgangslage, abgestimmtem Umfang und sauberem Abschluss.",
     kacheln: [
       {
         nummer: "01",
         überschrift: "IT-Infrastruktur-Projekte",
-        fließtext: "Strukturierte Planung und Umsetzung von Infrastrukturvorhaben – vom Netzwerkdesign und Serverkonsolidierung bis zum vollständigen Rollout.",
+        fließtext:
+          "Strukturierte Infrastrukturprojekte – von Netzwerkdesign und Serveranpassungen bis zum geordneten Rollout im laufenden Betrieb.",
       },
       {
         nummer: "02",
         überschrift: "Migrationen und Umstellungen",
-        fließtext: "Cloud-Migrationen, Plattformwechsel oder Tenant-Konsolidierungen – mit klarem Scope, dokumentiertem Ablauf und definiertem Übergabepunkt.",
+        fließtext:
+          "Cloud-Migrationen, Plattformwechsel oder die Zusammenführung von Microsoft-365-Umgebungen – mit klarem Umfang, abgestimmtem Ablauf und definiertem Übergabepunkt.",
       },
       {
         nummer: "03",
         überschrift: "Sicherheitskonzepte und Analysen",
-        fließtext: "Strukturierte Bestandsaufnahme der IT-Sicherheitslage – mit Risikobewertung und priorisierten, umsetzbaren Handlungsempfehlungen.",
+        fließtext:
+          "Strukturierte Analyse der IT-Sicherheitslage – mit Risikobewertung, klarer Priorisierung und umsetzbaren Handlungsempfehlungen.",
       },
       {
         nummer: "04",
         überschrift: "Onboarding und Transition",
-        fließtext: "Strukturierter Übergang zu Franken Solution – mit Bestandsaufnahme, Schnittstellendokumentation und Einarbeitung in Ihre Umgebung.",
+        fließtext:
+          "Strukturierter Übergang von bestehender Betreuung zu Franken Solution – mit Bestandsaufnahme, sauberer Übergabe und Einarbeitung in Ihre IT-Umgebung.",
       },
     ],
   },
   nächsterSchritt: {
     vorzeile: "Nächster Schritt",
-    überschrift: "Sicherheit und Betrieb. Klar aufgestellt.",
+    überschrift: "Sichere Unternehmens-IT. Klar priorisiert. Planbar betreut.",
     beschreibung:
-      "Wenn Ihre IT professioneller und planbarer aufgestellt werden soll, ist ein erstes Beratungsgespräch der saubere Einstieg.",
+      "In einem ersten Gespräch klären wir, wo Ihre IT steht, welche Risiken bestehen und welche nächsten Schritte sinnvoll sind.",
     primärerAufruf: {
-      beschriftung: "Kontakt aufnehmen",
+      beschriftung: "Erstgespräch vereinbaren",
       verlinkung: "/kontakt",
     },
     sekundärerAufruf: {
-      beschriftung: "Leistungen ansehen",
-      verlinkung: "/leistungen",
+      beschriftung: "Leistungsgruppen ansehen",
+      verlinkung: "#leistungsgruppen",
     },
-    hinweis: "Placeholder: Kein Verkaufsdruck. Kein Aktionismus. Nur ein sachliches Erstgespräch.",
+    hinweis: "Kein Verkaufsdruck. Kein Aktionismus. Nur ein sachliches Erstgespräch.",
   },
   leistungsgruppeDetail: {
     zurückLink: "Alle Leistungen",
     vorzeileGruppe: "Leistungsgruppe",
     vorzeileAuslöser: "Typischer Auslöser",
     vorzeileBausteine: "Was wir konkret übernehmen",
-    bausteineÜberschrift: "Vier Bausteine, klar verantwortet.",
+    bausteineÜberschrift: "Vier Maßnahmenbereiche, klar verantwortet.",
     vorzeileErgebnis: "Was Sie erreichen",
     nächsterSchritt: {
       vorzeile: "Nächster Schritt",
-      überschriftAnfang: "Soll",
-      überschriftEnde: "bei Ihnen sauber aufgestellt werden?",
-      fließtext: "Ein erstes Beratungsgespräch ist der saubere Einstieg – ohne Verkaufsdruck.",
-      primärerAufruf: { beschriftung: "Kontakt aufnehmen", verlinkung: "/kontakt" },
+      fließtext:
+        "In einem ersten Gespräch klären wir, wo Ihre IT steht, welche Risiken bestehen und welche nächsten Schritte sinnvoll sind.",
+      primärerAufruf: { beschriftung: "Erstgespräch vereinbaren", verlinkung: "/kontakt" },
       sekundärerAufruf: { beschriftung: "Alle Leistungen", verlinkung: "/leistungen" },
     },
   },

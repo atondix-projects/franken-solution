@@ -13,10 +13,10 @@ export const siteContent = {
   },
   fußzeile: {
     markenname: "Franken Solution",
-    slogan: "Sichere hybride IT, planbar betreut.",
+    slogan: "Sichere Unternehmens-IT, planbar betreut.",
     beschreibung:
-      "Franken Solution unterstützt Unternehmen mit klaren Standards, persönlicher Betreuung und laufender IT-Sicherheit für hybride Umgebungen.",
-    nächsterSchritt: { beschriftung: "Beratung anfragen", verlinkung: "/kontakt" },
+      "Franken Solution unterstützt Kunden mit klaren Standards, festen Ansprechpartnern und nachvollziehbaren Lösungen – für sichere und stabile IT.",
+    nächsterSchritt: { beschriftung: "Erstgespräch vereinbaren", verlinkung: "/kontakt" },
     downloadBeschriftung: "Fernwartung herunterladen",
     verknüpfungen: [
       { beschriftung: "Leistungen", verlinkung: "/leistungen" },

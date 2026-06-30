@@ -1,13 +1,13 @@
 export const kontaktContent = {
   kopfbereich: {
     vorzeile: "Kontakt",
-    überschrift: "Direkter Draht statt Ticketformular.",
-    einleitung: "Sie haben eine Frage, ein konkretes Problem oder wollen einfach wissen, wie Franken Solution zu Ihnen passt — sprechen Sie uns direkt an.",
+    überschrift: "Direkter Kontakt statt anonymem Formularweg.",
+    einleitung: "Sie haben eine Frage, ein konkretes Anliegen oder möchten wissen, ob Franken Solution zu Ihrem Unternehmen passt? Sprechen Sie uns direkt an – wir klären gemeinsam, welcher nächste Schritt sinnvoll ist.",
     zusatztext: "Kein Formular. Keine Ticketnummer. Ein Anruf oder eine E-Mail reichen.",
     vertrauensMerkmale: [
-      "Kein Formular",
+      "Direkt erreichbar",
       "Keine Warteschleife",
-      "Direkter Ansprechpartner",
+      "Feste Ansprechpartner",
     ],
   },
   kontaktwege: {
@@ -47,21 +47,21 @@ export const kontaktContent = {
     ],
   },
   direkterDraht: {
-    vorzeile: "Warum kein Formular",
-    überschrift: "Weil Gespräche schneller tragen als Tickets.",
-    fließtext: "Viele IT-Dienstleister verstecken sich hinter Ticketsystemen. Wir nicht. Wenn Sie ein Problem haben oder etwas fragen wollen, wollen wir das direkt hören — nicht aufbereitet in einem Formular, das zuerst durch drei Queues läuft. Kurze Wege sind kein Zufall bei Franken Solution, sondern Modell.",
+    vorzeile: "Warum direkter Kontakt?",
+    überschrift: "Weil Gespräche vieles schneller klären als Formulare.",
+    fließtext: "Gerade bei IT-Fragen hilft ein kurzer Austausch oft mehr als ein langes Formular. Wir hören zu, ordnen Ihr Anliegen fachlich ein und besprechen direkt, was als Nächstes sinnvoll ist.",
     kontrastBeschriftung: "Was Sie bei uns nicht brauchen",
     kontrastZeilen: [
-      "Kein Formular auszufüllen",
-      "Kein Ticket abzuwarten",
-      "Kein wechselnder Ansprechpartner",
+      "Kein langes Formular ausfüllen",
+      "Keine anonyme Warteschleife",
+      "Kein ständig wechselnder Ansprechpartner",
     ],
   },
   standort: {
     vorzeile: "Standort",
     überschrift: "Verankert in Franken.",
     beschreibung:
-      "Unser Büro liegt in Nürnberg, mitten in der Metropolregion Franken. Kurze Wege zu unseren Kunden sind kein Versprechen — sie sind ein strukturelles Merkmal unserer Arbeitsweise.",
+      "Unser Büro liegt in Nürnberg, mitten in der Metropolregion Franken. Kurze Wege, persönliche Betreuung und moderne Remote-Unterstützung sind Teil unserer Arbeitsweise.",
     adresse: {
       firma: "Franken Solution",
       straße: "Winzelbürgstr. 9",
@@ -84,17 +84,17 @@ export const kontaktContent = {
   },
   nächsterSchritt: {
     vorzeile: "Nächster Schritt",
-    überschrift: "Lieber mit Struktur einsteigen?",
+    überschrift: "Lassen Sie uns strukturiert starten.",
     hinweis: "Kein Verkaufsdruck. Kein Aktionismus. Nur ein sachliches Erstgespräch.",
     beschreibung:
-      "Kein Verkaufsdruck. Nur ein sachliches Erstgespräch — was Ihre IT heute kann, was fehlt, und wie eine Betreuung aussehen könnte.",
+      "In einem ersten Gespräch klären wir, wo Ihre IT steht, was Sie benötigen und wie eine Betreuung aussehen könnte.",
     primärerAufruf: {
-      beschriftung: "Leistungen ansehen",
-      verlinkung: "/leistungen",
+      beschriftung: "Erstgespräch vereinbaren",
+      verlinkung: "mailto:kontakt@franken-solution.de",
     },
     sekundärerAufruf: {
-      beschriftung: "Über uns",
-      verlinkung: "/ueber-franken-solution",
+      beschriftung: "Leistungen ansehen",
+      verlinkung: "/leistungen",
     },
   },
 } as const;

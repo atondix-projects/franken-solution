@@ -78,7 +78,7 @@ export function CompactPillarCard({ group }: CompactPillarCardProps) {
           Ergebnis
         </p>
         <p className="mt-1 text-sm font-light leading-relaxed text-foreground-muted">
-          {group.ergebnis}
+          {"ergebnisKurz" in group ? group.ergebnisKurz : group.ergebnis}
         </p>
       </div>
 

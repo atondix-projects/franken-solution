@@ -9,6 +9,8 @@ interface DownloadCardProps {
   name: string;
   description: string;
   helper: string;
+  ctaLabel?: string;
+  index?: number;
   action: {
     href: string;
     ariaLabel: string;
@@ -16,7 +18,15 @@ interface DownloadCardProps {
   };
 }
 
-export function DownloadCard({ label, name, description, helper, action }: DownloadCardProps) {
+export function DownloadCard({
+  label,
+  name,
+  description,
+  helper,
+  ctaLabel = "Herunterladen",
+  index = 1,
+  action,
+}: DownloadCardProps) {
   const { ref, onMouseMove, onMouseLeave } = useCardSpotlight<HTMLAnchorElement>();
 
   return (
@@ -35,7 +45,7 @@ export function DownloadCard({ label, name, description, helper, action }: Downl
       />
 
       <span className="absolute right-5 top-5 font-mono text-xs font-medium tracking-[0.14em] text-foreground/20 transition-colors duration-300 group-hover:text-accent/50">
-        01
+        {String(index).padStart(2, "0")}
       </span>
 
       <div className="icon-tilt-idle-active size-14 shrink-0">
@@ -63,7 +73,7 @@ export function DownloadCard({ label, name, description, helper, action }: Downl
       </div>
 
       <div className="mt-5 flex items-center gap-1.5 border-t border-foreground/[0.06] pt-4 text-xs font-medium text-foreground/40 transition-colors duration-200 group-hover:text-accent">
-        <span>Herunterladen</span>
+        <span>{ctaLabel}</span>
         <Icon name="arrowRight" className="size-3.5 shrink-0 transition-transform duration-300 group-hover:translate-x-1" />
       </div>
     </a>

@@ -1,9 +1,23 @@
 import Image from "next/image";
 import { homepageContent } from "@/content/homepage";
-import type { FounderItem } from "@/content/homepage";
 import { ScrollReveal } from "./ScrollReveal";
 
-const content = homepageContent.gründer;
+export type FoundersItem = {
+  readonly kennung: string;
+  readonly nummer: string;
+  readonly name: string;
+  readonly rolle: string;
+  readonly qualifikationen: ReadonlyArray<string>;
+  readonly fotoQuelle?: string;
+  readonly fotoBeschreibung: string;
+};
+
+export type FoundersContent = {
+  readonly vorzeile: string;
+  readonly überschrift: string;
+  readonly beschreibung: string;
+  readonly einträge: ReadonlyArray<FoundersItem>;
+};
 
 function FounderSilhouette({ label }: { label: string }) {
   return (
@@ -25,7 +39,7 @@ function FounderSilhouette({ label }: { label: string }) {
   );
 }
 
-function FounderStage({ item, index }: { item: FounderItem; index: number }) {
+function FounderStage({ item, index }: { item: FoundersItem; index: number }) {
   return (
     <article className="group cursor-default">
       {/* Card — full 4:5 frame, overflow-hidden so the portrait stays contained */}
@@ -99,7 +113,11 @@ function FounderStage({ item, index }: { item: FounderItem; index: number }) {
   );
 }
 
-export function Founders() {
+export function Founders({
+  content = homepageContent.gründer,
+}: {
+  content?: FoundersContent;
+}) {
   return (
     <section className="overflow-hidden py-20 lg:py-28">
       <div className="mx-auto max-w-7xl px-6">

@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { SiteFrame } from "@/components/SiteFrame";
 import { RessourcenHero } from "@/components/ressourcen/RessourcenHero";
 import { DownloadGrid } from "@/components/ressourcen/DownloadGrid";
+import { FernwartungSteps } from "@/components/ressourcen/FernwartungSteps";
+import { WeitereHilfsmittel } from "@/components/ressourcen/WeitereHilfsmittel";
 import { RessourcenCta } from "@/components/ressourcen/RessourcenCta";
 
 export const metadata: Metadata = {
@@ -37,6 +39,8 @@ export default function RessourcenPage() {
     <SiteFrame>
       <RessourcenHero />
       <DownloadGrid />
+      <FernwartungSteps />
+      <WeitereHilfsmittel />
       <RessourcenCta />
     </SiteFrame>
   );

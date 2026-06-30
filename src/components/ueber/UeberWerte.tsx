@@ -1,10 +1,9 @@
 import { ueberFrankenSolutionContent } from "@/content/ueber-franken-solution";
-import { homepageContent } from "@/content/homepage";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { Icon } from "@/components/ui/Icon";
 
 const content = ueberFrankenSolutionContent.werte;
-const items = homepageContent.vertrauen.einträge;
+const items = ueberFrankenSolutionContent.werte.einträge;
 
 export function UeberWerte() {
   return (

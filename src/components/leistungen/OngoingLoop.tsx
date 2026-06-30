@@ -40,7 +40,10 @@ const HUB_ORBIT_R = 54;
 const HUB_GLOW_R = 66;
 
 const LOOP_LABEL_OVERRIDES: Record<number, [string, string]> = {
-  4: ["Weiterent", "wicklung"],
+  1: ["Monitoring", "& Erkennung"],
+  2: ["Bewertung", "& Priorisierung"],
+  3: ["Umsetzung", "& Anpassung"],
+  4: ["Weiter", "entwicklung"],
 };
 
 function loopLabelLines(index: number, title: string): [string, string] {

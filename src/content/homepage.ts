@@ -1,9 +1,14 @@
 export const homepageContent = {
   kopfbereich: {
     seitentitelPräfix: "Ihr fränkischer Partner für",
-    akzentwörter: ["IT-Support", "Cloud-Lösungen", "IT-Sicherheit"],
+    akzentwörter: [
+      "IT-Sicherheit",
+      "zuverlässige IT",
+      "Microsoft 365",
+      "proaktive Betreuung",
+    ],
     unterüberschrift:
-      "Wir betreuen die IT von Unternehmen in Franken: persönlich, sicher und zuverlässig im Alltag.",
+      "Transparent betreut. Nachvollziehbar erklärt. Passend zu Ihrem Unternehmen.",
     primärerAufruf: {
       beschriftung: "Beratung vereinbaren",
       verlinkung: "/kontakt",
@@ -25,8 +30,8 @@ export const homepageContent = {
       },
       {
         symbolName: "shieldCheck",
-        überschrift: "Stabil im Alltag",
-        beschreibung: "Saubere Lösungen für den Alltag.",
+        überschrift: "Unternehmerischer Weitblick",
+        beschreibung: "Langfristig tragfähige Lösungen.",
       },
     ],
   },
@@ -34,43 +39,43 @@ export const homepageContent = {
     vorzeile: "Leistungen",
     überschrift: "Sechs Bausteine für sichere und stabile IT",
     beschreibung:
-      "Jeder Baustein hat einen klaren Verantwortungsbereich. Gemeinsam ergeben sie einen Managed Service für hybride IT-Umgebungen.",
+      "Jeder Baustein stärkt einen wichtigen Bereich Ihrer IT. Zusammen entsteht eine strukturierte Betreuung, die Sicherheit, Stabilität und Transparenz verbindet.",
     einträge: [
       {
         pfadKennung: "identitaet-und-zugriffsschutz",
         überschrift: "Identität und Zugriffsschutz",
         beschreibung:
-          "MFA, Rollen und Lifecycle-Management regeln, wer auf was zugreift – nachvollziehbar und dokumentiert.",
+          "Nur berechtigte Personen erhalten Zugriff auf Systeme und Daten – klar geregelt, nachvollziehbar und dokumentiert.",
       },
       {
         pfadKennung: "email-sicherheit-und-archivierung",
         überschrift: "E-Mail-Sicherheit und Archivierung",
         beschreibung:
-          "Schutz vor Phishing und Spam, saubere Domänen-Konfiguration und Archivierung als eigenständiger Baustein.",
+          "Gefährliche E-Mails werden gefiltert, wichtige Nachrichten nachvollziehbar archiviert und Ihre Domäne sauber abgesichert.",
       },
       {
         pfadKennung: "endpoint-schutz-und-monitoring",
-        überschrift: "Endpoint-Schutz und Monitoring",
+        überschrift: "Endpoint Management",
         beschreibung:
-          "EDR, Patch-Management und strukturierte Sicherheitsberichte schaffen Sichtbarkeit auf allen Endgeräten.",
+          "Endgeräte werden geschützt, aktuell gehalten und laufend überwacht – damit Risiken frühzeitig sichtbar werden.",
       },
       {
         pfadKennung: "backup-und-wiederherstellung",
         überschrift: "Backup und Wiederherstellung",
         beschreibung:
-          "Datensicherung, die nicht nur auf dem Papier existiert – mit getesteten Wiederherstellungsprozessen.",
+          "Wichtige Daten werden zuverlässig gesichert und regelmäßig auf Wiederherstellbarkeit geprüft – damit Ihr Unternehmen arbeitsfähig bleibt.",
       },
       {
         pfadKennung: "netzwerk-und-infrastruktur",
         überschrift: "Netzwerk und Infrastruktur",
         beschreibung:
-          "Strukturierte Netzwerke, saubere Segmentierung und dokumentierte Infrastruktur als belastbare Grundlage.",
+          "Netzwerke werden sauber strukturiert, sinnvoll segmentiert und nachvollziehbar dokumentiert – als stabile Grundlage für sicheren IT-Betrieb.",
       },
       {
         pfadKennung: "security-awareness",
-        überschrift: "Security Awareness",
+        überschrift: "Awareness und Prozesse",
         beschreibung:
-          "Gezielte Schulungen und Phishing-Simulationen verankern Sicherheitsbewusstsein dauerhaft im Arbeitsalltag.",
+          "Klare Abläufe und sensibilisierte Mitarbeitende reduzieren Sicherheitsrisiken – verständlich, praxisnah und im Alltag anwendbar.",
       },
     ],
     ergänzendeAussage:
@@ -84,34 +89,34 @@ export const homepageContent = {
     vorzeile: "Arbeitsweise",
     überschrift: "Von der Bestandsaufnahme zur laufenden Betreuung",
     beschreibung:
-      "Der Ablauf bleibt bewusst nachvollziehbar: erst Klarheit über Risiken, dann ein priorisierter Weg in die Umsetzung und den Betrieb.",
+      "Wir schaffen zuerst Klarheit über Risiken und Handlungsbedarf – danach folgen priorisierte Maßnahmen und eine planbare Betreuung.",
     schritte: [
       {
         symbolName: "magnifier",
         überschrift: "Bestandsaufnahme",
         beschreibung:
-          "Wir erfassen die aktuelle IT-Lage und machen Sicherheits- und Betriebsrisiken sichtbar.",
+          "Der aktuelle Stand Ihrer IT wird erfasst, transparent aufbereitet und als Grundlage für die nächsten Schritte eingeordnet.",
         ergebnis: "Sie bekommen ein klares Bild statt diffuser Vermutungen.",
       },
       {
         symbolName: "clipboardCheck",
         überschrift: "Priorisierter Maßnahmenplan",
         beschreibung:
-          "Die nächsten Schritte werden fachlich eingeordnet und in eine sinnvolle Reihenfolge gebracht.",
+          "Die nächsten Schritte werden nach Risiko, Dringlichkeit und Nutzen priorisiert – nachvollziehbar und passend zu Ihrem Unternehmen.",
         ergebnis: "Sie wissen, was zuerst sinnvoll ist und warum.",
       },
       {
         symbolName: "wrench",
         überschrift: "Umsetzung",
         beschreibung:
-          "Priorisierte Maßnahmen werden sauber geplant, umgesetzt und nachvollziehbar dokumentiert.",
+          "Priorisierte Maßnahmen werden sauber geplant, umgesetzt und dokumentiert – transparent und mit möglichst wenig Störung im laufenden Betrieb.",
         ergebnis: "Sicherheit und Betrieb werden strukturiert verbessert.",
       },
       {
         symbolName: "shieldCheck",
         überschrift: "Laufende Betreuung",
         beschreibung:
-          "Monitoring, Wartung und Weiterentwicklung bleiben Teil eines planbaren Managed Service.",
+          "Monitoring, Wartung und Weiterentwicklung sorgen dafür, dass Ihre IT auch langfristig sicher, stabil und planbar bleibt.",
         ergebnis:
           "Ihre IT wird stabiler, transparenter und langfristig betreut.",
       },
@@ -119,60 +124,59 @@ export const homepageContent = {
   },
   vertrauen: {
     vorzeile: "Vertrauenssignale",
-    überschrift:
-      "Warum die Zusammenarbeit bewusst ruhig und strukturiert angelegt ist",
+    überschrift: "Zusammenarbeit, die Ruhe in Ihren Arbeitsalltag bringt",
     beschreibung:
-      "Franken Solution positioniert sich nicht über Lautstärke, sondern über klare Standards, persönliche Betreuung und nachvollziehbare Entscheidungen.",
+      "Keine lauten Versprechen, sondern klare Standards, feste Ansprechpartner und nachvollziehbare Entscheidungen – damit Ihre IT verlässlich betreut bleibt.",
     einträge: [
       {
         symbolName: "user",
         überschrift: "Feste Ansprechpartner",
         beschreibung:
-          "Sie sprechen mit Menschen, die Ihre Umgebung kennen und Themen fachlich einordnen können.",
+          "Sie müssen Ihre IT nicht jedes Mal neu erklären – Ihre Ansprechpartner kennen Ihre Umgebung und die bisherigen Entscheidungen.",
       },
       {
         symbolName: "clipboardCheck",
         überschrift: "Klare Standards und Dokumentation",
         beschreibung:
-          "Maßnahmen, Entscheidungen und Betriebslogik werden nachvollziehbar festgehalten.",
+          "Entscheidungen, Maßnahmen und wichtige Einstellungen werden nachvollziehbar dokumentiert – damit Ihre IT keine Blackbox bleibt.",
       },
       {
         symbolName: "scale",
         überschrift: "Herstellerneutral",
         beschreibung:
-          "Technische Entscheidungen orientieren sich an Ihrer Ausgangslage und nicht an einem vorgegebenen Produktkatalog.",
+          "Empfehlungen orientieren sich an Ihrer Ausgangslage – nicht an festen Herstellerpaketen oder vorgegebenen Produktkatalogen.",
       },
       {
         symbolName: "mapPin",
         überschrift: "Franken lokal, deutschlandweit remote",
         beschreibung:
-          "Die regionale Nähe schafft Vertrauen. Managed Services und cloud-nahe Leistungen lassen sich auch remote sauber betreiben.",
+          "Persönliche Nähe aus Franken, moderne Betreuung auch remote – so bleibt Ihre IT verlässlich im Blick und effizient betreut.",
       },
     ],
   },
   überUns: {
     vorzeile: "Über Franken Solution",
-    überschrift: "Persönlich. Strukturiert. Herstellerneutral.",
+    überschrift: "Persönlich. Strukturiert. Nachvollziehbar.",
     beschreibung:
-      "Franken Solution ist ein fokussierter B2B-Partner für IT-Sicherheit und sicheren IT-Betrieb. Wir betreuen hybride IT-Umgebungen mit klaren Standards, festen Ansprechpartnern und planbaren Managed Services.",
+      "Franken Solution steht für persönliche Betreuung, klare Standards und nachvollziehbare Lösungen – für sichere und stabile IT in Ihrem Unternehmen.",
     bildBeschreibung: "Stadtansicht von Nürnberg — Heimat von Franken Solution",
     unterscheidungsMerkmale: [
-      "Klare Standards und nachvollziehbare Dokumentation",
+      "Klare Standards und nachvollziehbare Prozesse",
       "Feste Ansprechpartner, die Ihre Umgebung kennen",
       "Herstellerneutrale Empfehlungen",
     ],
     kennzahlen: [
       {
-        wert: "10+",
+        wert: "25+",
         beschriftung: "Jahre IT-Erfahrung",
       },
       {
-        wert: "150+",
-        beschriftung: "Betreute Arbeitsplätze",
+        wert: "200+",
+        beschriftung: "Betreute Benutzer & Systeme",
       },
       {
-        wert: "100%",
-        beschriftung: "Persönliche Betreuung",
+        wert: "40.000+",
+        beschriftung: "Blockierte Spam- & Phishing-Mails pro Jahr",
       },
     ],
     nächsterSchritt: {
@@ -184,7 +188,7 @@ export const homepageContent = {
     vorzeile: "Gründer & Geschäftsführung",
     überschrift: "Persönlich betreut – von Anfang an.",
     beschreibung:
-      "Placeholder: Hinter Franken Solution stehen zwei Fachinformatiker mit langjähriger Erfahrung in der Systemintegration. Als Gründer und Geschäftsführer sind sie persönlich in die Betreuung eingebunden.",
+      "Hinter Franken Solution stehen zwei Gründer, die ihre Kunden nicht nur beraten, sondern langfristig begleiten. Als Geschäftsführer bleiben sie persönlich in die Betreuung eingebunden – mit Erfahrung, Verantwortung und direktem Bezug zur Praxis.",
     einträge: [
       {
         kennung: "markus-maenner",
@@ -208,17 +212,17 @@ export const homepageContent = {
   },
   abschlussAufruf: {
     vorzeile: "Nächster Schritt",
-    überschrift: "Sichere hybride IT. Klar priorisiert. Langfristig betreut.",
+    überschrift: "Sichere Unternehmens-IT. Klar priorisiert. Langfristig betreut.",
     beschreibung:
-      "Wenn Ihre IT professioneller, sicherer und planbarer aufgestellt werden soll, ist ein erstes Beratungsgespräch der saubere Einstieg.",
+      "In einem ersten Gespräch nehmen wir uns Zeit, Ihre IT-Situation und Anforderungen zu verstehen — und legen gemeinsam fest, welche nächsten Schritte sinnvoll sind.",
     hinweis: "Kein Verkaufsdruck. Kein Aktionismus. Nur ein sachliches Erstgespräch.",
     primärerAufruf: {
-      beschriftung: "Kontakt aufnehmen",
+      beschriftung: "Erstgespräch vereinbaren",
       verlinkung: "/kontakt",
     },
     sekundärerAufruf: {
-      beschriftung: "Kontakt aufnehmen",
-      verlinkung: "/kontakt",
+      beschriftung: "Leistungen ansehen",
+      verlinkung: "/leistungen",
     },
   },
 } as const;
