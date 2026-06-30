@@ -24,7 +24,7 @@ export function PlaceholderPage({
   secondaryCta,
 }: PlaceholderPageProps) {
   return (
-    <section className="bg-background py-20 sm:py-24">
+    <section className="bg-background pt-32 pb-20 sm:pt-36 sm:pb-24">
       <div className="mx-auto w-full max-w-4xl px-6">
         <div className="flex items-center gap-3 font-mono text-xs uppercase tracking-[0.24em] text-foreground/45">
           <span className="size-2 rounded-full bg-accent" aria-hidden="true" />
